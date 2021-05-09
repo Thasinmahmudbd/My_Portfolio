@@ -1,0 +1,56 @@
+.fixed_side_btns{
+    position: fixed;
+    z-index: 100;
+    bottom:-38.5rem;
+    left:32px;
+    display:grid;
+    grid-template-columns: 1fr;
+    background-color: transparent;
+    transition: 300ms ease-in;
+}
+
+.fixed_link_btns{
+    display:grid;
+    grid-template-columns: 1fr;
+    grid-gap:.5rem;
+    background-color: #eeefff;
+    padding:0rem;
+    transition: 300ms ease-in;
+}
+
+.fixed_side_btns p{
+    display:grid;
+    background-color: coral;
+    font-size: 2rem;
+    font-weight: bold;
+    padding:1rem;
+    text-align: center;
+    align-self: center;
+    cursor:pointer;
+    margin-bottom: 2rem;
+    border-radius: 50px;
+}
+
+.fixed_side_btns p i{
+    font-size: 2rem;
+    font-weight: bold;
+    color:#fff;
+    text-align: center;
+    cursor:pointer;
+}
+
+.link_btn{
+    padding: 1rem;
+    transition: 300ms ease-in;
+}
+
+.link_btn:hover{
+    background-color: #fff;
+    box-shadow: 2px 2px 15px 0px #ddd;
+    transition: 300ms ease-in;
+}
+
+.fixed_side_btns:hover{
+    bottom:0px;
+    transition: 300ms ease-in;
+}

@@ -1,0 +1,110 @@
+/* header */
+
+.header_container {
+    background-image: url("../../Media/Images/header_bg.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.shade {
+    background-image: linear-gradient(to right, #000, #000000a5);
+}
+
+.header {
+    padding: 2rem;
+    width: 75vw;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 3fr 2fr;
+    grid-gap: 1rem;
+    align-items: center;
+}
+
+.header img {
+    border-radius: 100px;
+    border: 5px solid #fff;
+}
+
+.header_description {
+    line-height: 1.5rem;
+    color: #fff;
+    display: grid;
+    grid-gap: 1rem;
+    text-align: justify;
+}
+
+.header_description h2 {
+    color: #fff;
+}
+
+.header_description h1 {
+    font-size: 1.5rem;
+    overflow-y: hidden;
+    color: #fff;
+}
+
+.custom_order_link {
+    color: #358ffc;
+}
+
+.header_contact_info{
+    display:grid;
+    grid-template-columns: 1fr;
+    grid-gap:.5rem;
+    justify-self: end;
+}
+
+.header_info_mobile{
+    display:grid;
+    grid-template-columns: 3rem 1fr;
+    grid-gap:.5rem;
+}
+
+.header_info_email{
+    display:grid;
+    grid-template-columns: 3rem 1fr;
+    grid-gap:.5rem;
+}
+
+.header_info_mobile p{
+    background-color: #fff;
+    padding:.2rem 1rem;
+    border-radius: 50px;
+    align-self: center;
+    font-size: .8rem;
+    font-weight: bold;
+    color:#000;
+}
+
+.header_info_email p{
+    background-color: #fff;
+    padding:.2rem 1rem;
+    border-radius: 50px;
+    align-self: center;
+    font-size: .8rem;
+    font-weight: bold;
+    color:#000;
+}
+
+.header_info_mobile_logo{
+    background-color: coral;
+    padding:.4rem .6rem;
+    border-radius: 50px;
+    align-self: center;
+    justify-self: center;
+    font-size: .9rem;
+    font-weight: bold;
+    color:#fff;
+}
+
+.header_info_email_logo{
+    background-color: coral;
+    padding:.4rem .4rem;
+    border-radius: 50px;
+    align-self: center;
+    justify-self: center;
+    font-size: .9rem;
+    font-weight: bold;
+    color:#fff;
+}

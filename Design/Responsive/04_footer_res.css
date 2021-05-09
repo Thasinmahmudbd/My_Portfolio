@@ -1,0 +1,37 @@
+/* for tablets width = 800px */
+
+@media only screen and (max-width: 800px) {
+
+    /* footer */
+
+    .footer_container{
+        width:90vw;
+        grid-gap:2rem;
+        padding:1rem;
+    }
+
+    .footer_top{
+        grid-template-columns: 1fr;
+        grid-gap:2rem;
+    }
+
+    .feedback_form{
+        grid-template-columns: 1fr;
+        grid-gap:2rem;
+    }
+
+    .footer_middle{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap:2rem;
+    }
+    
+}
+
+/* for mobile width = 500px */
+
+@media only screen and (max-width: 500px) {
+    
+    /* all is same */
+
+}

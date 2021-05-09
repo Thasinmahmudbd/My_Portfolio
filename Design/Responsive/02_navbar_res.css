@@ -1,0 +1,36 @@
+/* for tablets width = 800px */
+
+@media only screen and (max-width: 800px) {
+
+    .navbar {
+      width: 90vw;
+    }
+
+    .navigation {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+
+    .logo {
+      padding: 0.5rem;
+      margin: 0rem;
+    }
+
+    .navigation_link {
+      display:none;
+    }
+
+    .ham_btn {
+        display:grid;
+      font-size: 1.6rem;
+    }
+    
+}
+
+/* for mobile width = 500px */
+
+@media only screen and (max-width: 500px) {
+    
+    /* all is same */
+
+}

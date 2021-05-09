@@ -1,0 +1,202 @@
+.fixed_anchor_btns{
+    position: fixed;
+    z-index: 100;
+    bottom:0rem;
+    right:32px;
+    display:grid;
+    grid-template-columns: 1fr;
+    background-color: transparent;
+    transition: 300ms ease-in;
+}
+
+.fixed_target_btns{
+    display:grid;
+    grid-template-columns: 1fr;
+    grid-gap:.5rem;
+    background-color: #eeefff;
+    transition: 300ms ease-in;
+}
+
+.fixed_anchor_btns p{
+    display:grid;
+    background-color: coral;
+    padding:1rem;
+    text-align: center;
+    align-self: center;
+    cursor:pointer;
+    margin-bottom: 2rem;
+    border-radius: 50px;
+}
+
+.fixed_anchor_btns p i{
+    font-size: 1rem;
+    font-weight: bold;
+    color:#fff;
+    text-align: center;
+    cursor:pointer;
+}
+
+.anchor_btn{
+    font-size: 1rem;
+    padding: 1rem;
+    text-align: center;
+    transition: 300ms ease-in;
+}
+
+.anchor_btn:hover{
+    background-color: #fff;
+    box-shadow: 2px 2px 15px 0px #ddd;
+    transition: 300ms ease-in;
+}
+
+.fixed_anchor_btns:hover{
+    bottom:0px;
+    transition: 300ms ease-in;
+}
+
+.head::before{
+    display:grid;
+    align-self: center;
+    content:"Header";
+    position: fixed;
+    background-color: #fff;
+    right:32px;
+    font-size: .8rem;
+    padding:.5rem;
+    color:#3B3838;
+    opacity: 0;
+    cursor:default;
+    transition: 300ms ease-in;
+}
+
+.head:hover::before{
+    opacity: 1;
+    right:85px;
+    transition: 300ms ease-in;
+}
+
+.article::before{
+    display:grid;
+    align-self: center;
+    content:"Articles";
+    position: fixed;
+    background-color: #fff;
+    right:32px;
+    font-size: .8rem;
+    padding:.5rem;
+    color:#3B3838;
+    opacity: 0;
+    cursor:default;
+    transition: 300ms ease-in;
+}
+
+.article:hover::before{
+    opacity: 1;
+    right:85px;
+    transition: 300ms ease-in;
+}
+
+.service::before{
+    display:grid;
+    align-self: center;
+    content:"Services";
+    position: fixed;
+    background-color: #fff;
+    right:32px;
+    font-size: .8rem;
+    padding:.5rem;
+    color:#3B3838;
+    opacity: 0;
+    cursor:default;
+    transition: 300ms ease-in;
+}
+
+.service:hover::before{
+    opacity: 1;
+    right:85px;
+    transition: 300ms ease-in;
+}
+
+.project::before{
+    display:grid;
+    align-self: center;
+    content:"Projects";
+    position: fixed;
+    background-color: #fff;
+    right:32px;
+    font-size: .8rem;
+    padding:.5rem;
+    color:#3B3838;
+    opacity: 0;
+    cursor:default;
+    transition: 300ms ease-in;
+}
+
+.project:hover::before{
+    opacity: 1;
+    right:85px;
+    transition: 300ms ease-in;
+}
+
+.techno::before{
+    display:grid;
+    align-self: center;
+    content:"Technologies";
+    position: fixed;
+    background-color: #fff;
+    right:32px;
+    font-size: .8rem;
+    padding:.5rem;
+    color:#3B3838;
+    opacity: 0;
+    cursor:default;
+    transition: 300ms ease-in;
+}
+
+.techno:hover::before{
+    opacity: 1;
+    right:85px;
+    transition: 300ms ease-in;
+}
+
+.custom_order::before{
+    display:grid;
+    align-self: center;
+    content:"Order";
+    position: fixed;
+    background-color: #fff;
+    right:32px;
+    font-size: .8rem;
+    padding:.5rem;
+    color:#3B3838;
+    opacity: 0;
+    cursor:default;
+    transition: 300ms ease-in;
+}
+
+.custom_order:hover::before{
+    opacity: 1;
+    right:85px;
+    transition: 300ms ease-in;
+}
+
+.feedback::before{
+    display:grid;
+    align-self: center;
+    content:"Feedback";
+    position: fixed;
+    background-color: #fff;
+    right:32px;
+    font-size: .8rem;
+    padding:.5rem;
+    color:#3B3838;
+    opacity: 0;
+    cursor:default;
+    transition: 300ms ease-in;
+}
+
+.feedback:hover::before{
+    opacity: 1;
+    right:85px;
+    transition: 300ms ease-in;
+}
