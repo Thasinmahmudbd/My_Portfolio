@@ -50,126 +50,18 @@
   </head>
   <body>
    
-   
-   
-   
-   
-   
-   
-   
-   
-   
+ 
     <!-- header -->
-    <div class="header_container" id="H">
-       
-       <div class="shade">
-        
-            <div class="header">
-
-                <img src="Media/Images/Profile_picture/Thasin.jpg" alt="" width="150px" height="150px">
-
-                <div class="header_description">
-
-                    <h1>Hey, I'm Thasin.</h1>
-
-                    <h2>I work as a web-developer. I've 2 years of experience under my belt. I use HTML, CSS, Javascript, PHP, Laravel & Git on my projects. Hit me up if you have something on your mind. <a href="Sub_pages/3_custom_order.php" class="custom_order_link">Let's make something together. &#128522;</a></h2>
-
-                </div>
-                
-                <div class="header_contact_info">
-                    
-                    <div class="header_info_email">
-
-                       <i class="fas fa-at header_info_email_logo"></i> <p>thasinmahmud.bd@gmail.com</p>
-
-                    </div>
-
-                    <div class="header_info_mobile">
-
-                        <i class="fas fa-mobile-alt header_info_mobile_logo"></i>
-                        <p>+88 01984983948</p>
-                        <span></span>
-                        <p>+88 01757758904</p>
-
-                    </div>
-                    
-                </div>
-
-            </div>
-            
-        </div>
-        
-    </div>
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    <?php include 'Includable_portions/01_header.php'; ?>
+     
     
     <!-- navbar -->
-    <div class="navbar_container" id="anchor">
-      
-        <div class="navbar">
-       
-            <div class="logo">
+    
+    <?php include 'Includable_portions/02_navbar.php'; ?>
+    
                 
-                <a href="index.php">TM</a>
-                
-            </div>
-
-            <ul class="navigation">
-
-                <li class="navigation_link"><a href="Sub_pages/0_blogs.php">Blogs</a></li>
-
-                <li class="navigation_link"><a href="Sub_pages/1_projects.php">Projects</a></li>
-
-                <li class="navigation_link"><a href="Sub_pages/2_store.php">Store</a></li>
-
-                <li class="ham">
-
-                    <!-- The overlay -->
-                    <div id="myNav" class="overlay">
-
-                    <!-- Button to close the overlay navigation -->
-                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-
-                    <!-- Overlay content -->
-                    <div class="overlay-content">
-                    <a href="#">Blogs</a>
-                    <a href="#">Projects</a>
-                    <a href="#">Store</a>
-                    </div>
-
-                    </div>
-
-                    <!-- Use any element to open/show the overlay navigation menu -->
-                    <span onclick="openNav()" class="ham_btn">&#9776;</span>
-
-                </li>
-
-            </ul>
-            
-        </div>
         
-    </div>
-    
-                
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     <!-- articles slider -->
         
         <div class="blogs_carousel" id="A">
@@ -225,15 +117,8 @@
         </div>
     
     
-    
-    
-    
-    
-    
-    
-    
-    
     <!-- services -->
+    
     <div class="services_cards_container" id="S">
         
         <div class="services">
@@ -387,12 +272,10 @@
         </div>
         
     </div>
-    
-    
-    
-    
+      
     
    <!-- projects -->
+   
     <div class="projects_container" id="P">
         
         <div class="projects">
@@ -442,11 +325,10 @@
         </div>
         
     </div>
-    
-    
-    
+     
     
     <!-- technologies -->
+    
     <div class="technologies_container" id="T">
 
         <div class="technologies">
@@ -525,11 +407,10 @@
     
     </div>
     
-    
-    
-    
+       
     
     <!-- custom order -->
+    
     <div class="order_custom_contaier" id="O">
         
         <div class="order_custom">
@@ -596,36 +477,10 @@
         
     </div>
     
-    
-    
-    
+       
     <!-- fixed side btns -->
     
-    <div class="fixed_side_btns">
-      
-       <p><i class="fas fa-th-large"></i></p>
-       
-       <div class="fixed_link_btns">
-           
-            <a href="https://www.facebook.com/thasinmahmud.bd" class="facebook link_btn"><img src="Media/Images/Side_bar_images/facebook_logo.png" alt="f" width="32px"></a>
-        
-            <a href="#" class="page link_btn"><img src="Media/Images/Side_bar_images/facebook_page_logo.png" alt="fp" width="32px"></a>
-
-            <a href="#" class="linkedin link_btn"><img src="Media/Images/Side_bar_images/linked_in_logo.png" alt="ln" width="32px"></a>
-
-            <a href="#" class="insta link_btn"><img src="Media/Images/Side_bar_images/insta_logo.png" alt="i" width="32px"></a>
-
-            <a href="#" class="gmail link_btn"><img src="Media/Images/Side_bar_images/gmail_logo.png" alt="g" width="32px"></a>
-
-            <a href="#" class="github link_btn"><img src="Media/Images/Side_bar_images/github_logo.png" alt="g" width="32px"></a>
-
-            <a href="#" class="pinterest link_btn"><img src="Media/Images/Side_bar_images/pinterest_logo.png" alt="p" width="32px"></a>
-
-            <a href="#" class="fiverr link_btn"><img src="Media/Images/Side_bar_images/fiverr_logo.png" alt="fi" width="32px"></a>
-           
-       </div>
-        
-    </div>
+    <?php include 'Includable_portions/03_fixed_sidebar.php'; ?>
     
     
     <!-- side anchor btns -->
@@ -654,95 +509,18 @@
         
     </div>
     
-    
-    
+       
     <!-- footer -->
     
-    <footer>
+    <?php include 'Includable_portions/04_footer.php'; ?>
+    
+    
+
+   
+    
+     
+      
         
-        <div class="footer_container" id="F">
-          
-           <div class="footer_top">
-           
-               <form action="" class="feedback_form">
-                   
-                   <p>I know this is to much too ask but please give me an honest feedback about my services. Your feedback will help me improve. Thank you.</p>
-
-                   <div class="feedback_form_section">
-
-                       <label class="label feedback_label" for="feedback">Your Name.</label>
-                       <input class="input feedback_input" type="text" required placeholder="No numbers or special symbol allowed.">
-
-                   </div>
-
-                   <div class="feedback_form_section">
-
-                       <label class="label feedback_label" for="feedback">Let me know about your experience.</label>
-                       <input class="input feedback_input" type="text" required placeholder="Your feedback.">
-
-                   </div>
-
-                   <button class="feedback_btn" type="submit">Feedback</button>
-
-               </form>
-               
-               <div class="footer_middle">
-                   
-                   <div class="footer_info">
-                     
-                         <div>
-
-                           <i class="fas fa-at footer_info_email"></i><p>thasinmahmud.bd@gmail.com</p>
-
-                         </div>
-
-                         <div>
-
-                           <i class="fas fa-mobile-alt footer_info_mobile"></i><p>+88 01984983948, +88 01757758904</p>
-
-                         </div>
-                       
-                   </div>
-
-                   <div class="footer_ancors">
-
-                       <a class="footer_ancors_a" href="client_confidentiality.php">Client Confidentiality</a>
-
-                       <a class="footer_ancors_a" href="developer_support.php">Developer Support</a>
-
-                       <a class="footer_ancors_a" href="facing_issues.php">Facing Issues</a>
-
-                       <a class="footer_ancors_a" href="learn_more.php">Learn More</a>
-
-                       <a class="footer_ancors_a" href="refund_policy">Refund Policy</a>
-
-                   </div>
-                   
-                </div>
-           
-                <div class="footer_left">
-                   
-                   <h1>About Me</h1>
-                    
-                    <p>Hey, I'm Thasin. I'm a web developer. I have been doing this since 2019. I've done several projects and hope to do many more in the future. I think every business needs an online presence. If you agree, then you're in luck all you have to do is fill up a form and I'll make your business online. <br><br>
-
-                    To know more about what I do, you can browse <a class="footer_about_link_blue" href="Sub_pages/1_projects.php">my projects</a> and visit <a class="footer_about_link_blue"  href="Sub_pages/2_store.php">my store</a> or see my gigs on <a class="footer_about_link_green" target="_blank"  href="https://www.fiverr.com/thasin_bd?up_rollout=true">Fiverr</a>. What are you waiting for, "Time is Money".</p>
-                    
-                </div>
-           
-           </div>
-            
-            <small>&copy; Copyright 2021, Thasin Mahmud</small>
-            
-            
-            
-        </div>
-        
-    </footer>
-    
-    
-
-    
     
     <!-- owl carousel script -->      
     <script>
@@ -798,6 +576,11 @@
         
     </script>
     
+    
+    
+    
+    
+    
     <!-- aos script-->
     <script>
         
@@ -809,6 +592,11 @@
         });
         
     </script>
+
+
+
+
+
 
   </body>
 </html>

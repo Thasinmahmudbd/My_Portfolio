@@ -28,7 +28,13 @@
 .section_title::after {
   content: "";
   display: block;
-  background-image: linear-gradient(to right, #3B3838, #3B3838, #3B3838, #358ffc);
+  background-image: linear-gradient(
+    to right,
+    #3b3838,
+    #3b3838,
+    #3b3838,
+    #358ffc
+  );
   padding: 0.1rem;
   /*box-shadow: 0px 0px 15px 1px #3B3838a5;*/
   overflow-y: hidden;
@@ -106,7 +112,7 @@
 
 .blogs_carousel:hover .read_my::before {
   content: "Read My ";
-  color: #3B3838;
+  color: #3b3838;
   left: calc(75vw - 14.2rem);
   transition: 1000ms ease;
 }
@@ -171,7 +177,7 @@
 
 .services:hover .know_about::before {
   content: "Know About ";
-  color: #3B3838;
+  color: #3b3838;
   left: calc(75vw - 14.5rem);
   transition: 1000ms ease;
 }
@@ -219,7 +225,7 @@
 
 .projects:hover .view_my::before {
   content: "View ";
-  color: #3B3838;
+  color: #3b3838;
   left: calc(75vw - 10rem);
   transition: 1000ms ease;
 }
@@ -263,101 +269,101 @@
 
 .technologies:hover .used::before {
   content: "Most Used ";
-  color: #3B3838;
+  color: #3b3838;
   left: calc(75vw - 14.1rem);
   transition: 1000ms ease;
 }
 
 /* order custom */
-.order_custom{
-    width:75vw;
-    margin:auto;
-    position:relative;
+.order_custom {
+  width: 75vw;
+  margin: auto;
+  position: relative;
 }
 
-.order{
-    display:grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 1rem;
-    margin:1rem;
+.order {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+  margin: 1rem;
 }
 
-.order_text{
-    padding:1rem;
-    align-self: center;
+.order_text {
+  padding: 1rem;
+  align-self: center;
 }
 
-.order_text h1{
-    font-size: 1rem;
-    padding: 1rem 0rem;
-    text-align: right;
+.order_text h1 {
+  font-size: 1rem;
+  padding: 1rem 0rem;
+  text-align: right;
 }
 
-.order_text h1::before{
-    display:inline-block;
-    content: "";
-    padding: 12px 12px;
-    margin-right: .2rem;
-    border-radius:50px;
-    box-shadow: 15px -15px 0px -5px #358ffc;
-    background-color: coral;
+.order_text h1::before {
+  display: inline-block;
+  content: "";
+  padding: 12px 12px;
+  margin-right: 0.2rem;
+  border-radius: 50px;
+  box-shadow: 15px -15px 0px -5px #358ffc;
+  background-color: coral;
 }
 
-.order_text p{
-    font-size: 1rem;
-    text-align: justify;
+.order_text p {
+  font-size: 1rem;
+  text-align: justify;
 }
 
-.order_form{
-    display:grid;
-    grid-template-columns: 1fr 30px;
-    margin-top:1rem;
-    grid-gap:.5rem;
-    z-index: 50;
+.order_form {
+  display: grid;
+  grid-template-columns: 1fr 30px;
+  margin-top: 1rem;
+  grid-gap: 0.5rem;
+  z-index: 50;
 }
 
-.form_fills_all{
-    display:grid;
-    grid-template-columns: 1fr;
-    grid-gap:.5rem;
-    padding: 1.5rem;
-    background-color: #eeefff;
-    border-radius: 20px;
+.form_fills_all {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 0.5rem;
+  padding: 1.5rem;
+  background-color: #eeefff;
+  border-radius: 20px;
 }
 
-.form_fills{
-    display:grid;
-    grid-template-columns: 1fr;
+.form_fills {
+  display: grid;
+  grid-template-columns: 1fr;
 }
 
-.form_fills:nth-child(2){
-    width:calc(30vw - 3rem);
+.form_fills:nth-child(2) {
+  width: calc(30vw - 3rem);
 }
 
-.form_fills:nth-child(3){
-    width:calc(30vw - 3rem);
+.form_fills:nth-child(3) {
+  width: calc(30vw - 3rem);
 }
 
-.order_form_btn{
-    background-color: #fec99b;
-    position: absolute;
-    padding:28.8px 32px;
-    border-radius: 100px;
-    bottom:calc(25% - 8px);
-    right:0;
-    border:10px solid #fff;
-    cursor:pointer;
-    transition:300ms ease-in;
+.order_form_btn {
+  background-color: #fec99b;
+  position: absolute;
+  padding: 28.8px 32px;
+  border-radius: 100px;
+  bottom: calc(25% - 8px);
+  right: 0;
+  border: 10px solid #fff;
+  cursor: pointer;
+  transition: 300ms ease-in;
 }
 
-.order_form_btn:hover{
-    background-color: coral;
-    transition:300ms ease-in;
+.order_form_btn:hover {
+  background-color: coral;
+  transition: 300ms ease-in;
 }
 
-.point_order_btn{
-    color:#fff;
-    font-size: 32px;
+.point_order_btn {
+  color: #fff;
+  font-size: 32px;
 }
 
 .place_a::before {
@@ -369,9 +375,7 @@
 
 .order_custom:hover .place_a::before {
   content: "Place Your ";
-  color: #3B3838;
+  color: #3b3838;
   left: calc(75vw - 14.4rem);
   transition: 1000ms ease;
 }
-
-
