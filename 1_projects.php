@@ -71,7 +71,7 @@
             
             <form class="sub_page_search_bar" id="anchor2" action="">
                 
-                <input id="anchor3" class="input search_input" placeholder="Enter article title or tags." type="text">
+                <input id="anchor3" class="input search_input" placeholder="Enter catagory or project name." type="text">
                 <button class="search_btn" type="submit"><i class="fas fa-search"></i></button>
                 
             </form>
@@ -138,11 +138,11 @@
                 
                 <div class="right_side_dynamic_post_template">
                     
-                    <img src="Media/Images/Project_pictures/UI_temp_img_project_01(Hike_on).jpg" alt="no image" class="article_img" height="200px">
+                    <img src="Media/Images/Project_pictures/UI_temp_img_project_01(Hike_on).jpg" alt="no image" class="article_img" width="100%">
                     
-                    <div class="article_highlights">
+                    <div class="dynamic_post_template_highlights">
                         
-                        <h1 class="article_title">Article tilte <span class="article_date">(date)</span></h1>
+                        <h1 class="dynamic_post_template_title">Project title</h1>
                         
                         <p class="highlights">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias explicabo quis error, iusto minima voluptate. Ullam possimus minima officia animi tenetur repellat ipsa, pariatur temporibus blanditiis, quidem quas quos magnam. Mollitia quam quidem, odit atque facere, ducimus ipsum delectus adipisci perspiciatis provident temporibus doloribus velit ipsam vero sint itaque libero.
@@ -150,19 +150,35 @@
                         
                     </div>
                     
+                    <div class="post_related_links">
+                        
+                        <a href="#" class="go_live"><i class="fab fa-chrome post_related_link"></i></a>
+                        <a href="#"><i class="fas fa-code-branch post_related_link"></i> </a>
+                        <a href="#"><i class="fas fa-shopping-cart post_related_link"></i></a>
+                        
+                    </div>
+                    
                 </div>
                 
                 <div class="right_side_dynamic_post_template">
                     
-                    <img src="Media/Images/Project_pictures/UI_temp_img_project_01(Hike_on).jpg" alt="no image" class="article_img" height="200px">
+                    <img src="Media/Images/Project_pictures/UI_temp_img_project_01(Hike_on).jpg" alt="no image" class="article_img" width="100%">
                     
-                    <div class="article_highlights">
+                    <div class="dynamic_post_template_highlights">
                         
-                        <h1 class="article_title">Article tilte <span class="article_date">(date)</span></h1>
+                        <h1 class="dynamic_post_template_title">Project title</h1>
                         
                         <p class="highlights">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias explicabo quis error, iusto minima voluptate. Ullam possimus minima officia animi tenetur repellat ipsa, pariatur temporibus blanditiis, quidem quas quos magnam. Mollitia quam quidem, odit atque facere, ducimus ipsum delectus adipisci perspiciatis provident temporibus doloribus velit ipsam vero sint itaque libero.
                         </p>
+                        
+                    </div>
+                    
+                    <div class="post_related_links">
+                        
+                        <a href="#" class="go_live"><i class="fab fa-chrome post_related_link"></i></a>
+                        <a href="#"><i class="fas fa-code-branch post_related_link"></i> </a>
+                        <a href="#"><i class="fas fa-shopping-cart post_related_link"></i></a>
                         
                     </div>
                     

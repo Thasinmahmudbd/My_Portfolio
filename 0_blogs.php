@@ -140,12 +140,12 @@
                     
                     <img src="Media/Images/Project_pictures/UI_temp_img_project_01(Hike_on).jpg" alt="no image" class="article_img" height="200px">
                     
-                    <div class="article_highlights">
+                    <div class="dynamic_post_template_highlights">
                         
-                        <h1 class="article_title">Article tilte <span class="article_date">(date)</span></h1>
+                        <h1 class="dynamic_post_template_title">Article tilte <span class="article_date">(date)</span></h1>
                         
                         <p class="highlights">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias explicabo quis error, iusto minima voluptate. Ullam possimus minima officia animi tenetur repellat ipsa, pariatur temporibus blanditiis, quidem quas quos magnam. Mollitia quam quidem, odit atque facere, ducimus ipsum delectus adipisci perspiciatis provident temporibus doloribus velit ipsam vero sint itaque libero.
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias explicabo quis error, iusto minima voluptate. Ullam possimus minima officia animi tenetur repellat ipsa, pariatur temporibus blanditiis, quidem quas quos magnam. Mollitia quam quidem, odit atque facere, ducimus ipsum delectus adipisci perspiciatis provident temporibus doloribus velit ipsam vero sint itaque libero.<a class="article_read_more" href="#"> read more...</a>
                         </p>
                         
                     </div>
@@ -156,12 +156,12 @@
                     
                     <img src="Media/Images/Project_pictures/UI_temp_img_project_01(Hike_on).jpg" alt="no image" class="article_img" height="200px">
                     
-                    <div class="article_highlights">
+                    <div class="dynamic_post_template_highlights">
                         
-                        <h1 class="article_title">Article tilte <span class="article_date">(date)</span></h1>
+                        <h1 class="dynamic_post_template_title">Article tilte <span class="article_date">(date)</span></h1>
                         
                         <p class="highlights">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias explicabo quis error, iusto minima voluptate. Ullam possimus minima officia animi tenetur repellat ipsa, pariatur temporibus blanditiis, quidem quas quos magnam. Mollitia quam quidem, odit atque facere, ducimus ipsum delectus adipisci perspiciatis provident temporibus doloribus velit ipsam vero sint itaque libero.
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias explicabo quis error, iusto minima voluptate. Ullam possimus minima officia animi tenetur repellat ipsa, pariatur temporibus blanditiis, quidem quas quos magnam. Mollitia quam quidem, odit atque facere, ducimus ipsum delectus adipisci perspiciatis provident temporibus doloribus velit ipsam vero sint itaque libero.<a class="article_read_more" href="#"> read more...</a>
                         </p>
                         
                     </div>
