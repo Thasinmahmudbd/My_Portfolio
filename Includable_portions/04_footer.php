@@ -1,3 +1,5 @@
+
+
 <!-- footer -->
     
     <footer>
@@ -6,25 +8,25 @@
           
            <div class="footer_top">
            
-               <form action="" class="feedback_form">
+               <form action="../Dynamic/actions_dynamic.php" method="post" class="feedback_form">
                    
                    <p>I know this is to much too ask but please give me an honest feedback about my services. Your feedback will help me improve. Thank you.</p>
 
                    <div class="feedback_form_section">
 
                        <label class="label feedback_label" for="feedback">Your Name.</label>
-                       <input class="input feedback_input" type="text" required placeholder="No numbers or special symbol allowed.">
+                       <input class="input feedback_input" type="text" name="feedback_provider" required placeholder="No numbers or special symbol allowed.">
 
                    </div>
 
                    <div class="feedback_form_section">
 
                        <label class="label feedback_label" for="feedback">Let me know about your experience.</label>
-                       <input class="input feedback_input" type="text" required placeholder="Your feedback.">
+                       <input class="input feedback_input" type="text" name="feedback" required placeholder="Your feedback.">
 
                    </div>
 
-                   <button class="feedback_btn" type="submit">Feedback</button>
+                   <button class="feedback_btn" name="feedback_btn" type="submit">Feedback</button>
 
                </form>
                
