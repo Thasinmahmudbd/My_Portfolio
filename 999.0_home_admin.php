@@ -50,6 +50,7 @@
     <script src="Script/DOM_manipulation/slidingmenu.js"></script>
     <script src="Script/DOM_manipulation/onscroll.js"></script>
     <script src="Script/DOM_manipulation/curtainnavbar.js"></script>
+    <script src="Script/DOM_manipulation/onclickshow.js"></script>
 
     <title>Landing page template</title>
   </head>
@@ -69,9 +70,9 @@
       
     <div class="basic_info_container">
       
-        <h1 class="title">Basic Info</h1>
+        <button id="title" class="title pullUp" onclick="showContent()" >Basic Info</button>
         
-        <div class="basic_info">
+        <div id="Content" class="basic_info show">
             
             <div class="info">
             
@@ -79,25 +80,30 @@
                
                 <div class="basic_info_section">
                    
-                    <img src="Media/Images/Profile_picture/Thasin.jpg" alt="" class="current_profile_pic" width="100px">
+                    <img src="Media/Images/Profile_picture/Thasin.jpg" alt="" class="current_profile_pic" width="100%">
                     
                     <form action="" class="profile_pic" enctype="multipart/form-data">
 
                        <input type="file" class="upload_box" name="profile_picture" required>
 
-                       <button type="submit" class="btn update_btn" name="upload_profile_picture">Upload</button>
+                       <button type="submit" class="btn insert_btn" name="upload_profile_picture">Upload</button>
 
                    </form>
                     
                 </div>
                     
-                
+                <!-- crud for basic info --> 
+                              
                 <?php
                     
                         $query_to_read_basic_info = "SELECT * FROM basic_info_table;";
                         
                         $read_basic_info = new Database();
                         $basic_info = $read_basic_info->read($query_to_read_basic_info); 
+                
+                        while($row = mysqli_fetch_assoc($basic_info)){
+                            $data[] = $row;
+                        }
                 
                         //print_r($basic_info);
                 
@@ -108,109 +114,109 @@
                      
 <!-- name ******************************************************************************************************** -->
                       
-                       <p class="current_info"><?php echo $basic_info[0]['name']; ?></p>
+                       <p class="current_info"><?php echo $data[0]['name']; ?></p>
                        
                        <div>
                            
                            <label for="" class="label">Name</label>
                            
-                           <input name="name" type="text" value="<?php echo $basic_info[0]['name']; ?>" class="input">
+                           <input name="name" type="text" value="<?php echo $data[0]['name']; ?>" class="input">
                            
                        </div>
                        
 <!-- about ******************************************************************************************************** -->
                        
-                       <p class="current_info"><?php echo $basic_info[0]['about']; ?></p>
+                       <p class="current_info"><?php echo $data[0]['about']; ?></p>
                        
                        <div>
                            
                            <label for="" class="label">About</label>
                            
-                           <textarea name="about" class="input textarea"><?php echo $basic_info[0]['about']; ?></textarea>
+                           <textarea name="about" class="input textarea"><?php echo $data[0]['about']; ?></textarea>
                            
                        </div>
                        
 <!-- email ******************************************************************************************************** -->
                        
-                       <p class="current_info"><?php echo $basic_info[0]['email']; ?></p>
+                       <p class="current_info"><?php echo $data[0]['email']; ?></p>
                        
                        <div>
                            
                            <label for="" class="label">Email</label>
                            
-                           <input type="email" name="email" value="<?php echo $basic_info[0]['email']; ?>" class="input">
+                           <input type="email" name="email" value="<?php echo $data[0]['email']; ?>" class="input">
                            
                        </div>
                        
 <!-- number 1 ******************************************************************************************************** -->
                        
-                       <p class="current_info"><?php echo $basic_info[0]['number_1']; ?></p>
+                       <p class="current_info"><?php echo $data[0]['number_1']; ?></p>
                        
                        <div>
                            
                            <label for="" class="label">Mobile no.1</label>
                            
-                           <input type="tel" name="mobile_1" value="<?php echo $basic_info[0]['number_1']; ?>" class="input">
+                           <input type="tel" name="mobile_1" value="<?php echo $data[0]['number_1']; ?>" class="input">
                            
                        </div>
                        
 <!-- number 2 ******************************************************************************************************** -->
                        
-                       <p class="current_info"><?php echo $basic_info[0]['number_2']; ?></p>
+                       <p class="current_info"><?php echo $data[0]['number_2']; ?></p>
                        
                        <div>
                            
                            <label for="" class="label">Mobile no.2</label>
                            
-                           <input type="tel" name="mobile_2" value="<?php echo $basic_info[0]['number_2']; ?>" class="input">
+                           <input type="tel" name="mobile_2" value="<?php echo $data[0]['number_2']; ?>" class="input">
                            
                        </div>
                        
 <!-- facebook ******************************************************************************************************** -->
                        
-                       <p class="current_info"><a href="<?php echo $basic_info[0]['fb']; ?>" target="_blank">Facebook</a> [Link]: <?php echo $basic_info[0]['fb']; ?></p>
+                       <p class="current_info"><a href="<?php echo $data[0]['fb']; ?>" target="_blank">Facebook</a> [Link]: <?php echo $data[0]['fb']; ?></p>
                        
                        <div>
                            
                            <label for="" class="label">Facebook</label>
                            
-                           <input type="url" name="facebook" value="<?php echo $basic_info[0]['fb']; ?>" class="input">
+                           <input type="url" name="facebook" value="<?php echo $data[0]['fb']; ?>" class="input">
                            
                        </div>
                        
 <!-- fb page ******************************************************************************************************** -->
                        
-                       <p class="current_info"><a href="<?php echo $basic_info[0]['fb_page']; ?>" target="_blank">Page</a> [Link]: <?php echo $basic_info[0]['fb_page']; ?></p>
+                       <p class="current_info"><a href="<?php echo $data[0]['fb_page']; ?>" target="_blank">Page</a> [Link]: <?php echo $data[0]['fb_page']; ?></p>
                        
                        <div>
                            
                            <label for="" class="label">Page</label>
                            
-                           <input type="url" name="page" value="<?php echo $basic_info[0]['fb_page']; ?>" class="input">
+                           <input type="url" name="page" value="<?php echo $data[0]['fb_page']; ?>" class="input">
                            
                        </div>
                        
 <!-- linkedin ******************************************************************************************************** -->
                        
-                       <p class="current_info"><a href="<?php echo $basic_info[0]['linkedin']; ?>" target="_blank">Linkedin</a> [Link]: <?php echo $basic_info[0]['linkedin']; ?></p>
+                       <p class="current_info"><a href="<?php echo $data[0]['linkedin']; ?>" target="_blank">Linkedin</a> [Link]: <?php echo $data[0]['linkedin']; ?></p>
                        
                        <div>
                            
                            <label for="" class="label">Linkedin</label>
                            
-                           <input type="url" name="linkedin" value="<?php echo $basic_info[0]['linkedin']; ?>" class="input">
+                           <input type="url" name="linkedin" value="<?php echo $data[0]['linkedin']; ?>" class="input">
                            
                        </div>
                        
 <!-- insta ******************************************************************************************************** -->
                        
-                       <p class="current_info"><a href="<?php echo $basic_info[0]['insta']; ?>" target="_blank">Instagram</a> [Link]: <?php echo $basic_info[0]['insta']; ?></p>
+                       <p class="current_info"><a href="<?php echo $data[0]['insta']; ?>" target="_blank">Instagram</a> [Link]: <?php echo $data[0]['insta']; ?></p>
                        
                        <div>
                            
                            <label for="" class="label">Instagram</label>
                            
-                           <input type="url" name="insta" value="<?php echo $basic_info[0]['insta']; ?>" class="input">
+                           <input type="url" name="insta" value="<?php echo $data[0]['insta']; ?>" class="input">
                            
                        </div>
                        
@@ -228,37 +234,37 @@
                        
 <!-- github ******************************************************************************************************** -->
                        
-                       <p class="current_info"><a href="<?php echo $basic_info[0]['github']; ?>" target="_blank">Github</a> [Link]: <?php echo $basic_info[0]['github']; ?></p>
+                       <p class="current_info"><a href="<?php echo $data[0]['github']; ?>" target="_blank">Github</a> [Link]: <?php echo $data[0]['github']; ?></p>
                        
                        <div>
                            
                            <label for="" class="label">Github</label>
                            
-                           <input type="url" name="github" value="<?php echo $basic_info[0]['github']; ?>" class="input">
+                           <input type="url" name="github" value="<?php echo $data[0]['github']; ?>" class="input">
                            
                        </div>
                        
 <!-- pinterest ******************************************************************************************************** -->
                        
-                       <p class="current_info"><a href="<?php echo $basic_info[0]['pinterest']; ?>" target="_blank">Pinterest</a> [Link]: <?php echo $basic_info[0]['pinterest']; ?></p>
+                       <p class="current_info"><a href="<?php echo $data[0]['pinterest']; ?>" target="_blank">Pinterest</a> [Link]: <?php echo $data[0]['pinterest']; ?></p>
                        
                        <div>
                            
                            <label for="" class="label">Pinterest</label>
                            
-                           <input name="pinterest" type="url" value="<?php echo $basic_info[0]['pinterest']; ?>" class="input">
+                           <input name="pinterest" type="url" value="<?php echo $data[0]['pinterest']; ?>" class="input">
                            
                        </div>
                        
 <!-- fiverr ******************************************************************************************************** -->
                        
-                       <p class="current_info"><a href="<?php echo $basic_info[0]['fiverr']; ?>" target="_blank">Fiverr</a> [Link]: <?php echo $basic_info[0]['fiverr']; ?></p>
+                       <p class="current_info"><a href="<?php echo $data[0]['fiverr']; ?>" target="_blank">Fiverr</a> [Link]: <?php echo $data[0]['fiverr']; ?></p>
                        
                        <div>
                            
                            <label for="" class="label">Fiverr</label>
                            
-                           <input type="url" name="fiverr" value="<?php echo $basic_info[0]['fiverr']; ?>" class="input">
+                           <input type="url" name="fiverr" value="<?php echo $data[0]['fiverr']; ?>" class="input">
                            
                        </div>
                        
@@ -275,7 +281,7 @@
                     
                         if(empty($data)){
                             
-                            echo "<button type='submit' class='btn update_btn' name='insert_basic_info'>Insert</button>";
+                            echo "<button type='submit' class='btn insert_btn' name='insert_basic_info'>Insert</button>";
                             
                         }
                         else{
@@ -290,10 +296,183 @@
                 
             </div>
             
-        </div>
+            <div class="gap"></div>
+            
+        </div>    
         
+    </div> 
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+    <!-- client confidentiality -->
+      
+    <div class="client_confidentiality_container">
+      
+        <button id="title2" class="title pullUp" onclick="showContent2()" >Client Confidentiality</button>
+        
+        <div id="Content2" class="client_confidentiality show">
+            
+                <!-- crud for client confidentiality -->
+                    
+                <?php
+                    
+                        $query_to_read_client_confidentiality = "SELECT * FROM client_confidentiality_table;";
+                        
+                        $read_client_confidentiality = new Database();
+                        $client_confidentiality = $read_client_confidentiality->read($query_to_read_client_confidentiality);
+                
+                        //print_r($data);
+                
+                ?>
+                    
+                    
+                <form method="post" action="Dynamic/actions_dynamic.php" class="policy_section">
+                     
+<!-- new policy ******************************************************************************************************** -->
+                           
+                    <label class="label">New Policy</label>
+                           
+                    <textarea name="new_policy" type="text" class="input textarea" required rows="5"></textarea>
+                       
+<!-- btn ******************************************************************************************************** -->
+                       
+                    <button type="submit" class="btn insert_btn" name="insert_client_confidentials">Insert</button>       
+                        
+                </form>
+                
+                
+<!-- policy template -->
+                       
+            <?php 
+            
+            foreach($client_confidentiality as $row){
+                
+            ?>   
+
+                <div class="policy_section policy_template">
+
+                        <li><?php echo $row['client_confidentiality_policy'] ?></li>
+                        
+                        <form method="post" action="Dynamic/actions_dynamic.php" class="policy_template_form">   
+
+                            <textarea name="updated_policy" rows="3" type="text" class="input textarea"><?php echo $row['client_confidentiality_policy']; ?></textarea>
+                            
+                            <input id="policy_id" name="policy_id" type="hidden" value="<?php echo $row['client_confidentiality_policy_id']; ?>">
+
+                            <div class="form_btns">
+                            
+                                <button type="submit" class="btn update_btn update_btn_circle" name="update_client_confidentials"><i class="fas fa-pen"></i></button>
+
+                                <button type="submit" class="btn delete_btn delete_btn_circle" name="delete_client_confidentials"><i class="fas fa-trash"></i></button>
+                                
+                            </div>
+
+                        </form>
+
+                </div>
+               
+            <?php } ?>
+                
+        </div>
+            
     </div>
+          
+      
+      
+      
+      
+      
+      
+      
+    
        
+    
+    <!-- developer support -->
+      
+    <div class="client_confidentiality_container">
+      
+        <button id="title3" class="title pullUp" onclick="showContent3()" >Developer Support</button>
+        
+        <div id="Content3" class="client_confidentiality show">
+            
+                <!-- crud for client confidentiality -->
+                    
+                <?php
+                    
+                        $query_to_read_developers_support = "SELECT * FROM developers_support_table;";
+                        
+                        $read_developers_support = new Database();
+                        $developers_support = $read_developers_support->read($query_to_read_developers_support);
+                
+                        //print_r($data);
+                
+                ?>
+                    
+                    
+                <form method="post" action="Dynamic/actions_dynamic.php" class="policy_section">
+                     
+<!-- new policy ******************************************************************************************************** -->
+                           
+                    <label class="label">New Policy</label>
+                           
+                    <textarea name="new_policy" type="text" class="input textarea" required rows="5"></textarea>
+                       
+<!-- btn ******************************************************************************************************** -->
+                       
+                    <button type="submit" class="btn insert_btn" name="insert_developers_support">Insert</button>       
+                        
+                </form>
+                
+                
+<!-- policy template -->
+                       
+            <?php 
+            
+            foreach($developers_support as $row){
+                
+            ?>   
+
+                <div class="policy_section policy_template">
+
+                        <li><?php echo $row['developers_support_policy'] ?></li>
+                        
+                        <form method="post" action="Dynamic/actions_dynamic.php" class="policy_template_form">   
+
+                            <textarea name="updated_policy" rows="3" type="text" class="input textarea"><?php echo $row['developers_support_policy']; ?></textarea>
+                            
+                            <input id="policy_id" name="policy_id" type="hidden" value="<?php echo $row['developers_support_policy_id']; ?>">
+
+                            <div class="form_btns">
+                            
+                                <button type="submit" class="btn update_btn update_btn_circle" name="update_developers_support"><i class="fas fa-pen"></i></button>
+
+                                <button type="submit" class="btn delete_btn delete_btn_circle" name="delete_developers_support"><i class="fas fa-trash"></i></button>
+                                
+                            </div>
+
+                        </form>
+
+                </div>
+               
+            <?php } ?>
+                
+        </div>
+            
+    </div>
+    
+    
+    
+    
+    
+    
+    
     
     
     

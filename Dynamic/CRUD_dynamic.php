@@ -48,17 +48,18 @@ class Database{
     public function read($query){
         
         $con = $this->connect();
-        $data = false;
+        //$data = false;
         $result =mysqli_query($con, $query);
             
             if(!$result){
                 return false;
             }
             else{
-                while($row = mysqli_fetch_assoc($result)){
+                /*while($row = mysqli_fetch_assoc($result)){
                     $data[] = $row;
                     return $data;
-                }
+                }*/
+                return $result;
             }
         
     }
@@ -67,7 +68,23 @@ class Database{
     public function update($query){
         
         $con = $this->connect();
-        $data = false;
+        //$data = false;
+        $result =mysqli_query($con, $query);
+            
+            if(!$result){
+                return false;
+            }
+            else{
+                return true;
+            }
+        
+    }
+    
+    // delete from database.
+    public function delete($query){
+        
+        $con = $this->connect();
+        //$data = false;
         $result =mysqli_query($con, $query);
             
             if(!$result){

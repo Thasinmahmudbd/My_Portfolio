@@ -1,20 +1,11 @@
 /* basic info */
 
-.basic_info_container{
-    
-}
-
 .basic_info{
     width:75vw;
     margin:auto;
-}
-
-.title{
-    padding:1rem;
-    background-color: #3B3838;
-    color:#fff;
-    text-align: center;
-    font-size: 1.2rem;
+    display:none;
+    opacity: 0;
+    transition: 300ms ease-in;
 }
 
 .info{
@@ -26,7 +17,7 @@
     display:grid;
     grid-template-columns: 2fr 3fr;
     grid-gap:1rem;
-    padding:1rem;
+    padding:1rem 1rem 0rem 1rem;
 }
 
 .basic_info_section div{
@@ -43,7 +34,7 @@
 }
 
 .upload_box{
-    padding:1rem 0rem;
+    padding:0rem;
 }
 
 ::-webkit-file-upload-button{
@@ -56,12 +47,176 @@
     transition: 300ms ease-in;
 }
 
-.update_btn{
-    background-color: coral;
+
+
+
+
+
+
+
+
+
+
+/* client confidentiality */
+
+.client_confidentiality{
+    width:75vw;
+    margin:auto;
+    display:none;
+    opacity: 0;
+    transition: 300ms ease-in;
+}
+
+.policy_section{
+    display:grid;
+    grid-template-columns: 1fr;
+    grid-gap:.5rem;
+    margin-top:1rem;
+}
+
+.policy_template{
+    padding:1rem;
+    background-color: #eeefff;
+}
+
+.policy_template_form{
+    display:grid;
+    grid-template-columns: 1fr 3rem;
+    margin-top:1rem;
+    grid-gap:.5rem;
+}
+
+.form_btns button{
+    display:block;
+    margin-bottom:.5rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* global */
+
+.show{
+    display:grid;
+    opacity: 1;
+    transition: 300ms ease-in;
+}
+
+.title{
+    padding:.5rem;
+    background-color: #3B3838;
+    color:#fff;
+    text-align: center;
+    font-size: 1.2rem;
+    border:0px;
+    width:100%;
+    cursor:pointer;
+    border-top:5px solid #fff;
+    position:relative;
+    overflow-y: hidden;
+    transition: 300ms ease-in;
+}
+
+.title::before{
+    content:"\2193";
+    position:absolute;
+    left:1rem;
+    top:-100px;
+    padding:7px 10px;
+    font-size:20px;
+    font-weight: bolder;
+    color:#000;
+    transition: 300ms ease-in;
+}
+
+.title:hover::before{
+    content:"\2193";
+    top:0px;
+    background-color: #fff;
+    transition: 300ms ease-in;
+}
+
+.pullUp::before{
+    content:"\2191";
+    position:absolute;
+    left:1rem;
+    top:100px;
+    padding:7px 10px;
+    font-size:20px;
+    font-weight: bolder;
+    color:#000;
+    transition: 300ms ease-in;
+}
+
+.pullUp:hover::before{
+    content:"\2191";
+    top:0px;
+    background-color: #fff;
+    transition: 300ms ease-in;
+}
+
+.insert_btn{
+    background-color: #AAF873;
     color:#fff;
     padding:.5rem 1rem;
     cursor: pointer;
     font-weight: bold;
-    border:3px solid coral;
+    border:0px;
     transition: 300ms ease-in;
+}
+
+.update_btn{
+    background-color: #F8D173;
+    color:#fff;
+    padding:.5rem 1rem;
+    cursor: pointer;
+    font-weight: bold;
+    border:0px;
+    transition: 300ms ease-in;
+}
+
+.delete_btn{
+    background-color: #F88B73;
+    color:#fff;
+    padding:.5rem 1rem;
+    cursor: pointer;
+    font-weight: bold;
+    border:0px;
+    transition: 300ms ease-in;
+}
+
+.update_btn_circle{
+    padding:.5rem .6rem .3rem .6rem;
+    border-radius: 50px;
+}
+
+.delete_btn_circle{
+    border-radius: 50px;
+    padding:.5rem .7rem .3rem .7rem;
+}
+
+.btn:hover{
+    background-color: #73B1F8;
+    transition: 300ms ease-in;
+}
+
+.fa-trash{
+    color:#fff;
+    margin:0px;
+    padding:0px;
+    font-size: 20px;
+}
+
+.fa-pen{
+    color:#fff;
+    margin:0px;
+    padding:0px;
+    font-size: 20px;
 }
