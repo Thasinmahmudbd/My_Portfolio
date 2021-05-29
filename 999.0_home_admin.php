@@ -379,6 +379,8 @@
                 </div>
                
             <?php } ?>
+               
+            <div class="gap"></div>
                 
         </div>
             
@@ -402,7 +404,7 @@
         
         <div id="Content3" class="client_confidentiality show">
             
-                <!-- crud for client confidentiality -->
+                <!-- crud for developers support -->
                     
                 <?php
                     
@@ -462,10 +464,441 @@
                 </div>
                
             <?php } ?>
+               
+            <div class="gap"></div>
                 
         </div>
             
     </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <!-- Facing issues -->
+      
+    <div class="client_confidentiality_container">
+      
+        <button id="title4" class="title pullUp" onclick="showContent4()" >Customer Issues</button>
+        
+        <div id="Content4" class="client_confidentiality show">
+            
+                <!-- crud for customers issues -->
+                    
+                <?php
+                    
+                        $query_to_read_customers_issues = "SELECT * FROM customers_issues_table;";
+                        
+                        $read_customers_issues = new Database();
+                        $customers_issues = $read_customers_issues->read($query_to_read_customers_issues);
+                
+                        //print_r($data);
+                
+                ?>
+                    
+                
+                
+<!-- policy template -->
+                       
+            <?php 
+            
+            foreach($customers_issues as $row){
+                
+            ?>   
+
+                <div class="policy_section issues_template">
+                       
+                       
+                        <div class="issues_info <?php 
+            
+                            if($row['issue_status'] == 'Pending'){
+                                
+                                echo " bg_col_pending";
+                                
+                            }
+                            elseif($row['issue_status'] == 'Working on it'){
+                                
+                                echo " bg_col_working_on_it";
+                                
+                            }
+                            elseif($row['issue_status'] == 'Completed'){
+                                
+                                echo " bg_col_completed";
+                                
+                            }
+                
+                        ?>">
+
+                            <p><span><b>Date: </b></span><?php echo $row['issues_date']; ?></p>
+                            
+                            <p><span><b>Client: </b></span><?php echo $row['customers_full_name']; ?></p>
+
+                            <p><span><b>Email: </b></span><?php echo $row['customers_email']; ?></p>
+
+                            <p><span><b>Mobile: </b></span><?php echo $row['customers_mobile']; ?></p>
+
+                            <p class="issues"><span><b>Issue / Problem: </b></span><br><?php echo $row['customers_issues']; ?></p>
+                            
+                        </div>
+                        
+                        <div class="issue_related_form_btns">
+                        
+                            <form method="post" action="Dynamic/actions_dynamic.php" class="policy_template_form"> 
+
+                                <input name="customers_issues_id" type="hidden" value="<?php echo $row['customers_issues_id']; ?>"> 
+                                 
+                                <input name="issue_status" type="hidden" value="Working on it">
+
+                                <button type="submit" class="btn update_btn" name="update_status_to_working_on_it">Working on it</button>
+
+                            </form>
+
+                            <form method="post" action="Dynamic/actions_dynamic.php" class="policy_template_form"> 
+
+                                <input name="customers_issues_id" type="hidden" value="<?php echo $row['customers_issues_id']; ?>">
+                                
+                                <input name="issue_status" type="hidden" value="Completed">  
+
+                                <button type="submit" class="btn insert_btn" name="update_status_to_completed">Completed</button>
+
+                            </form>
+
+                            <form method="post" action="Dynamic/actions_dynamic.php" class="policy_template_form"> 
+
+                                <input name="customers_issues_id" type="hidden" value="<?php echo $row['customers_issues_id']; ?>"> 
+
+                                <button type="submit" class="btn delete_btn" name="delete_issue">Remove from database</button>
+
+                            </form>
+                            
+                        </div>
+
+                </div>
+               
+            <?php } ?>
+               
+            <div class="gap"></div>
+                
+        </div>
+            
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <!-- Learn more -->
+      
+    <div class="client_confidentiality_container">
+      
+        <button id="title5" class="title pullUp" onclick="showContent5()" >Learn More</button>
+        
+        <div id="Content5" class="client_confidentiality show">
+            
+                <!-- crud for learn more -->
+                    
+                <?php
+                    
+                        $query_to_read_learn_more = "SELECT * FROM learn_more_table;";
+                        
+                        $read_learn_more = new Database();
+                        $learn_more = $read_learn_more->read($query_to_read_learn_more);
+                
+                        //print_r($data);
+                
+                ?>
+                    
+                    
+                <form method="post" action="Dynamic/actions_dynamic.php" class="policy_section">
+                     
+<!-- new policy ******************************************************************************************************** -->
+                           
+                    <label class="label">Title / Question</label>
+                         
+                    <input name="new_learn_more_article_title" type="text" class="input" required>
+                          
+                    <label class="label">Description / Answer</label>
+                           
+                    <textarea name="new_learn_more_article" type="text" class="input textarea" required rows="5"></textarea>
+                       
+<!-- btn ******************************************************************************************************** -->
+                       
+                    <button type="submit" class="btn insert_btn" name="insert_learn_more_article">Insert</button>       
+                        
+                </form>
+                
+                
+<!-- policy template -->
+                       
+            <?php 
+            
+            foreach($learn_more as $row){
+                
+            ?>   
+
+                <div class="policy_section policy_template">
+
+                        <p><span class="learn_more_article_title"><h1><?php echo $row['learn_more_article_title'] ?></h1></span><br><?php echo $row['learn_more_article'] ?></p>
+                        
+                        <form method="post" action="Dynamic/actions_dynamic.php" class="policy_template_form">   
+
+                         
+                            <input name="updated_learn_more_article_title" type="text" class="input" value="<?php echo $row['learn_more_article_title']; ?>">
+                            
+                            
+                            <span></span>
+                            
+                            
+                            <textarea name="updated_learn_more_article" rows="3" type="text" class="input textarea"><?php echo $row['learn_more_article']; ?></textarea>
+                            
+                            <input id="policy_id" name="policy_id" type="hidden" value="<?php echo $row['learn_more_article_id']; ?>">
+
+                            <div class="form_btns">
+                            
+                                <button type="submit" class="btn update_btn update_btn_circle" name="update_learn_more_article"><i class="fas fa-pen"></i></button>
+
+                                <button type="submit" class="btn delete_btn delete_btn_circle" name="delete_learn_more_article"><i class="fas fa-trash"></i></button>
+                                
+                            </div>
+
+                        </form>
+
+                </div>
+               
+            <?php } ?>
+               
+            <div class="gap"></div>
+                
+        </div>
+            
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <!-- Refund Policy -->
+      
+    <div class="client_confidentiality_container">
+      
+        <button id="title6" class="title pullUp" onclick="showContent6()" >Refund Policy</button>
+        
+        <div id="Content6" class="client_confidentiality show">
+            
+                <!-- crud for refund policy -->
+                    
+                <?php
+                    
+                        $query_to_read_refund_policy = "SELECT * FROM refund_policy_table;";
+                        
+                        $read_refund_policy = new Database();
+                        $refund_policy = $read_refund_policy->read($query_to_read_refund_policy);
+                
+                        //print_r($data);
+                
+                ?>
+                    
+                    
+                <form method="post" action="Dynamic/actions_dynamic.php" class="policy_section">
+                     
+<!-- new policy ******************************************************************************************************** -->
+                           
+                    <label class="label">New Policy</label>
+                           
+                    <textarea name="new_policy" type="text" class="input textarea" required rows="5"></textarea>
+                       
+<!-- btn ******************************************************************************************************** -->
+                       
+                    <button type="submit" class="btn insert_btn" name="insert_refund_policy">Insert</button>       
+                        
+                </form>
+                
+                
+<!-- policy template -->
+                       
+            <?php 
+            
+            foreach($refund_policy as $row){
+                
+            ?>   
+
+                <div class="policy_section policy_template">
+
+                        <li><?php echo $row['refund_policy'] ?></li>
+                        
+                        <form method="post" action="Dynamic/actions_dynamic.php" class="policy_template_form">   
+
+                            <textarea name="updated_policy" rows="3" type="text" class="input textarea"><?php echo $row['refund_policy']; ?></textarea>
+                            
+                            <input id="policy_id" name="policy_id" type="hidden" value="<?php echo $row['refund_policy_id']; ?>">
+
+                            <div class="form_btns">
+                            
+                                <button type="submit" class="btn update_btn update_btn_circle" name="update_refund_policy"><i class="fas fa-pen"></i></button>
+
+                                <button type="submit" class="btn delete_btn delete_btn_circle" name="delete_refund_policy"><i class="fas fa-trash"></i></button>
+                                
+                            </div>
+
+                        </form>
+
+                </div>
+               
+            <?php } ?>
+               
+            <div class="gap"></div>
+                
+        </div>
+            
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <!-- Orders -->
+      
+    <div class="client_confidentiality_container">
+      
+        <button id="title7" class="title pullUp" onclick="showContent7()" >Orders Received</button>
+        
+        <div id="Content7" class="client_confidentiality show">
+            
+                <!-- crud for customers issues -->
+                    
+                <?php
+                    
+                        $query_to_read_orders = "SELECT * FROM order_table;";
+                        
+                        $read_orders = new Database();
+                        $orders = $read_orders->read($query_to_read_orders);
+                
+                        //print_r($data);
+                
+                ?>
+                    
+                
+                
+<!-- policy template -->
+                       
+            <?php 
+            
+            foreach($orders as $row){
+                
+            ?>   
+
+                <div class="policy_section issues_template">
+                       
+                       
+                        <div class="issues_info <?php 
+            
+                            if($row['order_status'] == 'Pending'){
+                                
+                                echo " bg_col_pending";
+                                
+                            }
+                            elseif($row['order_status'] == 'Working on it'){
+                                
+                                echo " bg_col_working_on_it";
+                                
+                            }
+                            elseif($row['order_status'] == 'Completed'){
+                                
+                                echo " bg_col_completed";
+                                
+                            }
+                
+                        ?>">
+
+                            <p><span><b>Date: </b></span><?php echo $row['order_date']; ?></p>
+                           
+                            <p><span><b>Client: </b></span><?php echo $row['customer_full_name']; ?></p>
+
+                            <p><span><b>Email: </b></span><?php echo $row['customer_email']; ?></p>
+
+                            <p><span><b>Mobile: </b></span><?php echo $row['customer_mobile']; ?></p>
+
+                            <p class="issues"><span><b>Order: </b></span><br><?php echo $row['orders']; ?></p>
+                            
+                        </div>
+                        
+                        <div class="issue_related_form_btns">
+                        
+                            <form method="post" action="Dynamic/actions_dynamic.php" class="policy_template_form"> 
+
+                                <input name="order_id" type="hidden" value="<?php echo $row['order_id']; ?>"> 
+                                 
+                                <input name="order_status" type="hidden" value="Working on it">
+
+                                <button type="submit" class="btn update_btn" name="update_order_status_to_working_on_it">Confirmed / Working on it</button>
+
+                            </form>
+
+                            <form method="post" action="Dynamic/actions_dynamic.php" class="policy_template_form"> 
+
+                                <input name="order_id" type="hidden" value="<?php echo $row['order_id']; ?>">
+                                
+                                <input name="order_status" type="hidden" value="Completed">  
+
+                                <button type="submit" class="btn insert_btn" name="update_order_status_to_completed">Delivered</button>
+
+                            </form>
+
+                            <form method="post" action="Dynamic/actions_dynamic.php" class="policy_template_form"> 
+
+                                <input name="order_id" type="hidden" value="<?php echo $row['order_id']; ?>"> 
+
+                                <button type="submit" class="btn delete_btn" name="delete_order">Remove from database</button>
+
+                            </form>
+                            
+                        </div>
+
+                </div>
+               
+            <?php } ?>
+               
+            <div class="gap"></div>
+                
+        </div>
+            
+    </div>
+    
+    
     
     
     
@@ -483,18 +916,20 @@
        <p><i class="fas fa-anchor"></i></p>
        
        <div class="fixed_target_btns">
-           
-            <a href="#H" class="anchor_btn head">H</a>
             
-            <a href="#A" class="anchor_btn article">A</a>
+            <a href="#title" class="anchor_btn basic">B</a>
+            
+            <a href="#title2" class="anchor_btn confidentiality">C</a>
+            
+            <a href="#title3" class="anchor_btn support">S</a>
         
-            <a href="#S" class="anchor_btn service">S</a>
+            <a href="#title4" class="anchor_btn issue">I</a>
 
-            <a href="#P" class="anchor_btn project">P</a>
+            <a href="#title5" class="anchor_btn learn">L</a>
 
-            <a href="#T" class="anchor_btn techno">T</a>
+            <a href="#title6" class="anchor_btn refund">R</a>
 
-            <a href="#O" class="anchor_btn custom_order">O</a>
+            <a href="#title7" class="anchor_btn custom_order">O</a>
 
             <a href="#F" class="anchor_btn feedback">F</a>
            

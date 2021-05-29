@@ -1,0 +1,18 @@
+.confirmation{
+    width:75vw;
+    margin: auto;
+    padding:1.5rem;
+    margin-top:5rem;
+    background-color: #eeefff;
+    overflow-y:hidden;
+    border-right: 15px solid #90ee90;
+}
+
+.confirmation_msg{
+    line-height: 2rem;
+    text-align: justify;
+    font-weight: bold;
+    font-size: 1rem;
+    padding:0rem 1.5rem 3rem 1.5rem;
+    border-left: 20px dotted #90ee90;
+}

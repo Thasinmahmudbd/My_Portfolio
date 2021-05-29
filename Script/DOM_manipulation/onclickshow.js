@@ -17,3 +17,27 @@ function showContent3() {
     document.getElementById("title3").classList.toggle("pullUp");
 
 }
+
+function showContent4() {    
+    document.getElementById("Content4").classList.toggle("show");
+    document.getElementById("title4").classList.toggle("pullUp");
+
+}
+
+function showContent5() {    
+    document.getElementById("Content5").classList.toggle("show");
+    document.getElementById("title5").classList.toggle("pullUp");
+
+}
+
+function showContent6() {    
+    document.getElementById("Content6").classList.toggle("show");
+    document.getElementById("title6").classList.toggle("pullUp");
+
+}
+
+function showContent7() {    
+    document.getElementById("Content7").classList.toggle("show");
+    document.getElementById("title7").classList.toggle("pullUp");
+
+}

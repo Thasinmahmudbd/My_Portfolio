@@ -221,3 +221,130 @@
   right: 85px;
   transition: 300ms ease-in;
 }
+
+.refund::before {
+  display: grid;
+  align-self: center;
+  content: "Refunds";
+  position: fixed;
+  background-color: #fff;
+  right: 32px;
+  font-size: 0.8rem;
+  padding: 0.5rem;
+  color: #3b3838;
+  opacity: 0;
+  cursor: default;
+  transition: 300ms ease-in;
+}
+
+.refund:hover::before {
+  opacity: 1;
+  right: 85px;
+  transition: 300ms ease-in;
+}
+
+.learn::before {
+  display: grid;
+  align-self: center;
+  content: "Learn More";
+  position: fixed;
+  background-color: #fff;
+  right: 32px;
+  font-size: 0.8rem;
+  padding: 0.5rem;
+  color: #3b3838;
+  opacity: 0;
+  cursor: default;
+  transition: 300ms ease-in;
+}
+
+.learn:hover::before {
+  opacity: 1;
+  right: 85px;
+  transition: 300ms ease-in;
+}
+
+.issue::before {
+  display: grid;
+  align-self: center;
+  content: "Issues";
+  position: fixed;
+  background-color: #fff;
+  right: 32px;
+  font-size: 0.8rem;
+  padding: 0.5rem;
+  color: #3b3838;
+  opacity: 0;
+  cursor: default;
+  transition: 300ms ease-in;
+}
+
+.issue:hover::before {
+  opacity: 1;
+  right: 85px;
+  transition: 300ms ease-in;
+}
+
+.support::before {
+  display: grid;
+  align-self: center;
+  content: "Dev-support";
+  position: fixed;
+  background-color: #fff;
+  right: 32px;
+  font-size: 0.8rem;
+  padding: 0.5rem;
+  color: #3b3838;
+  opacity: 0;
+  cursor: default;
+  transition: 300ms ease-in;
+}
+
+.support:hover::before {
+  opacity: 1;
+  right: 85px;
+  transition: 300ms ease-in;
+}
+
+.confidentiality::before {
+  display: grid;
+  align-self: center;
+  content: "Confidentiality";
+  position: fixed;
+  background-color: #fff;
+  right: 32px;
+  font-size: 0.8rem;
+  padding: 0.5rem;
+  color: #3b3838;
+  opacity: 0;
+  cursor: default;
+  transition: 300ms ease-in;
+}
+
+.confidentiality:hover::before {
+  opacity: 1;
+  right: 85px;
+  transition: 300ms ease-in;
+}
+
+.basic::before {
+  display: grid;
+  align-self: center;
+  content: "Basic-info";
+  position: fixed;
+  background-color: #fff;
+  right: 32px;
+  font-size: 0.8rem;
+  padding: 0.5rem;
+  color: #3b3838;
+  opacity: 0;
+  cursor: default;
+  transition: 300ms ease-in;
+}
+
+.basic:hover::before {
+  opacity: 1;
+  right: 85px;
+  transition: 300ms ease-in;
+}
+

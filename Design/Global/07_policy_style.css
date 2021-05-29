@@ -1,0 +1,14 @@
+.policy_design{
+    padding:1rem;
+    margin-left:1rem;
+    background-color: #eeefff;
+    line-height: 1.5rem;
+}
+
+.policy{
+    line-height: 1.5rem;
+    font-size: 1rem;
+    text-align: justify;
+    margin-bottom: 1rem;
+    overflow-y: hidden;
+}

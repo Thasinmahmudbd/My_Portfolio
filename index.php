@@ -432,42 +432,42 @@
                     
                 </div>
                 
-                <form action="" class="order_form">
+                <form method="post" action="Dynamic/actions_dynamic.php" class="order_form">
                     
                     <div class="form_fills_all">
                       
                         <div class="form_fills">
 
                             <label class="label order_form_label" for="name" >Your Name</label>
-                            <input class="input order_form_input" type="text">
+                            <input name="customer_full_name" class="input order_form_input" type="text">
 
                         </div>
 
                         <div class="form_fills">
 
                             <label class="label order_form_label" for="email" >Your Email</label>
-                            <input class="input order_form_input" type="email">
+                            <input name="customer_email" class="input order_form_input" type="email">
 
                         </div>
 
                         <div class="form_fills">
 
                             <label class="label order_form_label" for="number" >Your Number</label>
-                            <input class="input order_form_input" type="phone">
+                            <input name="customer_mobile" class="input order_form_input" type="tel">
 
                         </div>
 
                         <div class="form_fills">
 
                             <label class="label order_form_label" for="website_desc" >Website Description</label>
-                            <input class="input tall_input order_form_input" type="text">
+                            <input name="orders" class="input tall_input order_form_input" type="text">
 
                         </div>
                         
                     </div>
                     
                     
-                    <button class="form_btn order_form_btn" type="submit"><i class="fas fa-dove point_order_btn"></i></button>
+                    <button name="take_in_order" class="form_btn order_form_btn" type="submit"><i class="fas fa-dove point_order_btn"></i></button>
                     
                 </form>
                 

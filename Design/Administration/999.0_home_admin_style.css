@@ -101,6 +101,65 @@
 
 
 
+/* client issues */
+
+.issues_template{
+    display:grid;
+    grid-template-columns: 2fr 1fr;
+    background-color:#fff;
+}
+
+.issues_info{
+    display:grid;
+    grid-template-columns: 1fr;
+    grid-gap:.5rem;
+}
+
+.issues{
+    line-height: 1.5rem;
+    text-align: justify;
+}
+
+.bg_col_pending{
+    background-color: #eeefff;
+    padding:1rem;
+    border-right:5px solid #eeefff;
+}
+
+.bg_col_working_on_it{
+    background-color: #FFF1CEa5;
+    padding:1rem;
+    border-right:5px solid #F8D173;
+}
+
+.bg_col_completed{
+    background-color: #D1F2EBa5;
+    padding:1rem;
+    border-right:5px solid #AAF873;
+}
+
+.issue_related_form_btns{
+    display:block;
+    background-color:#fff;
+    padding:0rem 0rem 1rem 1rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* global */
 
 .show{

@@ -50,15 +50,15 @@
 
                    <div class="footer_ancors">
 
-                       <a class="footer_ancors_a" href="client_confidentiality.php">Client Confidentiality</a>
+                       <a class="footer_ancors_a" href="666.1_client_confidentiality.php">Client Confidentiality</a>
 
-                       <a class="footer_ancors_a" href="developer_support.php">Developer Support</a>
+                       <a class="footer_ancors_a" href="666.2_developer_support.php">Developer Support</a>
 
-                       <a class="footer_ancors_a" href="facing_issues.php">Facing Issues</a>
+                       <a class="footer_ancors_a" href="666.3_facing_issues.php?message=Please be as descriptive as possible.">Facing Issues</a>
 
-                       <a class="footer_ancors_a" href="learn_more.php">Learn More</a>
+                       <a class="footer_ancors_a" href="666.4_learn_more.php">Learn More</a>
 
-                       <a class="footer_ancors_a" href="refund_policy">Refund Policy</a>
+                       <a class="footer_ancors_a" href="666.5_refund_policy.php">Refund Policy</a>
 
                    </div>
                    
