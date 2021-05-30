@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="Design/Responsive/02_navbar_res.css">
     <link rel="stylesheet" href="Design/Responsive/index_res.css">
     <link rel="stylesheet" href="Design/Responsive/04_footer_res.css">
+    <link rel="stylesheet" href="Design/Responsive/admin_res.css">
     
     <!-- fonts (google fonts) -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -80,9 +81,9 @@
                
                 <div class="basic_info_section">
                    
-                    <img src="Media/Images/Profile_picture/Thasin.jpg" alt="" class="current_profile_pic" width="100%">
+                    <img src="Media/Images/Profile_picture/Profile_picture.jpg" alt="" class="current_profile_pic" width="100%">
                     
-                    <form action="" class="profile_pic" enctype="multipart/form-data">
+                    <form action="Dynamic/actions_dynamic.php" method="post" class="profile_pic" enctype="multipart/form-data">
 
                        <input type="file" class="upload_box" name="profile_picture" required>
 

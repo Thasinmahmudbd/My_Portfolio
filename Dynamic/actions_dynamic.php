@@ -100,6 +100,78 @@
 
 
 
+// profile_picture_upload.
+if(isset($_POST['upload_profile_picture'])){
+
+    // Getting data from form and storing in variables.
+    $file = $_FILES['profile_picture'];
+    $file_name = $_FILES['profile_picture']['name'];
+    $file_tmp_name = $_FILES['profile_picture']['tmp_name'];
+    $file_size = $_FILES['profile_picture']['size'];
+    $file_error = $_FILES['profile_picture']['error'];
+    $file_type = $_FILES['profile_picture']['type'];
+
+    $file_explode = explode('.', $file_name);
+    $file_extension = strtolower(end($file_explode));
+
+    $allowed = array('jpg', 'jpeg', 'png');
+
+    if(in_array($file_extension, $allowed)){
+
+        if($file_error === 0){
+
+            if($file_size < 3200000){
+
+                $new_file_name = "Profile_picture" . "." . $file_extension;
+
+                $file_destination = "../Media/Images/Profile_picture/" . $new_file_name;
+
+                // uploading picture.
+                move_uploaded_file($file_tmp_name, $file_destination);
+
+                header('Location: ../999.0_home_admin.php#title1');
+
+                /*// Query.    
+                    $sql = "UPDATE basic_info_table SET profile_picture = '$new_file_name'; ";
+
+                    //echo $sql;
+
+                    // Object created.
+                    $upload_profile_picture = new Database();
+                    $result = $upload_profile_picture->update($sql);
+
+                    // Location
+                    if($result == true){
+                        header('Location: ../999.0_home_admin.php#title1');
+                    }else{
+                        header('Location: actions_dynamic.php');
+                    }*/
+
+            }else{
+            echo "File is to big, maximum 3MB allowed.";
+        }
+
+        }else{
+            echo "There was an error uploading this file.";
+        }
+
+    }else{
+        echo "Only .jpg, .jpeg and .png files allowed.";
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // client_confidential_data_store.

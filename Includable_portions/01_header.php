@@ -5,7 +5,7 @@
         
             <div class="header">
 
-                <img src="Media/Images/Profile_picture/Thasin.jpg" alt="" width="150px" height="150px">
+                <img src="Media/Images/Profile_picture/Profile_picture.jpg" alt="" width="150px" height="150px">
 
                 <div class="header_description">
 
