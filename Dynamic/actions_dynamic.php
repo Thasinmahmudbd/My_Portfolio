@@ -166,7 +166,12 @@ if(isset($_POST['upload_profile_picture'])){
 
 
 
-
+/************************************************/
+/************************************************/
+/************************************************/
+/************************************************/
+/************************************************/
+/************************************************/
 
 
 
@@ -269,7 +274,12 @@ if(isset($_POST['upload_profile_picture'])){
 
 
 
-
+/************************************************/
+/************************************************/
+/************************************************/
+/************************************************/
+/************************************************/
+/************************************************/
 
 
 
@@ -372,7 +382,12 @@ if(isset($_POST['upload_profile_picture'])){
 
 
 
-
+/************************************************/
+/************************************************/
+/************************************************/
+/************************************************/
+/************************************************/
+/************************************************/
 
 
 
@@ -477,7 +492,12 @@ if(isset($_POST['upload_profile_picture'])){
 
 
 
-
+/************************************************/
+/************************************************/
+/************************************************/
+/************************************************/
+/************************************************/
+/************************************************/
 
 
 
@@ -579,7 +599,12 @@ if(isset($_POST['upload_profile_picture'])){
 
 
 
-
+/************************************************/
+/************************************************/
+/************************************************/
+/************************************************/
+/************************************************/
+/************************************************/
 
 
 
@@ -723,7 +748,12 @@ if(isset($_POST['upload_profile_picture'])){
 
 
 
-
+/************************************************/
+/************************************************/
+/************************************************/
+/************************************************/
+/************************************************/
+/************************************************/
 
 
 
@@ -859,6 +889,102 @@ if(isset($_POST['upload_profile_picture'])){
         // Location
         if($result == true){
             header('Location: ../999.0_home_admin.php#title7');
+        }else{
+            header('Location: actions_dynamic.php');
+        }
+        
+    }
+
+
+
+
+
+
+/************************************************/
+/************************************************/
+/************************************************/
+/************************************************/
+/************************************************/
+/************************************************/
+
+
+
+
+
+
+
+
+
+// blog_post_data_store.
+    if(isset($_POST['insert_blog'])){
+    
+        // Getting data from form and storing in variables.
+        $blogs_title = mysqli_real_escape_string($con, $_POST['blogs_title']);
+        $blogs_highlight = mysqli_real_escape_string($con, $_POST['blogs_highlight']);
+        $blogs_post = $_POST['blog_post_editor'];   
+        $main_tag = mysqli_real_escape_string($con, $_POST['main_tag']);
+        $tag_2 = mysqli_real_escape_string($con, $_POST['tag_2']);
+        $tag_3 = mysqli_real_escape_string($con, $_POST['tag_3']);
+        $tag_4 = mysqli_real_escape_string($con, $_POST['tag_4']);
+        $tag_5 = mysqli_real_escape_string($con, $_POST['tag_5']);
+        date_default_timezone_set('Asia/Dhaka');
+        $blog_date = date("F j, Y, g:i a");
+        
+        
+
+        // Getting picture data from form and storing in variables.
+        $file = $_FILES['blog_picture'];
+        $file_name = $_FILES['blog_picture']['name'];
+        $file_tmp_name = $_FILES['blog_picture']['tmp_name'];
+        $file_size = $_FILES['blog_picture']['size'];
+        $file_error = $_FILES['blog_picture']['error'];
+        $file_type = $_FILES['blog_picture']['type'];
+
+        $file_explode = explode('.', $file_name);
+        $file_extension = strtolower(end($file_explode));
+
+        $allowed = array('jpg', 'jpeg', 'png');
+
+        if(in_array($file_extension, $allowed)){
+
+            if($file_error === 0){
+
+                if($file_size < 3200000){
+
+                    $new_file_name = uniqid('',true) . "." . $file_extension;
+
+                    $file_destination = "../Media/Images/Blog_picture/" . $new_file_name;
+
+                    // uploading picture.
+                    move_uploaded_file($file_tmp_name, $file_destination);
+
+
+                }else{
+                echo "File is to big, maximum 3MB allowed.";
+            }
+
+            }else{
+                echo "There was an error uploading this file.";
+            }
+
+        }else{
+            echo "Only .jpg, .jpeg and .png files allowed.";
+        }
+        
+
+
+        // Query.    
+        $sql = "INSERT INTO blogs_table (blogs_title, blogs_highlight, blogs_post, main_tag, tag_2, tag_3, tag_4, tag_5, blog_date, blog_picture) VALUES ('$blogs_title', '$blogs_highlight', '$blogs_post', '$main_tag', '$tag_2', '$tag_3', '$tag_4', '$tag_5', '$blog_date', '$new_file_name');";
+
+        //echo $sql;
+
+        // Object created.
+        $insert_blog_post = new Database();
+        $result = $insert_blog_post->create($sql);
+
+        // Location
+        if($result == true){
+            header('Location: ../999.1_blogs_admin.php');
         }else{
             header('Location: actions_dynamic.php');
         }
