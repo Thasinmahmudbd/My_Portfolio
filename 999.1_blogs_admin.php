@@ -31,6 +31,7 @@
     <link rel="stylesheet" href="Design/Responsive/02_navbar_res.css">
     <link rel="stylesheet" href="Design/Responsive/index_res.css">
     <link rel="stylesheet" href="Design/Responsive/04_footer_res.css">
+    <link rel="stylesheet" href="Design/Responsive/frame_res.css">
     <link rel="stylesheet" href="Design/Responsive/admin_res.css">
     
     <!-- fonts (google fonts) -->
@@ -105,7 +106,7 @@
                 ?>
 
 
-                
+                <!-- form to update data -->
             
                 <div class="update_title">
                     
@@ -147,7 +148,8 @@
                 
                 <div class="submit_buttons">
 
-                    <input type="hidden" value="<?php echo $data[0]['blogs_id']; ?>">
+                    <input name="id" type="hidden" value="<?php echo $id; ?>">
+                    <input name="old_picture_name" type="hidden" value="<?php echo $data[0]['blog_picture']; ?>">
                     <button class="btn update_btn" type="submit" name="update_blog">Update</button>
                 
                 </div>
@@ -156,6 +158,8 @@
 
 
             <?php }else{ ?>
+
+            <!-- form to insert data -->
 
             <div class="update_title">
                     
@@ -285,14 +289,17 @@
 
                         <?php
 
+                        // loop to read blog_table data.
+
                             foreach($blogs as $row){
 
                         ?>
 
 
 
+                        <!-- post template dynamic -->
                         
-                        <div class="right_side_dynamic_post_template">
+                        <div class="right_side_dynamic_post_template" id="<?php echo $row['blogs_id'] ?>">
                             
                             <img src="Media/Images/Blog_picture/<?php echo $row['blog_picture'] ?>" alt="no image" class="article_img" height="200px">
                             
@@ -306,21 +313,27 @@
                                 
                             </div>
 
+                            <!-- admin control of blogs [ publish, draft, edit, delete ] -->
+
                             <div class="form_and_status">
 
-                                <form action="">
+                                <form action="Dynamic/actions_dynamic.php" method="post">
                                 
-                                    <input type="hidden" value="<?php echo $row['blogs_id'] ?>">
+                                    <input name="id" type="hidden" value="<?php echo $row['blogs_id'] ?>">
 
-                                    <button type="submit" class="btn admin_btn form_btn" name="publish">Publish</button>
+                                    <input name="old_picture_name" type="hidden" value="<?php echo $row['blog_picture']; ?>">
 
-                                    <button type="submit" class="btn admin_btn insert_btn" name="publish">Draft</button>
+                                    <button type="submit" class="btn admin_btn form_btn" name="publish_blog">Publish</button>
+
+                                    <button type="submit" class="btn admin_btn insert_btn" name="draft_blog">Draft</button>
 
                                     <a href="999.1_blogs_admin.php?code=<?php echo $row['blogs_id'] ?>" class="btn admin_btn update_btn">Edit</a>
 
-                                    <button type="submit" class="btn admin_btn delete_btn" name="publish">Delete</button>
+                                    <button type="submit" class="btn admin_btn delete_btn" name="delete_blog">Delete</button>
                                 
                                 </form>
+
+                                <!-- status indicator -->
 
                                 <div>
 
@@ -416,11 +429,29 @@
     </div>
     
        
-    <!-- footer -->
-    
-    <?php include 'Includable_portions/04_footer.php'; ?>
     
     
+
+
+
+
+
+
+    <!-- gap -->
+
+    <div class="gap"></div>
+    <div class="gap"></div>
+    <div class="gap"></div>
+    <div class="gap"></div>
+    <div class="gap"></div>
+    <div class="gap"></div>
+    <div class="gap"></div>
+    <div class="gap"></div>
+    <div class="gap"></div>
+
+
+
+
 
 
 

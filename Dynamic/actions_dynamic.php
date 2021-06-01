@@ -1002,5 +1002,212 @@ if(isset($_POST['upload_profile_picture'])){
 
 
 
+// blog_post_data_update.
+    if(isset($_POST['update_blog'])){
+    
+        // Getting data from form and storing in variables.
+        $blogs_id = $_POST['id'];
+        $blogs_title = mysqli_real_escape_string($con, $_POST['blogs_title']);
+        $blogs_highlight = mysqli_real_escape_string($con, $_POST['blogs_highlight']);
+        $blogs_post = $_POST['blog_post_editor'];   
+        $main_tag = mysqli_real_escape_string($con, $_POST['main_tag']);
+        $tag_2 = mysqli_real_escape_string($con, $_POST['tag_2']);
+        $tag_3 = mysqli_real_escape_string($con, $_POST['tag_3']);
+        $tag_4 = mysqli_real_escape_string($con, $_POST['tag_4']);
+        $tag_5 = mysqli_real_escape_string($con, $_POST['tag_5']);
+        $old_picture_name = $_POST['old_picture_name'];
+        
+        //unlinking old file
+        $file_path = "../Media/Images/Blog_picture/" . $old_picture_name;
+        unlink($file_path);
+
+        // Getting picture data from form and storing in variables.
+        $file = $_FILES['blog_picture'];
+        $file_name = $_FILES['blog_picture']['name'];
+        $file_tmp_name = $_FILES['blog_picture']['tmp_name'];
+        $file_size = $_FILES['blog_picture']['size'];
+        $file_error = $_FILES['blog_picture']['error'];
+        $file_type = $_FILES['blog_picture']['type'];
+
+        $file_explode = explode('.', $file_name);
+        $file_extension = strtolower(end($file_explode));
+
+        $allowed = array('jpg', 'jpeg', 'png');
+
+        if(in_array($file_extension, $allowed)){
+
+            if($file_error === 0){
+
+                if($file_size < 3200000){
+
+                    $new_file_name = uniqid('',true) . "." . $file_extension;
+
+                    $file_destination = "../Media/Images/Blog_picture/" . $new_file_name;
+
+                    // uploading picture.
+                    move_uploaded_file($file_tmp_name, $file_destination);
+
+
+                }else{
+                echo "File is to big, maximum 3MB allowed.";
+            }
+
+            }else{
+                echo "There was an error uploading this file.";
+            }
+
+        }else{
+            echo "Only .jpg, .jpeg and .png files allowed.";
+        }
+        
+
+
+        // Query.    
+        $sql = "UPDATE blogs_table SET blogs_title = '$blogs_title', blogs_highlight = '$blogs_highlight', blogs_post = '$blogs_post', main_tag = '$main_tag', tag_2 = '$tag_2', tag_3 = '$tag_3', tag_4 = '$tag_4', tag_5 = '$tag_5', blog_picture = '$new_file_name' WHERE blogs_id = $blogs_id; ";
+
+        //echo $sql;
+
+        // Object created.
+        $update_blog_post = new Database();
+        $result = $update_blog_post->update($sql);
+
+        // Location
+        if($result == true){
+            header('Location: ../999.1_blogs_admin.php#' . $blogs_id);
+        }else{
+            header('Location: actions_dynamic.php');
+        }
+        
+    }
+
+
+
+
+
+
+
+
+
+
+// blog_status_update_[published].
+    if(isset($_POST['publish_blog'])){
+    
+        // Getting data from form and storing in variables.
+        $blogs_id = $_POST['id'];
+
+        // Query.    
+        $sql = "UPDATE blogs_table SET blog_status = 'published' WHERE blogs_id = $blogs_id; ";
+
+        //echo $sql;
+
+        // Object created.
+        $update_blog_status_to_published = new Database();
+        $result = $update_blog_status_to_published->update($sql);
+
+        // Location
+        if($result == true){
+            header('Location: ../999.1_blogs_admin.php#' . $blogs_id);
+        }else{
+            header('Location: actions_dynamic.php');
+        }
+        
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+// blog_status_update_[drafted].
+    if(isset($_POST['draft_blog'])){
+    
+        // Getting data from form and storing in variables.
+        $blogs_id = $_POST['id'];
+
+        // Query.    
+        $sql = "UPDATE blogs_table SET blog_status = 'drafted' WHERE blogs_id = $blogs_id; ";
+
+        //echo $sql;
+
+        // Object created.
+        $update_blog_status_to_drafted = new Database();
+        $result = $update_blog_status_to_drafted->update($sql);
+
+        // Location
+        if($result == true){
+            header('Location: ../999.1_blogs_admin.php#' . $blogs_id);
+        }else{
+            header('Location: actions_dynamic.php');
+        }
+        
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+// blog_delete.
+    if(isset($_POST['delete_blog'])){
+        
+        // Getting data from form and storing in variables.
+        $blogs_id = $_POST['id'];
+        $old_picture_name = $_POST['old_picture_name'];
+
+        //unlinking old file
+        $file_path = "../Media/Images/Blog_picture/" . $old_picture_name;
+        unlink($file_path);
+
+        // Query.    
+        $sql = "DELETE FROM blogs_table WHERE blogs_id = $blogs_id; ";
+
+        //echo $sql;
+
+        // Object created.
+        $delete_blog = new Database();
+        $result = $delete_blog->delete($sql);
+
+        // Location
+        if($result == true){
+            header('Location: ../999.1_blogs_admin.php');
+        }else{
+            header('Location: actions_dynamic.php');
+        }
+        
+    }
+
+
+
+
+
+
+/************************************************/
+/************************************************/
+/************************************************/
+/************************************************/
+/************************************************/
+/************************************************/
+
+
+
+
+
+
+
+
+
 
 ?>

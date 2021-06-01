@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 31, 2021 at 11:56 PM
+-- Generation Time: Jun 01, 2021 at 12:15 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -76,11 +76,11 @@ CREATE TABLE `blogs_table` (
 --
 
 INSERT INTO `blogs_table` (`blogs_id`, `blogs_title`, `blogs_highlight`, `blogs_post`, `main_tag`, `tag_2`, `tag_3`, `tag_4`, `tag_5`, `blog_date`, `blog_status`, `blog_picture`) VALUES
-(1, 'test title', 'test highlight', '<p><strong>test </strong>post</p>\r\n', 'main tag', 'sub tag', 'sub tag', 'sub tag', '', 'June 1, 2021, 2:23 am', 'drafted', '60b545b7844826.73208733.jpg'),
-(2, 'test title 2', 'test highlight 2', '<p>test post <strong><em>2&nbsp;<a href=\"http://google.com\">google</a></em></strong></p>\r\n', 'main tag 2', 'sub tag 2', '', '', '', 'June 1, 2021, 2:27 am', 'drafted', '60b546bd263793.87119076.jpg'),
-(3, 'test title 3', 'highlight 3', '<p><span class=\"marker\"><strong>test 3</strong></span></p>\r\n', 'main tag', 'sub tag 3', 'sub tag', '', '', 'June 1, 2021, 3:06 am', 'drafted', '60b54fc2bfb525.80422068.jpg'),
-(4, 'test title 4', 'highlight 4', '<p><s>test</s></p>\r\n', 'a tag', '', '', '', '', 'June 1, 2021, 3:07 am', 'drafted', '60b54ffc422c32.05210584.jpg'),
-(5, 'test title 5', 'ggg', '<p>ggg</p>\r\n', 'vv', '', '', '', '', 'June 1, 2021, 3:50 am', 'drafted', '60b55a3942f331.91451038.jpg');
+(1, 'test title', 'test highlight', '<p><strong>test </strong>post</p>\r\n', 'main tag', 'sub tag', 'sub tag', 'sub tag', '', 'June 1, 2021, 2:23 am', 'published', '60b5f2a7bbf264.19962067.jpg'),
+(3, 'test title 3', 'highlight 3', '<p><span class=\"marker\"><strong>test 3 </strong></span><strong>updated</strong></p>\r\n', 'main tag', 'sub tag 3', 'sub tag', '', '', 'June 1, 2021, 3:06 am', 'published', '60b6022c04b236.46348612.jpg'),
+(4, 'test title is 4 update test', 'highlight 4 updated', '<p><s>test</s> updated</p>\r\n', 'a tag updated', '', '', '', '', 'June 1, 2021, 3:07 am', 'drafted', '60b5f2810972c9.72113909.jpg'),
+(5, 'test title 5', 'ggg', '<p>ggg</p>\r\n', 'vv', '', '', '', '', 'June 1, 2021, 3:50 am', 'published', '60b5f56344ba48.11230519.jpg'),
+(6, 'test no 6', 'test', '<p>test</p>\r\n', 'test', '', '', '', '', 'June 1, 2021, 4:02 pm', 'drafted', '60b6061de6c603.59321043.jpg');
 
 -- --------------------------------------------------------
 
@@ -272,7 +272,7 @@ ALTER TABLE `basic_info_table`
 -- AUTO_INCREMENT for table `blogs_table`
 --
 ALTER TABLE `blogs_table`
-  MODIFY `blogs_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `blogs_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `client_confidentiality_table`
