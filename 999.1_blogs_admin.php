@@ -67,7 +67,7 @@
 
     <div class="section_name_container">
     
-        <h1 class="section_name">Blogs</h1>
+        <h1 class="section_name" id="form">Blogs</h1>
     
     </div>
     
@@ -408,21 +408,7 @@
        
        <div class="fixed_target_btns">
             
-            <a href="#title" class="anchor_btn basic">B</a>
-            
-            <a href="#title2" class="anchor_btn confidentiality">C</a>
-            
-            <a href="#title3" class="anchor_btn support">S</a>
-        
-            <a href="#title4" class="anchor_btn issue">I</a>
-
-            <a href="#title5" class="anchor_btn learn">L</a>
-
-            <a href="#title6" class="anchor_btn refund">R</a>
-
-            <a href="#title7" class="anchor_btn custom_order">O</a>
-
-            <a href="#F" class="anchor_btn feedback">F</a>
+            <a href="#form" class="anchor_btn blog_form">F</a>
            
        </div>
         

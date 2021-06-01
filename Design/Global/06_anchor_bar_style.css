@@ -348,3 +348,24 @@
   transition: 300ms ease-in;
 }
 
+.blog_form::before {
+  display: grid;
+  align-self: center;
+  content: "Form";
+  position: fixed;
+  background-color: #fff;
+  right: 32px;
+  font-size: 0.8rem;
+  padding: 0.5rem;
+  color: #3b3838;
+  opacity: 0;
+  cursor: default;
+  transition: 300ms ease-in;
+}
+
+.blog_form:hover::before {
+  opacity: 1;
+  right: 85px;
+  transition: 300ms ease-in;
+}
+

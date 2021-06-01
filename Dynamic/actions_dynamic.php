@@ -1210,4 +1210,319 @@ if(isset($_POST['upload_profile_picture'])){
 
 
 
+
+
+
+
+
+
+
+// project_data_store.
+    if(isset($_POST['insert_project'])){
+    
+        // Getting data from form and storing in variables.
+        $projects_title = mysqli_real_escape_string($con, $_POST['projects_title']);
+        $projects_details = $_POST['projects_details'];
+        $go_live_link = mysqli_real_escape_string($con, $_POST['go_live_link']);   
+        $git_hub_link = mysqli_real_escape_string($con, $_POST['git_hub_link']);
+        $priority = mysqli_real_escape_string($con, $_POST['priority']);
+        $main_tag = mysqli_real_escape_string($con, $_POST['main_tag']);
+        $sub_tag_2 = mysqli_real_escape_string($con, $_POST['sub_tag_2']);
+        $sub_tag_3 = mysqli_real_escape_string($con, $_POST['sub_tag_3']);
+        
+        
+
+        // Getting picture data from form and storing in variables.
+        $file = $_FILES['project_image'];
+        $file_name = $_FILES['project_image']['name'];
+        $file_tmp_name = $_FILES['project_image']['tmp_name'];
+        $file_size = $_FILES['project_image']['size'];
+        $file_error = $_FILES['project_image']['error'];
+        $file_type = $_FILES['project_image']['type'];
+
+        $file_explode = explode('.', $file_name);
+        $file_extension = strtolower(end($file_explode));
+
+        $allowed = array('jpg', 'jpeg', 'png');
+
+        if(in_array($file_extension, $allowed)){
+
+            if($file_error === 0){
+
+                if($file_size < 3200000){
+
+                    $new_file_name = uniqid('',true) . "." . $file_extension;
+
+                    $file_destination = "../Media/Images/Project_pictures/" . $new_file_name;
+
+                    // uploading picture.
+                    move_uploaded_file($file_tmp_name, $file_destination);
+
+
+                }else{
+                echo "File is to big, maximum 3MB allowed.";
+                }
+
+            }else{
+                echo "There was an error uploading this file.";
+            }
+
+        }else{
+            echo "Only .jpg, .jpeg and .png files allowed.";
+        }
+        
+
+
+        // Query.    
+        $sql = "INSERT INTO projects_table (projects_title, projects_details, go_live_link, git_hub_link, priority, main_tag, sub_tag_2, sub_tag_3, project_image) VALUES ('$projects_title', '$projects_details', '$go_live_link', '$git_hub_link', '$priority', '$main_tag', '$sub_tag_2', '$sub_tag_3', '$new_file_name');";
+
+        echo $sql;
+
+        // Object created.
+        $insert_projects = new Database();
+        $result = $insert_projects->create($sql);
+
+        // Location
+        if($result == true){
+            header('Location: ../999.2_projects_admin.php');
+        }else{
+            header('Location: actions_dynamic.php');
+        }
+        
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+// project_data_update.
+    if(isset($_POST['update_project'])){
+    
+        // Getting data from form and storing in variables.
+        $projects_id = $_POST['id'];
+        $projects_title = mysqli_real_escape_string($con, $_POST['projects_title']);
+        $projects_details = $_POST['projects_details'];
+        $go_live_link = mysqli_real_escape_string($con, $_POST['go_live_link']);   
+        $git_hub_link = mysqli_real_escape_string($con, $_POST['git_hub_link']);
+        $priority = mysqli_real_escape_string($con, $_POST['priority']);
+        $main_tag = mysqli_real_escape_string($con, $_POST['main_tag']);
+        $sub_tag_2 = mysqli_real_escape_string($con, $_POST['sub_tag_2']);
+        $sub_tag_3 = mysqli_real_escape_string($con, $_POST['sub_tag_3']);
+        $old_picture_name = $_POST['old_picture_name'];
+        
+        //unlinking old file
+        $file_path = "../Media/Images/Project_pictures/" . $old_picture_name;
+        unlink($file_path);
+
+        // Getting picture data from form and storing in variables.
+        $file = $_FILES['project_image'];
+        $file_name = $_FILES['project_image']['name'];
+        $file_tmp_name = $_FILES['project_image']['tmp_name'];
+        $file_size = $_FILES['project_image']['size'];
+        $file_error = $_FILES['project_image']['error'];
+        $file_type = $_FILES['project_image']['type'];
+
+        $file_explode = explode('.', $file_name);
+        $file_extension = strtolower(end($file_explode));
+
+        $allowed = array('jpg', 'jpeg', 'png');
+
+        if(in_array($file_extension, $allowed)){
+
+            if($file_error === 0){
+
+                if($file_size < 3200000){
+
+                    $new_file_name = uniqid('',true) . "." . $file_extension;
+
+                    $file_destination = "../Media/Images/Project_pictures/" . $new_file_name;
+
+                    // uploading picture.
+                    move_uploaded_file($file_tmp_name, $file_destination);
+
+
+                }else{
+                echo "File is to big, maximum 3MB allowed.";
+            }
+
+            }else{
+                echo "There was an error uploading this file.";
+            }
+
+        }else{
+            echo "Only .jpg, .jpeg and .png files allowed.";
+        }
+        
+
+
+        // Query.    
+        $sql = "UPDATE projects_table SET projects_title = '$projects_title', projects_details = '$projects_details', go_live_link = '$go_live_link', git_hub_link = '$git_hub_link', priority = '$priority', main_tag = '$main_tag', sub_tag_2 = '$sub_tag_2', sub_tag_3 = '$sub_tag_3', project_image = '$new_file_name' WHERE projects_id = $projects_id; ";
+
+        //echo $sql;
+
+        // Object created.
+        $update_projects = new Database();
+        $result = $update_projects->update($sql);
+
+        // Location
+        if($result == true){
+            header('Location: ../999.2_projects_admin.php#' . $projects_id);
+        }else{
+            header('Location: actions_dynamic.php');
+        }
+        
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// projects_status_update_[published].
+    if(isset($_POST['publish_project'])){
+    
+        // Getting data from form and storing in variables.
+        $projects_id = $_POST['id'];
+
+        // Query.    
+        $sql = "UPDATE projects_table SET project_status = 'published' WHERE projects_id = $projects_id; ";
+
+        //echo $sql;
+
+        // Object created.
+        $update_projects_status_to_published = new Database();
+        $result = $update_projects_status_to_published->update($sql);
+
+        // Location
+        if($result == true){
+            header('Location: ../999.2_projects_admin.php#' . $projects_id);
+        }else{
+            header('Location: actions_dynamic.php');
+        }
+        
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// projects_status_update_[drafted].
+    if(isset($_POST['draft_project'])){
+    
+        // Getting data from form and storing in variables.
+        $projects_id = $_POST['id'];
+
+        // Query.    
+        $sql = "UPDATE projects_table SET project_status = 'drafted' WHERE projects_id = $projects_id; ";
+
+        //echo $sql;
+
+        // Object created.
+        $update_projects_status_to_drafted = new Database();
+        $result = $update_projects_status_to_drafted->update($sql);
+
+        // Location
+        if($result == true){
+            header('Location: ../999.2_projects_admin.php#' . $projects_id);
+        }else{
+            header('Location: actions_dynamic.php');
+        }
+        
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+// projects_delete.
+    if(isset($_POST['delete_project'])){
+        
+        // Getting data from form and storing in variables.
+        $projects_id = $_POST['id'];
+        $old_picture_name = $_POST['old_picture_name'];
+
+        //unlinking old file
+        $file_path = "../Media/Images/Project_pictures/" . $old_picture_name;
+        unlink($file_path);
+
+        // Query.    
+        $sql = "DELETE FROM projects_table WHERE projects_id = $projects_id; ";
+
+        //echo $sql;
+
+        // Object created.
+        $delete_project = new Database();
+        $result = $delete_project->delete($sql);
+
+        // Location
+        if($result == true){
+            header('Location: ../999.2_projects_admin.php');
+        }else{
+            header('Location: actions_dynamic.php');
+        }
+        
+    }
+
+
+
+
+
+
+/************************************************/
+/************************************************/
+/************************************************/
+/************************************************/
+/************************************************/
+/************************************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ?>

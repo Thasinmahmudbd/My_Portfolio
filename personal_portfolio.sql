@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 01, 2021 at 12:15 PM
+-- Generation Time: Jun 01, 2021 at 06:06 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -190,6 +190,35 @@ INSERT INTO `order_table` (`order_id`, `customer_full_name`, `customer_email`, `
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `projects_table`
+--
+
+CREATE TABLE `projects_table` (
+  `projects_id` int(11) NOT NULL,
+  `projects_title` varchar(100) NOT NULL,
+  `projects_details` text NOT NULL,
+  `go_live_link` varchar(100) NOT NULL,
+  `git_hub_link` varchar(100) NOT NULL,
+  `priority` tinyint(4) NOT NULL,
+  `main_tag` varchar(30) NOT NULL,
+  `sub_tag_2` varchar(30) NOT NULL,
+  `sub_tag_3` varchar(30) NOT NULL,
+  `project_image` varchar(50) NOT NULL,
+  `project_status` varchar(12) NOT NULL DEFAULT 'drafted'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `projects_table`
+--
+
+INSERT INTO `projects_table` (`projects_id`, `projects_title`, `projects_details`, `go_live_link`, `git_hub_link`, `priority`, `main_tag`, `sub_tag_2`, `sub_tag_3`, `project_image`, `project_status`) VALUES
+(4, 'test 2', 'test test test', 'http://test.updated.com', 'http://test.updated.com', 0, 'test', '', '', '60b643cb866f57.47091191.jpg', 'published'),
+(5, 'test 3', 'test', 'http://test.updated.com', 'http://test.updated.com', 0, 'a test', 'test', 'test', '60b646510b1693.10534360.jpg', 'drafted'),
+(6, 'test 4', '<ol>\r\n	<li>this</li>\r\n	<li>is</li>\r\n	<li>a</li>\r\n	<li>test</li>\r\n</ol>\r\n\r\n<p><strong>hello </strong>how are <span class=\"marker\">you</span>? <a href=\"http://www.google.com\">google</a></p>\r\n', 'http://test.updated.com', 'http://test.updated.com', 0, 'test', '', '', '60b6530493d8b4.18661407.jpg', 'drafted');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `refund_policy_table`
 --
 
@@ -253,6 +282,12 @@ ALTER TABLE `order_table`
   ADD PRIMARY KEY (`order_id`);
 
 --
+-- Indexes for table `projects_table`
+--
+ALTER TABLE `projects_table`
+  ADD PRIMARY KEY (`projects_id`);
+
+--
 -- Indexes for table `refund_policy_table`
 --
 ALTER TABLE `refund_policy_table`
@@ -303,6 +338,12 @@ ALTER TABLE `learn_more_table`
 --
 ALTER TABLE `order_table`
   MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `projects_table`
+--
+ALTER TABLE `projects_table`
+  MODIFY `projects_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `refund_policy_table`
