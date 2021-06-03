@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 01, 2021 at 06:06 PM
+-- Generation Time: Jun 03, 2021 at 11:40 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -235,6 +235,34 @@ INSERT INTO `refund_policy_table` (`refund_policy_id`, `refund_policy`) VALUES
 (1, 'this is a test no 1'),
 (3, 'test 2');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `store_table`
+--
+
+CREATE TABLE `store_table` (
+  `products_id` int(11) NOT NULL,
+  `products_title` varchar(100) NOT NULL,
+  `products_details` text NOT NULL,
+  `go_live_link` varchar(100) NOT NULL,
+  `price` int(10) UNSIGNED NOT NULL,
+  `priority` tinyint(3) UNSIGNED NOT NULL,
+  `main_tag` varchar(30) NOT NULL,
+  `sub_tag_2` varchar(30) NOT NULL,
+  `sub_tag_3` varchar(30) NOT NULL,
+  `product_image` varchar(50) NOT NULL,
+  `product_status` varchar(12) NOT NULL DEFAULT 'drafted'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `store_table`
+--
+
+INSERT INTO `store_table` (`products_id`, `products_title`, `products_details`, `go_live_link`, `price`, `priority`, `main_tag`, `sub_tag_2`, `sub_tag_3`, `product_image`, `product_status`) VALUES
+(5, 'test', 'test', 'http://test.com', 100, 0, 'test', '', '', '60b898b9c69206.60879202.jpg', 'drafted'),
+(6, 'test 2', 'test 2', 'http://test.updated.com', 11, 0, 'a test', '', '', '60b8994b3f0115.06232591.jpg', 'drafted');
+
 --
 -- Indexes for dumped tables
 --
@@ -294,6 +322,12 @@ ALTER TABLE `refund_policy_table`
   ADD PRIMARY KEY (`refund_policy_id`);
 
 --
+-- Indexes for table `store_table`
+--
+ALTER TABLE `store_table`
+  ADD PRIMARY KEY (`products_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -350,6 +384,12 @@ ALTER TABLE `projects_table`
 --
 ALTER TABLE `refund_policy_table`
   MODIFY `refund_policy_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `store_table`
+--
+ALTER TABLE `store_table`
+  MODIFY `products_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

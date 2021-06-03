@@ -1525,4 +1525,310 @@ if(isset($_POST['upload_profile_picture'])){
 
 
 
+
+
+// product_data_store.
+    if(isset($_POST['insert_product'])){
+    
+        // Getting data from form and storing in variables.
+        $products_title = mysqli_real_escape_string($con, $_POST['products_title']);
+        $products_details = $_POST['products_details'];
+        $go_live_link = mysqli_real_escape_string($con, $_POST['go_live_link']);   
+        $price = mysqli_real_escape_string($con, $_POST['price']);
+        $priority = mysqli_real_escape_string($con, $_POST['priority']);
+        $main_tag = mysqli_real_escape_string($con, $_POST['main_tag']);
+        $sub_tag_2 = mysqli_real_escape_string($con, $_POST['sub_tag_2']);
+        $sub_tag_3 = mysqli_real_escape_string($con, $_POST['sub_tag_3']);
+        
+        
+
+        // Getting picture data from form and storing in variables.
+        $file = $_FILES['product_image'];
+        $file_name = $_FILES['product_image']['name'];
+        $file_tmp_name = $_FILES['product_image']['tmp_name'];
+        $file_size = $_FILES['product_image']['size'];
+        $file_error = $_FILES['product_image']['error'];
+        $file_type = $_FILES['product_image']['type'];
+
+        $file_explode = explode('.', $file_name);
+        $file_extension = strtolower(end($file_explode));
+
+        $allowed = array('jpg', 'jpeg', 'png');
+
+        if(in_array($file_extension, $allowed)){
+
+            if($file_error === 0){
+
+                if($file_size < 3200000){
+
+                    $new_file_name = uniqid('',true) . "." . $file_extension;
+
+                    $file_destination = "../Media/Images/Store_pictures/UI_Ux_template/" . $new_file_name;
+
+                    // uploading picture.
+                    move_uploaded_file($file_tmp_name, $file_destination);
+
+
+                }else{
+                echo "File is to big, maximum 3MB allowed.";
+                }
+
+            }else{
+                echo "There was an error uploading this file.";
+            }
+
+        }else{
+            echo "Only .jpg, .jpeg and .png files allowed.";
+        }
+        
+
+
+        // Query.    
+        $sql = "INSERT INTO store_table (products_title, products_details, go_live_link, price, priority, main_tag, sub_tag_2, sub_tag_3, product_image) VALUES ('$products_title', '$products_details', '$go_live_link', '$price', '$priority', '$main_tag', '$sub_tag_2', '$sub_tag_3', '$new_file_name');";
+
+        echo $sql;
+
+        // Object created.
+        $insert_products = new Database();
+        $result = $insert_products->create($sql);
+
+        // Location
+        if($result == true){
+            header('Location: ../999.3_store_admin.php');
+        }else{
+            header('Location: actions_dynamic.php');
+        }
+        
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+// product_data_update.
+    if(isset($_POST['update_product'])){
+    
+        // Getting data from form and storing in variables.
+        $products_id = $_POST['id'];
+        $products_title = mysqli_real_escape_string($con, $_POST['products_title']);
+        $products_details = $_POST['products_details'];
+        $go_live_link = mysqli_real_escape_string($con, $_POST['go_live_link']);   
+        $price = mysqli_real_escape_string($con, $_POST['price']);
+        $priority = mysqli_real_escape_string($con, $_POST['priority']);
+        $main_tag = mysqli_real_escape_string($con, $_POST['main_tag']);
+        $sub_tag_2 = mysqli_real_escape_string($con, $_POST['sub_tag_2']);
+        $sub_tag_3 = mysqli_real_escape_string($con, $_POST['sub_tag_3']);
+        $old_picture_name = $_POST['old_picture_name'];
+        
+        //unlinking old file
+        $file_path = "../Media/Images/Store_pictures/UI_Ux_template/" . $old_picture_name;
+        unlink($file_path);
+
+        // Getting picture data from form and storing in variables.
+        $file = $_FILES['product_image'];
+        $file_name = $_FILES['product_image']['name'];
+        $file_tmp_name = $_FILES['product_image']['tmp_name'];
+        $file_size = $_FILES['product_image']['size'];
+        $file_error = $_FILES['product_image']['error'];
+        $file_type = $_FILES['product_image']['type'];
+
+        $file_explode = explode('.', $file_name);
+        $file_extension = strtolower(end($file_explode));
+
+        $allowed = array('jpg', 'jpeg', 'png');
+
+        if(in_array($file_extension, $allowed)){
+
+            if($file_error === 0){
+
+                if($file_size < 3200000){
+
+                    $new_file_name = uniqid('',true) . "." . $file_extension;
+
+                    $file_destination = "../Media/Images/Store_pictures/UI_Ux_template/" . $new_file_name;
+
+                    // uploading picture.
+                    move_uploaded_file($file_tmp_name, $file_destination);
+
+
+                }else{
+                echo "File is to big, maximum 3MB allowed.";
+            }
+
+            }else{
+                echo "There was an error uploading this file.";
+            }
+
+        }else{
+            echo "Only .jpg, .jpeg and .png files allowed.";
+        }
+        
+
+
+        // Query.    
+        $sql = "UPDATE store_table SET products_title = '$products_title', products_details = '$products_details', go_live_link = '$go_live_link', price = '$price', priority = '$priority', main_tag = '$main_tag', sub_tag_2 = '$sub_tag_2', sub_tag_3 = '$sub_tag_3', product_image = '$new_file_name' WHERE products_id = $products_id; ";
+
+        //echo $sql;
+
+        // Object created.
+        $update_products = new Database();
+        $result = $update_products->update($sql);
+
+        // Location
+        if($result == true){
+            header('Location: ../999.3_store_admin.php#' . $products_id);
+        }else{
+            header('Location: actions_dynamic.php');
+        }
+        
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// products_status_update_[published].
+    if(isset($_POST['publish_product'])){
+    
+        // Getting data from form and storing in variables.
+        $products_id = $_POST['id'];
+
+        // Query.    
+        $sql = "UPDATE store_table SET product_status = 'published' WHERE products_id = $products_id; ";
+
+        //echo $sql;
+
+        // Object created.
+        $update_products_status_to_published = new Database();
+        $result = $update_products_status_to_published->update($sql);
+
+        // Location
+        if($result == true){
+            header('Location: ../999.3_store_admin.php#' . $products_id);
+        }else{
+            header('Location: actions_dynamic.php');
+        }
+        
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// products_status_update_[drafted].
+    if(isset($_POST['draft_product'])){
+    
+        // Getting data from form and storing in variables.
+        $products_id = $_POST['id'];
+
+        // Query.    
+        $sql = "UPDATE store_table SET product_status = 'drafted' WHERE products_id = $products_id; ";
+
+        //echo $sql;
+
+        // Object created.
+        $update_products_status_to_drafted = new Database();
+        $result = $update_products_status_to_drafted->update($sql);
+
+        // Location
+        if($result == true){
+            header('Location: ../999.3_store_admin.php#' . $products_id);
+        }else{
+            header('Location: actions_dynamic.php');
+        }
+        
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+// products_delete.
+    if(isset($_POST['delete_product'])){
+        
+        // Getting data from form and storing in variables.
+        $products_id = $_POST['id'];
+        $old_picture_name = $_POST['old_picture_name'];
+
+        //unlinking old file
+        $file_path = "../Media/Images/Store_pictures/UI_Ux_template/" . $old_picture_name;
+        unlink($file_path);
+
+        // Query.    
+        $sql = "DELETE FROM store_table WHERE products_id = $products_id; ";
+
+        //echo $sql;
+
+        // Object created.
+        $delete_product = new Database();
+        $result = $delete_product->delete($sql);
+
+        // Location
+        if($result == true){
+            header('Location: ../999.3_store_admin.php');
+        }else{
+            header('Location: actions_dynamic.php');
+        }
+        
+    }
+
+
+
+
+
+
+/************************************************/
+/************************************************/
+/************************************************/
+/************************************************/
+/************************************************/
+/************************************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
 ?>
