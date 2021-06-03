@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 03, 2021 at 11:40 AM
+-- Generation Time: Jun 03, 2021 at 02:43 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -48,7 +48,7 @@ CREATE TABLE `basic_info_table` (
 --
 
 INSERT INTO `basic_info_table` (`id`, `name`, `about`, `email`, `number_1`, `number_2`, `fb`, `fb_page`, `insta`, `linkedin`, `pinterest`, `github`, `fiverr`) VALUES
-(1, 'Thasin', 'I work as a web-developer. I\'ve 2 years of experience under my belt. I use HTML, CSS, Javascript, PHP, Laravel & Git on my projects. Hit me up if you have something on your mind.', 'thasinmahmud.bd@gmail.com', '01984983948', '01757758904', 'https://www.facebook.com/thasinmahmud.bd/', 'https://www.facebook.com/thasinmahmud.bd/', 'https://www.facebook.com/thasinmahmud.bd/', 'https://www.facebook.com/thasinmahmud.bd/', 'https://www.facebook.com/thasinmahmud.bd/', 'https://www.facebook.com/thasinmahmud.bd/', 'https://www.facebook.com/thasinmahmud.bd/');
+(1, 'Thasin', 'I work as a web-developer. I\'ve 2 years of experience under my belt. I use HTML, CSS, Javascript, PHP, Laravel & Git on my projects. Hit me up if you have something on your mind.', 'thasinmahmud.bd@gmail.com', '01984983948', '01757758904', 'https://www.facebook.com/thasinmahmud.bd/', '', '', 'https://www.linkedin.com/in/thasinmahmudbd/', '', 'https://github.com/Thasinmahmudbd', 'https://www.fiverr.com/thasin_bd?up_rollout=true');
 
 -- --------------------------------------------------------
 
@@ -214,7 +214,7 @@ CREATE TABLE `projects_table` (
 INSERT INTO `projects_table` (`projects_id`, `projects_title`, `projects_details`, `go_live_link`, `git_hub_link`, `priority`, `main_tag`, `sub_tag_2`, `sub_tag_3`, `project_image`, `project_status`) VALUES
 (4, 'test 2', 'test test test', 'http://test.updated.com', 'http://test.updated.com', 0, 'test', '', '', '60b643cb866f57.47091191.jpg', 'published'),
 (5, 'test 3', 'test', 'http://test.updated.com', 'http://test.updated.com', 0, 'a test', 'test', 'test', '60b646510b1693.10534360.jpg', 'drafted'),
-(6, 'test 4', '<ol>\r\n	<li>this</li>\r\n	<li>is</li>\r\n	<li>a</li>\r\n	<li>test</li>\r\n</ol>\r\n\r\n<p><strong>hello </strong>how are <span class=\"marker\">you</span>? <a href=\"http://www.google.com\">google</a></p>\r\n', 'http://test.updated.com', 'http://test.updated.com', 0, 'test', '', '', '60b6530493d8b4.18661407.jpg', 'drafted');
+(6, 'test 4', '<ol>\r\n	<li>this</li>\r\n	<li>is</li>\r\n	<li>a</li>\r\n	<li>test</li>\r\n</ol>\r\n\r\n<p><strong>hello </strong>how are <span class=\"marker\">you</span>? <a href=\"http://www.google.com\">google</a></p>\r\n', 'http://test.updated.com', 'http://test.updated.com', 1, 'test', '', '', '60b8ad28227825.66474442.jpg', 'drafted');
 
 -- --------------------------------------------------------
 
@@ -261,7 +261,8 @@ CREATE TABLE `store_table` (
 
 INSERT INTO `store_table` (`products_id`, `products_title`, `products_details`, `go_live_link`, `price`, `priority`, `main_tag`, `sub_tag_2`, `sub_tag_3`, `product_image`, `product_status`) VALUES
 (5, 'test', 'test', 'http://test.com', 100, 0, 'test', '', '', '60b898b9c69206.60879202.jpg', 'drafted'),
-(6, 'test 2', 'test 2', 'http://test.updated.com', 11, 0, 'a test', '', '', '60b8994b3f0115.06232591.jpg', 'drafted');
+(6, 'test 2', 'test 2', 'http://test.updated.com', 11, 0, 'a test', '', '', '60b8994b3f0115.06232591.jpg', 'drafted'),
+(7, 'test 3', 'ffgfds', 'http://test.updated.com', 12, 0, 'fr', '', '', '60b8c2f314c9f1.50780280.jpg', 'drafted');
 
 --
 -- Indexes for dumped tables
@@ -389,7 +390,7 @@ ALTER TABLE `refund_policy_table`
 -- AUTO_INCREMENT for table `store_table`
 --
 ALTER TABLE `store_table`
-  MODIFY `products_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `products_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

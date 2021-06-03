@@ -1,3 +1,8 @@
+<!-- dynamic -->
+     
+<?php include 'Dynamic/actions_dynamic.php'; ?>
+
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -63,59 +68,84 @@
                 
         
     <!-- articles slider -->
+
+
+
+                                  
+                    <!-- crud for blog post --> 
+                              
+                    <?php
+                        
+                            $query_to_read_blogs = "SELECT * FROM blogs_table ORDER BY blogs_id DESC;";
+                            
+                            $read_blogs = new Database();
+                            $blogs = $read_blogs->read($query_to_read_blogs); 
+        
+                    
+                            //print_r($basic_info);
+                    
+                    ?>
+
+
+
+
         
         <div class="blogs_carousel" id="A">
            
             <p class="section_title read_my">Recent Articles</p>
             
                     <div class="owl-carousel owl-theme">
+
+
+
+                        <?php
+
+                        // loop to read blog_table data.
+
+                            foreach($blogs as $row){
+
+                        ?>
+
+
                 
                         <div class="item">
                         
-                            <img src="Media/Images/header_bg.jpeg" width="20%" alt="" class="article_img">
+                            <img src="Media/Images/Blog_picture/<?php echo $row['blog_picture'] ?>" width="20%" alt="" class="article_img">
                             
                             <div class="highlights">
                                 
-                                <h1>Title of blog <span class="blog_post_date">Posting date</span></h1>
+                                <h1><?php echo $row['blogs_title'] ?> <span class="blog_post_date">(<?php echo $row['blog_date'] ?>)</span></h1>
                                 
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga omnis voluptas id suscipit itaque dignissimos blanditiis amet iusto laudantium, facere inventore quisquam dolorem accusantium ipsa illo asperiores odio eligendi molestias maiores, temporibus quia ea, labore minima. Ducimus, sint. Cupiditate in sequi animi vitae velit sint, excepturi a quibusdam earum! Vero.</p>
+                                <p><?php echo $row['blogs_highlight'] ?><a class="article_read_more" href="#"> read more...</a></p>
                                 
                             </div>
                         
                         </div>
-                        
-                        <div class="item">
-                        
-                            <img src="Media/Images/header_bg.jpeg" width="20%" alt="" class="article_img">
-                            
-                            <div class="highlights">
-                                
-                                <h1>Title of blog <span class="blog_post_date">Posting date</span></h1>
-                                
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga omnis voluptas id suscipit itaque dignissimos blanditiis amet iusto laudantium, facere inventore quisquam dolorem accusantium ipsa illo asperiores odio eligendi molestias maiores, temporibus quia ea, labore minima. Ducimus, sint. Cupiditate in sequi animi vitae velit sint, excepturi a quibusdam earum! Vero.</p>
-                                
-                            </div>
-                        
-                        </div>
-                        
-                        <div class="item">
-                        
-                            <img src="Media/Images/header_bg.jpeg" width="20%" alt="" class="article_img">
-                            
-                            <div class="highlights">
-                                
-                                <h1>Title of blog <span class="blog_post_date">Posting date</span></h1>
-                                
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga omnis voluptas id suscipit itaque dignissimos blanditiis amet iusto laudantium, facere inventore quisquam dolorem accusantium ipsa illo asperiores odio eligendi molestias maiores, temporibus quia ea, labore minima. Ducimus, sint. Cupiditate in sequi animi vitae velit sint, excepturi a quibusdam earum! Vero.</p>
-                                
-                            </div>
-                        
-                        </div>
+
+
+                    <?php } ?>
+
                         
                     </div>
             
         </div>
     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     <!-- services -->
     
@@ -272,9 +302,49 @@
         </div>
         
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       
     
    <!-- projects -->
+
+
+
+
+
+        <!-- crud for blog post --> 
+                              
+                    <?php
+                        
+                            $query_to_read_projects = "SELECT * FROM projects_table WHERE priority = 0 ORDER BY projects_id DESC";
+                            
+                            $read_projects = new Database();
+                            $projects = $read_projects->read($query_to_read_projects); 
+        
+                    
+                            //print_r($basic_info);
+                    
+                    ?>
+
+
+
+
+
    
     <div class="projects_container" id="P">
         
@@ -285,38 +355,49 @@
             <div data-aos="flip-down">
             
                 <div class="owl-carousel owl-theme project_slider">
+
+
+
+
+
+
+                        <?php
+
+                        // loop to read blog_table data.
+
+                            foreach($projects as $row){
+
+                        ?>
+
+
+
+
+
                     
                     <div class="item project_item">
                         
-                        <img src="Media/Images/Project_pictures/UI_temp_img_project_01(Hike_on).jpg" alt="">
+                        <img src="Media/Images/Project_pictures/<?php echo $row['project_image'] ?>" alt="">
                         
                         <div class="project_text">
                         
                             <h1 class="project_title">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia, eos!
+                                <?php echo $row['projects_title'] ?>
                             </h1>
                             
-                            <p class="project_description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita laborum, inventore vitae quae doloribus, ratione officia, eligendi quo repellat, labore adipisci saepe? Voluptatibus ipsa earum similique quam aliquid iste fugiat impedit asperiores, reprehenderit atque saepe, odio expedita hic ab sed inventore quibusdam, autem ratione commodi delectus nisi culpa eum repellendus?</p>
+                            <p class="project_description"><?php echo $row['projects_details'] ?></p>
                             
                         </div>
                         
                     </div>
-                    
-                    <div class="item project_item">
-                        
-                        <img src="Media/Images/Project_pictures/UI_temp_img_project_02(TEK_Engineering)___%5BCLIENT%5D.jpg" alt="">
-                        
-                        <div class="project_text">
-                        
-                            <h1 class="project_title">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia, eos!
-                            </h1>
-                            
-                            <p class="project_description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita laborum, inventore vitae quae doloribus, ratione officia, eligendi quo repellat, labore adipisci saepe? Voluptatibus ipsa earum similique quam aliquid iste fugiat impedit asperiores, reprehenderit atque saepe, odio expedita hic ab sed inventore quibusdam, autem ratione commodi delectus nisi culpa eum repellendus?</p>
-                            
-                        </div>
-                        
-                    </div>
+
+
+
+            <?php } ?>
+
+
+
+
+
                     
                 </div>
 
@@ -327,6 +408,20 @@
     </div>
      
     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <!-- technologies -->
     
     <div class="technologies_container" id="T">

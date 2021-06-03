@@ -249,7 +249,7 @@
 
 
 
-            <!-- crud for projects --> 
+            <!-- crud for tags --> 
                               
                 <?php
                     
@@ -303,7 +303,7 @@
 
 
 
-                    <!-- crud for blog post --> 
+                    <!-- crud for projects --> 
                               
                     <?php
                         
@@ -327,7 +327,7 @@
 
                         <?php
 
-                        // loop to read blog_table data.
+                        // loop to read projects_table data.
 
                             foreach($projects as $row){
 

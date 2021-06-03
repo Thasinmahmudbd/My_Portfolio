@@ -211,7 +211,7 @@
 
 
 
-            <!-- crud for blog post --> 
+            <!-- crud for tags --> 
                               
                 <?php
                     

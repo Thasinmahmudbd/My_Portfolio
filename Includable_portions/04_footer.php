@@ -31,18 +31,41 @@
                </form>
                
                <div class="footer_middle">
+
+
+
+
+                <!-- crud for header --> 
+                              
+                <?php
+                    
+                        $query_to_read_basic_info = "SELECT * FROM basic_info_table;";
+                        
+                        $read_basic_info = new Database();
+                        $basic_info = $read_basic_info->read($query_to_read_basic_info); 
+                
+                        while($row = mysqli_fetch_assoc($basic_info)){
+                            $data[] = $row;
+                        }
+                
+                        //print_r($basic_info);
+                
+                ?>
+
+
+
                    
                    <div class="footer_info">
                      
                          <div>
 
-                           <i class="fas fa-at footer_info_email"></i><p>thasinmahmud.bd@gmail.com</p>
+                           <i class="fas fa-at footer_info_email"></i><p><?php echo $data[0]['email']; ?></p>
 
                          </div>
 
                          <div>
 
-                           <i class="fas fa-mobile-alt footer_info_mobile"></i><p>+88 01984983948, +88 01757758904</p>
+                           <i class="fas fa-mobile-alt footer_info_mobile"></i><p>+88 <?php echo $data[0]['number_1']; ?>, +88 <?php echo $data[0]['number_2']; ?></p>
 
                          </div>
                        

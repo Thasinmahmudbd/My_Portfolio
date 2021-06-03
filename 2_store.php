@@ -1,3 +1,9 @@
+<!-- dynamic -->
+     
+<?php include 'Dynamic/actions_dynamic.php'; ?>
+
+
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -31,10 +37,6 @@
     
     <!-- icons (font awsome) -->
     <script src="https://kit.fontawesome.com/aafecdc4bf.js" crossorigin="anonymous"></script>
-    
-    <!-- Required js scripts for owl-->
-    <script src="Script/Owl_carousel/jquery.min.js"></script>
-    <script src="Script/Owl_carousel/owl.carousel.min.js"></script>
     
     <!-- Required js and css for aos -->    
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
@@ -97,90 +99,104 @@
                <p class="left_section_header">Catagories</p>
                
                <div class="frame_left_forms">
+
+
                    
-                   <form class="form" action="">
+                <!-- crud for tags --> 
+                              
+                <?php
                     
-                        <input type="hidden" value="">
+                        $query_to_read_tags = "SELECT DISTINCT main_tag FROM store_table ORDER BY main_tag ASC;";
+                        
+                        $read_tags = new Database();
+                        $tags = $read_tags->read($query_to_read_tags); 
+    
+                
+                        //print_r($basic_info);
 
-                        <input class="frame_left_form_link" type="submit" name="Tag_name" value="Tag name">
+
+                        foreach($tags as $row){
+
+                
+                ?>
+
+
+                   
+                   <form class="form" method="post" action="Dynamic/actions_dynamic.php">
+                    
+                        <input type="hidden" value="<?php echo $row['main_tag'] ?>">
+
+                        <input class="frame_left_form_link" type="submit" name="Tag_name" value="<?php echo $row['main_tag'] ?>">
                     
                     </form>
                     
-                    <form class="form" action="">
                     
-                        <input type="hidden" value="">
 
-                        <input class="frame_left_form_link" type="submit" name="Tag_name" value="Tag name">
-                    
-                    </form>
-                    
-                    <form class="form" action="">
-                    
-                        <input type="hidden" value="">
+                <?php } ?>
 
-                        <input class="frame_left_form_link" type="submit" name="Tag_name" value="Tag name">
-                    
-                    </form>
-                    
-                    <form class="form" action="">
-                    
-                        <input type="hidden" value="">
 
-                        <input class="frame_left_form_link" type="submit" name="Tag_name" value="Tag name">
-                    
-                    </form>
+                   
                    
                </div>
                 
             </div>
             
             <div class="frame_right_section">
-                
-                <div class="right_side_dynamic_post_template">
+
+
+
+
+
+                <!-- crud for store --> 
+                              
+                    <?php
+                        
+                            $query_to_read_products = "SELECT * FROM store_table ORDER BY products_id DESC;";
+                            
+                            $read_products = new Database();
+                            $products = $read_products->read($query_to_read_products);
+
+
+                            //print_r($basic_info);
+
+                            // loop to read store_table data.
+
+                            foreach($products as $row){
                     
-                    <img src="Media/Images/Project_pictures/UI_temp_img_project_01(Hike_on).jpg" alt="no image" class="article_img" width="100%">
+                    ?>
+
+
+
+
+                
+                <div class="right_side_dynamic_post_template" data-aos="fade-right">
+                    
+                    <img src="Media/Images/Store_pictures/UI_Ux_template/<?php echo $row['product_image'] ?>" alt="no image" class="article_img" width="100%">
                     
                     <div class="dynamic_post_template_highlights">
                         
-                        <h1 class="dynamic_post_template_title">Product title<span> (product id)</span></h1>
+                        <h1 class="dynamic_post_template_title"><?php echo $row['products_title'] ?><!--<span> (product id)</span>--></h1>
                         
                         <p class="highlights">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias explicabo quis error, iusto minima voluptate. Ullam possimus minima officia animi tenetur repellat ipsa, pariatur temporibus blanditiis, quidem quas quos magnam. Mollitia quam quidem, odit atque facere, ducimus ipsum delectus adipisci perspiciatis provident temporibus doloribus velit ipsam vero sint itaque libero.
+                            <?php echo $row['products_details'] ?>
                         </p>
                         
                     </div>
                     
                     <div class="post_related_links">
                         
-                        <a href="#" class="go_live"><i class="fab fa-chrome post_related_link"></i></a>
-                        <a href="#"><i class="fas fa-shopping-cart post_related_link"></i></a>
+                        <a href="<?php echo $row['go_live_link'] ?>" class="go_live"><i class="fab fa-chrome post_related_link"></i></a>
+                        <a href="<?php echo $row['products_id'] ?>"><i class="fas fa-shopping-cart post_related_link"></i></a>
                         
                     </div>
                     
                 </div>
+
+
                 
-                <div class="right_side_dynamic_post_template">
-                    
-                    <img src="Media/Images/Project_pictures/UI_temp_img_project_01(Hike_on).jpg" alt="no image" class="article_img" width="100%">
-                    
-                    <div class="dynamic_post_template_highlights">
-                        
-                        <h1 class="dynamic_post_template_title">Product title<span> (product id)</span></h1>
-                        
-                        <p class="highlights">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias explicabo quis error, iusto minima voluptate. Ullam possimus minima officia animi tenetur repellat ipsa, pariatur temporibus blanditiis, quidem quas quos magnam. Mollitia quam quidem, odit atque facere, ducimus ipsum delectus adipisci perspiciatis provident temporibus doloribus velit ipsam vero sint itaque libero.
-                        </p>
-                        
-                    </div>
-                    
-                    <div class="post_related_links">
-                        
-                        <a href="#" class="go_live"><i class="fab fa-chrome post_related_link"></i></a>
-                        <a href="#"><i class="fas fa-shopping-cart post_related_link"></i></a>
-                        
-                    </div>
-                    
-                </div>
+                <?php } ?>
+
+
                 
             </div>
             
@@ -237,59 +253,6 @@
       
         
     
-    <!-- owl carousel script -->      
-    <script>
-        
-        const nextIcon = '<i class="fas fa-arrow-circle-right nav_slider"></i>';
-        const previousIcon = '<i class="fas fa-arrow-circle-left nav_slider"></i>';
-        
-        $(document).ready(function(){
-            $('.project_slider').owlCarousel({
-                loop:true,
-                margin:0,
-                nav:false,
-                autoplay:true,
-                autoplayTimeout:6000,
-                autoplayHoverPause:true,
-                nav:true,
-                dots:false,
-                navText: [
-                    previousIcon,
-                    nextIcon
-                ],
-                responsive:{
-                    0:{
-                        items:1
-                    },
-                    800:{
-                        items:1
-                    },
-                    1000:{
-                        items:1
-                    }
-                }              
-            })
-        })
-        
-        $(document).ready(function(){
-            $('.owl-carousel').owlCarousel({
-                loop:true,
-                margin:0,
-                items:1,
-                autoplay:true,
-                autoplayTimeout:6000,
-                autoplayHoverPause:true,
-                nav:true,
-                dots:false,
-                navText: [
-                    previousIcon,
-                    nextIcon
-                ],
-                
-            })
-        })
-        
-    </script>
     
     
     
@@ -302,7 +265,8 @@
         AOS.init({
             
             offset: 400, 
-            duration: 1000
+            duration: 1000,
+            once: true
             
         });
         

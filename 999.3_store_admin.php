@@ -87,7 +87,7 @@
 
 
 
-          <!-- project update form -->
+          <!-- product update form -->
    
            <div class="project_update">
                    
@@ -249,7 +249,7 @@
 
 
 
-            <!-- crud for projects --> 
+            <!-- crud for tags --> 
                               
                 <?php
                     
@@ -303,7 +303,7 @@
 
 
 
-                    <!-- crud for blog post --> 
+                    <!-- crud for store --> 
                               
                     <?php
                         
@@ -327,7 +327,7 @@
 
                         <?php
 
-                        // loop to read blog_table data.
+                        // loop to read store_table data.
 
                             foreach($products as $row){
 
