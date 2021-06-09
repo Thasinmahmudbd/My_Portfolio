@@ -1831,4 +1831,291 @@ if(isset($_POST['upload_profile_picture'])){
 
 
 
+
+
+
+
+
+
+
+
+// Function to encrypt password.
+function encryptPassword($arg1) {
+    $hash_format = "$2y$10$";
+    $salt = "22charactersarepresent";
+    $hash_and_salt = $hash_format . $salt;
+    $arg1 = crypt( $arg1, $hash_and_salt ); 
+    return $arg1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// admin log in.
+function login(){
+global $con;
+
+    if(isset($_POST['admin_login'])){
+        
+        // Getting data from form and storing in variables.
+        $password = mysqli_real_escape_string($con, $_POST['password']);
+        $password = encryptPassword($password);
+
+        // Query.    
+        $sql = "SELECT p_word FROM security_table; ";
+
+        //echo $sql;
+
+        // Object created.
+        $read_password = new Database();
+        $result = $read_password->read($sql);
+
+        // msg.
+        $msg = "Wrong Password, Try Again.";
+
+        while($row = mysqli_fetch_assoc($result)){
+            $data[] = $row;
+        }
+
+        // Location.
+        if($data[0]['p_word'] == $password){
+            header('Location: ../999.0_home_admin.php');
+        }else{
+            return $msg;
+        }
+        
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+// admin password change.
+function change_pass(){
+global $con;
+
+    if(isset($_POST['change_pass'])){
+        
+        // Getting data from form and storing in variables.
+        $old_password = mysqli_real_escape_string($con, $_POST['old_password']);
+        $new_password = mysqli_real_escape_string($con, $_POST['new_password']);
+        $confirm_password = mysqli_real_escape_string($con, $_POST['confirm_password']);
+        $old_password = encryptPassword($old_password);
+
+        // Query.    
+        $sql_0 = "SELECT p_word FROM security_table; ";
+
+        //echo $sql;
+
+        // Object created.
+        $read_password = new Database();
+        $result = $read_password->read($sql_0);
+
+        while($row = mysqli_fetch_assoc($result)){
+            $data[] = $row;
+        }
+
+        // Location.
+        if($data[0]['p_word'] == $old_password){
+
+            if($new_password === $confirm_password){
+
+                $password = encryptPassword($new_password);
+
+                // Query.    
+                $sql = "UPDATE security_table SET p_word = '$password'; ";
+
+                //echo $sql;
+        
+                // Object created.
+                $update_password = new Database();
+                $result = $update_password->update($sql);
+
+                // Location.
+                if($result == true){
+
+                    $msg = "Password Changed Successfully.";
+                    return $msg;
+
+                    header('Location: ../777.2_admin_change_password.php');
+                }else{
+                    echo die();
+                }
+
+            }else{
+
+                $msg = "Passwords Don't Match, Check Again.";
+                return $msg;
+
+            }
+
+        }else{
+
+            $msg = "Wrong Password, Try Again.";
+            return $msg;
+
+        }
+        
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// sending otp.
+function otp($arg){
+global $con;
+    
+        if(isset($_POST['sent_otp'])){
+            
+            // generating otp.
+            $otp = rand(100000, 999999);
+
+            // mail.
+            $to = $arg;
+            $subject = "Portfolio Password changing OTP.";
+            $txt = "Hey, looks like you've forgotten your portfolio admin login password, insert $otp as OTP, and change your password.";
+            $headers = "From: doostupi@gmail.com";
+
+            // sending mail.
+            mail($to,$subject,$txt,$headers);
+
+            // encryption.
+            $otp = encryptPassword($otp);
+    
+            // Query.    
+            $sql = "UPDATE security_table SET otp = '$otp'; ";
+    
+            //echo $sql;
+    
+            // Object created.
+            $update_otp = new Database();
+            $result = $update_otp->update($sql);
+    
+            // msg.
+            $msg = "OTP Sent, Check You Email.";
+    
+            // Location.
+            if($result){
+                return $msg;
+            }else{
+                echo die();
+            }
+            
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+// sending otp.
+function forgot_password(){
+global $con;
+        
+            if(isset($_POST['forgot_password'])){
+                
+                // Getting data from form and storing in variables.
+                $otp = mysqli_real_escape_string($con, $_POST['otp']);
+                $new_password = mysqli_real_escape_string($con, $_POST['new_password']);
+    
+                // encryption.
+                $new_password = encryptPassword($new_password);
+                $otp = encryptPassword($otp);
+
+                // Query.    
+                $sql = "SELECT otp FROM security_table; ";
+        
+                // Object created.
+                $read_otp = new Database();
+                $result = $read_otp->read($sql);
+
+                while($row = mysqli_fetch_assoc($result)){
+                    $data[] = $row;
+                }
+        
+                // Location.
+                if($data[0]['otp'] == $otp){
+
+                    // Query.    
+                    $sql_2 = "UPDATE security_table SET p_word = '$new_password'; ";
+            
+                    //echo $sql;
+            
+                    // Object created.
+                    $update_pass = new Database();
+                    $result_2 = $update_pass->update($sql_2);
+
+                    // msg.
+                    $msg = "Password Changed Successfully.";
+                    return $msg;
+
+                }else{
+
+                    // msg.
+                    $msg = "Invalid OTP.";
+                    return $msg;
+
+                }
+                
+            }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/************************************************/
+/************************************************/
+/************************************************/
+/************************************************/
+/************************************************/
+/************************************************/
+
+
 ?>

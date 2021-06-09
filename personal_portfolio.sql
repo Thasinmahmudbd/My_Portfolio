@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 03, 2021 at 02:43 PM
+-- Generation Time: Jun 09, 2021 at 09:45 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -238,6 +238,26 @@ INSERT INTO `refund_policy_table` (`refund_policy_id`, `refund_policy`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `security_table`
+--
+
+CREATE TABLE `security_table` (
+  `security_id` int(11) NOT NULL,
+  `p_word` varchar(100) NOT NULL,
+  `pin` varchar(50) NOT NULL,
+  `otp` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `security_table`
+--
+
+INSERT INTO `security_table` (`security_id`, `p_word`, `pin`, `otp`) VALUES
+(1, '$2y$10$22charactersarepreseneCohjJUSBgmXGaJZcwOoDmXSsQk2hwxq', 'Admin', '$2y$10$22charactersarepreseneZo.r1nLuGp8hYAuoUDa0ZJHPW38bd56');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `store_table`
 --
 
@@ -323,6 +343,12 @@ ALTER TABLE `refund_policy_table`
   ADD PRIMARY KEY (`refund_policy_id`);
 
 --
+-- Indexes for table `security_table`
+--
+ALTER TABLE `security_table`
+  ADD PRIMARY KEY (`security_id`);
+
+--
 -- Indexes for table `store_table`
 --
 ALTER TABLE `store_table`
@@ -385,6 +411,12 @@ ALTER TABLE `projects_table`
 --
 ALTER TABLE `refund_policy_table`
   MODIFY `refund_policy_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `security_table`
+--
+ALTER TABLE `security_table`
+  MODIFY `security_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `store_table`

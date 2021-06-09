@@ -1,0 +1,107 @@
+/* form */
+
+.admin_login{
+    display:grid;
+    grid-template-columns: 1fr 100px;
+    grid-gap:8px;
+    width:400px;
+    margin:auto;
+    align-self: center;
+    margin-top:40vh;
+}
+
+.fields{
+    display:grid;
+    grid-gap:4px;
+    align-self: center;
+    background-color: #eeefff;
+    padding: 16px;
+    border-radius: 10px 0px 0px 10px;
+}
+
+.admin_form_btn{
+    border-radius: 0px 10px 10px 0px;
+    padding:20px 24px;
+}
+
+.log_in{
+    font-size: 3rem;
+    color:#fff;
+}
+
+/* links */
+
+.links{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    width:400px;
+    margin:auto;
+    align-self: center;
+    justify-items: center;
+    margin-top:16px;
+}
+
+.red_link{
+    color:rgba(233, 57, 57, 0.932);
+}
+
+.blue_link{
+    color:#358ffc;
+}
+
+.link{
+    font-weight: bold;
+    font-size: 1rem;
+    transition: 300ms ease-in;
+}
+
+.link:hover{
+    font-size: 1.2rem;
+    transition: 300ms ease-in;
+}
+
+/* er msg */
+
+/* The animation code */
+@keyframes example {
+    from {opacity: 0; transition: 300ms ease-in;}
+    to {opacity: 1; transition: 300ms ease-in;}
+  }
+  
+
+.er_msg{
+    padding:30px;
+    font-size: 1rem;
+    width:400px;
+    margin:auto;
+    margin-top: 30px;
+    background-color: rgba(233, 57, 57, 0.932);
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 20px;
+    border: 10px dashed #fff;
+    opacity: 0;
+    animation-name: example;
+    animation-duration: 4000ms;
+    animation-delay: 300ms;
+}
+
+
+.suc_msg{
+    padding:30px;
+    font-size: 1rem;
+    width:400px;
+    margin:auto;
+    margin-top: 30px;
+    background-color: rgba(57, 233, 66, 0.932);
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 20px;
+    border: 10px dashed #fff;
+    opacity: 0;
+    animation-name: example;
+    animation-duration: 4000ms;
+    animation-delay: 300ms;
+}

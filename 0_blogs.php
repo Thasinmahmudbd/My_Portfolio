@@ -8,6 +8,7 @@
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Required css links for plugins -->
@@ -34,7 +35,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap" rel="stylesheet">
     
-    <!-- icons (font awsome) -->
+    <!-- icons (font awesome) -->
     <script src="https://kit.fontawesome.com/aafecdc4bf.js" crossorigin="anonymous"></script>
     
     <!-- Required js and css for aos -->    
@@ -70,10 +71,10 @@
             
             <p class="sub_page_name" id="U">Blogs</p>
             
-            <form class="sub_page_search_bar" id="anchor2" action="">
+            <form class="sub_page_search_bar" id="anchor2" method="get" action="0_blogs.php">
                 
-                <input id="anchor3" class="input search_input" placeholder="Enter article title or tags." type="text">
-                <button class="search_btn" type="submit"><i class="fas fa-search"></i></button>
+                <input id="anchor3" class="input search_input" placeholder="Enter article title or tags." type="text" name="search_item_blog">
+                <button class="search_btn" type="submit" name="search_blog"><i class="fas fa-search"></i></button>
                 
             </form>
             
@@ -82,8 +83,29 @@
     </div>  
       
       
-      
-      
+                    <?php
+
+                    $flag = 0;
+
+                    // getting data from form.
+                    if(isset($_GET['search_blog'])){
+    
+                    // storing in variables.
+                    $item = mysqli_real_escape_string($con, $_GET['search_item_blog']);
+
+
+                            $query_to_search_blogs = "SELECT * FROM blogs_table WHERE blogs_title LIKE '%$item%' OR main_tag LIKE '%$item%' OR tag_2 LIKE '%$item%' OR tag_3 LIKE '%$item%' OR tag_4 LIKE '%$item%' OR tag_5 LIKE '%$item%' ORDER BY blogs_id DESC;";
+                            
+                            $search_blogs = new Database();
+                            $search_result = $search_blogs->read($query_to_search_blogs); 
+
+                            if($search_result==true){
+                                $flag = 1;
+                            }
+
+                    }
+
+                    ?>
       
       
       
@@ -145,21 +167,52 @@
 
                 <!-- crud for blog post --> 
                               
-                    <?php
-                        
-                            $query_to_read_blogs = "SELECT * FROM blogs_table ORDER BY blogs_id DESC;";
+                <?php
+
+                    if(!empty($search_result)){
+
+                        foreach($search_result as $row){
+                    
+                ?>
+                
+                
+                
+                                
+                        <div class="right_side_dynamic_post_template" data-aos="fade-right">
+                                    
+                            <img src="Media/Images/Blog_picture/<?php echo $row['blog_picture'] ?>" alt="no image" class="article_img" height="200px">
+                                    
+                            <div class="dynamic_post_template_highlights">
+                                        
+                                <h1 class="dynamic_post_template_title"><?php echo $row['blogs_title'] ?> <span class="article_date">(<?php echo $row['blog_date'] ?>)</span></h1>
+                                        
+                                <p class="highlights"><?php echo $row['blogs_highlight'] ?><a class="article_read_more" href="#"> read more...</a></p>
+                                        
+                            </div>
+                                    
+                        </div>
+
+                
+    
+                <?php
+
+                        }
+
+                    }else{
+
+                        $query_to_read_blogs = "SELECT * FROM blogs_table ORDER BY blogs_id DESC;";
                             
-                            $read_blogs = new Database();
-                            $blogs = $read_blogs->read($query_to_read_blogs); 
+                        $read_blogs = new Database();
+                        $blogs = $read_blogs->read($query_to_read_blogs); 
         
                     
-                            //print_r($basic_info);
+                        //print_r($basic_info);
 
-                            // loop to read blog_table data.
+                        // loop to read blog_table data.
 
-                            foreach($blogs as $row){
+                        foreach($blogs as $row){
                     
-                    ?>
+                ?>
 
 
 
@@ -182,7 +235,15 @@
 
 
 
-                    <?php } ?>
+                <?php 
+
+                        } 
+                    }
+                        
+                ?>
+
+                
+
 
 
 
