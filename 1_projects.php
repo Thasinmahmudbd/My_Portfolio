@@ -104,7 +104,7 @@
                               
                 <?php
                     
-                        $query_to_read_tags = "SELECT DISTINCT main_tag FROM projects_table ORDER BY main_tag ASC;";
+                        $query_to_read_tags = "SELECT DISTINCT main_tag FROM projects_table WHERE project_status='published' ORDER BY main_tag ASC;";
                         
                         $read_tags = new Database();
                         $tags = $read_tags->read($query_to_read_tags); 
@@ -147,7 +147,7 @@
                               
                     <?php
                         
-                            $query_to_read_projects = "SELECT * FROM projects_table ORDER BY priority ASC, projects_id DESC;";
+                            $query_to_read_projects = "SELECT * FROM projects_table WHERE project_status='published' ORDER BY priority ASC, projects_id DESC;";
                             
                             $read_projects = new Database();
                             $projects = $read_projects->read($query_to_read_projects); 

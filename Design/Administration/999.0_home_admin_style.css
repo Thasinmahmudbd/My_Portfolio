@@ -155,6 +155,26 @@
 
 
 
+/* feedback */
+
+.feed_table{
+    width:100%;
+    background-color: #eeefff;
+    margin:1rem;
+    padding: 1rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -278,4 +298,9 @@
     margin:0px;
     padding:0px;
     font-size: 20px;
+}
+
+.big_gap{
+    margin:200px;
+    padding:200px;
 }

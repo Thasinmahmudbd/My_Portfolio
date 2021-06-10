@@ -41,3 +41,9 @@ function showContent7() {
     document.getElementById("title7").classList.toggle("pullUp");
 
 }
+
+function showContent8() {    
+    document.getElementById("Content8").classList.toggle("show");
+    document.getElementById("title8").classList.toggle("pullUp");
+
+}

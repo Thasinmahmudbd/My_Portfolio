@@ -902,12 +902,134 @@
     
     
     
+
+
+
+
+
+
+
+
+
+    
+    <!-- feedbacks -->
+      
+    <div class="client_confidentiality_container">
+      
+        <button id="title8" class="title pullUp" onclick="showContent8()" >Feedbacks</button>
+        
+        <div id="Content8" class="client_confidentiality show">
+            
+                <!-- crud for customers issues -->
+                    
+                <?php
+                    
+                        $query_to_read_feedback = "SELECT * FROM feedback_table;";
+                        
+                        $read_feedback = new Database();
+                        $feedbacks = $read_feedback->read($query_to_read_feedback);
+                
+                        //print_r($data);
+                
+                ?>
+                    
+                
+                
+<!-- policy template -->
+    
+
+                <div class="policy_section issues_template">
+                
+                    <table class="feed_table" >
+
+                        <tr>
+                            <th>Date</th>
+                            <th>Sender</th>
+                            <th>Feedback</th>
+                            <th>Status</th>
+                        </tr>
+
+
+            <?php 
+            
+                foreach($feedbacks as $row){
+                
+            ?>
+
+
+                        <tr>
+                            <td><?php echo $row['feedback_date']; ?></td>
+                            <td><?php echo $row['sender']; ?></td>
+                            <td><?php echo $row['feedback']; ?></td>
+                            <td><?php echo $row['feedback_status']; ?></td>
+                            <td>
+                            
+                            <form method="post" action="Dynamic/actions_dynamic.php" class="policy_template_form"> 
+
+                                <input name="feedback_id" type="hidden" value="<?php echo $row['feedback_id']; ?>">
+
+                                <input name="status" type="hidden" value="published">
+
+                                <button type="submit" class="btn insert_btn" name="publish_feed">Publish</button>
+
+                            </form>
+                            
+                            </td>
+                            <td>
+                            
+                            <form method="post" action="Dynamic/actions_dynamic.php" class="policy_template_form"> 
+
+                                <input name="feedback_id" type="hidden" value="<?php echo $row['feedback_id']; ?>">
+
+                                <input name="status" type="hidden" value="drafted">
+
+                                <button type="submit" class="btn update_btn" name="draft_feed">Draft</button>
+
+                            </form>
+                            
+                            </td>
+
+                            <td>
+                            
+                            <form method="post" action="Dynamic/actions_dynamic.php" class="policy_template_form"> 
+
+                                <input name="feedback_id" type="hidden" value="<?php echo $row['feedback_id']; ?>">
+
+                                <button type="submit" class="btn delete_btn" name="delete_feed">Delete</button>
+
+                            </form>
+                            
+                            </td>
+                        </tr>
+
+
+            <?php } ?>
+
+                        
+                        
+                    </table> 
+
+                </div>
+            
+            
+            
+            <div class="gap"></div>
+                
+        </div>
+            
+    </div>
     
     
     
-    
-    
-    
+
+
+
+
+
+
+
+
+
     
     
     <!-- side anchor btns -->
@@ -932,16 +1054,22 @@
 
             <a href="#title7" class="anchor_btn custom_order">O</a>
 
-            <a href="#F" class="anchor_btn feedback">F</a>
+            <a href="#title8" class="anchor_btn feedback">F</a>
            
        </div>
         
     </div>
     
-       
-    <!-- footer -->
-    
-    <?php include 'Includable_portions/04_footer.php'; ?>
+
+
+
+
+
+
+
+
+    <!-- gap -->
+    <span class="big_gap"></span>
     
     
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 09, 2021 at 09:45 PM
+-- Generation Time: Jun 10, 2021 at 01:53 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -77,8 +77,8 @@ CREATE TABLE `blogs_table` (
 
 INSERT INTO `blogs_table` (`blogs_id`, `blogs_title`, `blogs_highlight`, `blogs_post`, `main_tag`, `tag_2`, `tag_3`, `tag_4`, `tag_5`, `blog_date`, `blog_status`, `blog_picture`) VALUES
 (1, 'test title', 'test highlight', '<p><strong>test </strong>post</p>\r\n', 'main tag', 'sub tag', 'sub tag', 'sub tag', '', 'June 1, 2021, 2:23 am', 'published', '60b5f2a7bbf264.19962067.jpg'),
-(3, 'test title 3', 'highlight 3', '<p><span class=\"marker\"><strong>test 3 </strong></span><strong>updated</strong></p>\r\n', 'main tag', 'sub tag 3', 'sub tag', '', '', 'June 1, 2021, 3:06 am', 'published', '60b6022c04b236.46348612.jpg'),
-(4, 'test title is 4 update test', 'highlight 4 updated', '<p><s>test</s> updated</p>\r\n', 'a tag updated', '', '', '', '', 'June 1, 2021, 3:07 am', 'drafted', '60b5f2810972c9.72113909.jpg'),
+(3, 'test title 3', 'highlight 3', '<p><span class=\"marker\"><strong>test 3 </strong></span><strong>updated</strong></p>\r\n', 'main tag', 'sub tag 3', 'sub tag', '', '', 'June 1, 2021, 3:06 am', 'drafted', '60b6022c04b236.46348612.jpg'),
+(4, 'test title is 4 update test', 'highlight 4 updated', '<p><s>test</s> updated</p>\r\n', 'a tag updated', '', '', '', '', 'June 1, 2021, 3:07 am', 'published', '60b5f2810972c9.72113909.jpg'),
 (5, 'test title 5', 'ggg', '<p>ggg</p>\r\n', 'vv', '', '', '', '', 'June 1, 2021, 3:50 am', 'published', '60b5f56344ba48.11230519.jpg'),
 (6, 'test no 6', 'test', '<p>test</p>\r\n', 'test', '', '', '', '', 'June 1, 2021, 4:02 pm', 'drafted', '60b6061de6c603.59321043.jpg');
 
@@ -142,6 +142,28 @@ CREATE TABLE `developers_support_table` (
 INSERT INTO `developers_support_table` (`developers_support_policy_id`, `developers_support_policy`) VALUES
 (1, 'this is a test no 1'),
 (3, 'this is test no 2');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `feedback_table`
+--
+
+CREATE TABLE `feedback_table` (
+  `feedback_id` int(11) NOT NULL,
+  `sender` varchar(30) NOT NULL,
+  `feedback` text NOT NULL,
+  `feedback_date` varchar(50) NOT NULL,
+  `feedback_status` varchar(20) NOT NULL DEFAULT 'drafted'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `feedback_table`
+--
+
+INSERT INTO `feedback_table` (`feedback_id`, `sender`, `feedback`, `feedback_date`, `feedback_status`) VALUES
+(1, 'thasin', 'feedback', 'June 10, 2021, 4:53 pm', 'published'),
+(2, 'jamil', 'feedback', 'June 10, 2021, 4:56 pm', 'drafted');
 
 -- --------------------------------------------------------
 
@@ -212,9 +234,9 @@ CREATE TABLE `projects_table` (
 --
 
 INSERT INTO `projects_table` (`projects_id`, `projects_title`, `projects_details`, `go_live_link`, `git_hub_link`, `priority`, `main_tag`, `sub_tag_2`, `sub_tag_3`, `project_image`, `project_status`) VALUES
-(4, 'test 2', 'test test test', 'http://test.updated.com', 'http://test.updated.com', 0, 'test', '', '', '60b643cb866f57.47091191.jpg', 'published'),
-(5, 'test 3', 'test', 'http://test.updated.com', 'http://test.updated.com', 0, 'a test', 'test', 'test', '60b646510b1693.10534360.jpg', 'drafted'),
-(6, 'test 4', '<ol>\r\n	<li>this</li>\r\n	<li>is</li>\r\n	<li>a</li>\r\n	<li>test</li>\r\n</ol>\r\n\r\n<p><strong>hello </strong>how are <span class=\"marker\">you</span>? <a href=\"http://www.google.com\">google</a></p>\r\n', 'http://test.updated.com', 'http://test.updated.com', 1, 'test', '', '', '60b8ad28227825.66474442.jpg', 'drafted');
+(4, 'test 2', 'test test test', 'http://test.updated.com', 'http://test.updated.com', 0, 'test', '', '', '60b643cb866f57.47091191.jpg', 'drafted'),
+(5, 'test 3', 'test', 'http://test.updated.com', 'http://test.updated.com', 0, 'a test', 'test', 'test', '60b646510b1693.10534360.jpg', 'published'),
+(6, 'test 4', '<ol>\r\n	<li>this</li>\r\n	<li>is</li>\r\n	<li>a</li>\r\n	<li>test</li>\r\n</ol>\r\n\r\n<p><strong>hello </strong>how are <span class=\"marker\">you</span>? <a href=\"http://www.google.com\">google</a></p>\r\n', 'http://test.updated.com', 'http://test.updated.com', 1, 'test', '', '', '60b8ad28227825.66474442.jpg', 'published');
 
 -- --------------------------------------------------------
 
@@ -280,9 +302,9 @@ CREATE TABLE `store_table` (
 --
 
 INSERT INTO `store_table` (`products_id`, `products_title`, `products_details`, `go_live_link`, `price`, `priority`, `main_tag`, `sub_tag_2`, `sub_tag_3`, `product_image`, `product_status`) VALUES
-(5, 'test', 'test', 'http://test.com', 100, 0, 'test', '', '', '60b898b9c69206.60879202.jpg', 'drafted'),
-(6, 'test 2', 'test 2', 'http://test.updated.com', 11, 0, 'a test', '', '', '60b8994b3f0115.06232591.jpg', 'drafted'),
-(7, 'test 3', 'ffgfds', 'http://test.updated.com', 12, 0, 'fr', '', '', '60b8c2f314c9f1.50780280.jpg', 'drafted');
+(5, 'test', 'test', 'http://test.com', 100, 1, 'test', '', '', '60c1f783455c25.55685890.jpg', 'drafted'),
+(6, 'test 2', 'test 2', 'http://test.updated.com', 11, 0, 'a test', '', '', '60b8994b3f0115.06232591.jpg', 'published'),
+(7, 'test 3', 'ffgfds', 'http://test.updated.com', 12, 1, 'fr', '', '', '60c1f8066b82c0.48796530.jpg', 'published');
 
 --
 -- Indexes for dumped tables
@@ -317,6 +339,12 @@ ALTER TABLE `customers_issues_table`
 --
 ALTER TABLE `developers_support_table`
   ADD PRIMARY KEY (`developers_support_policy_id`);
+
+--
+-- Indexes for table `feedback_table`
+--
+ALTER TABLE `feedback_table`
+  ADD PRIMARY KEY (`feedback_id`);
 
 --
 -- Indexes for table `learn_more_table`
@@ -387,6 +415,12 @@ ALTER TABLE `customers_issues_table`
 --
 ALTER TABLE `developers_support_table`
   MODIFY `developers_support_policy_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `feedback_table`
+--
+ALTER TABLE `feedback_table`
+  MODIFY `feedback_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `learn_more_table`

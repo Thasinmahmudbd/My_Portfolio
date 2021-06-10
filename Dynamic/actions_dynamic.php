@@ -915,6 +915,174 @@ if(isset($_POST['upload_profile_picture'])){
 
 
 
+
+
+
+
+
+
+
+// feedback_store.
+if(isset($_POST['feedback_btn'])){
+    
+    // Getting data from form and storing in variables.
+    $feedback_provider = mysqli_real_escape_string($con, $_POST['feedback_provider']); 
+    $feedback = mysqli_real_escape_string($con, $_POST['feedback']);
+    date_default_timezone_set('Asia/Dhaka');
+    $date = date("F j, Y, g:i a");
+
+    // Query.    
+    $sql = "INSERT INTO feedback_table (sender, feedback, feedback_date) VALUES ('$feedback_provider', '$feedback', '$date');";
+
+    //echo $sql;
+
+    // Object created.
+    $insert_feedback = new Database();
+    $result = $insert_feedback->create($sql);
+
+    // Location
+    if($result == true){
+        header('Location: ../index.php#F');
+    }else{
+        header('Location: actions_dynamic.php');
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// feedback_status_update_[publish].
+if(isset($_POST['publish_feed'])){
+
+    // Getting data from form and storing in variables.
+    $id = $_POST['feedback_id'];
+    $status = mysqli_real_escape_string($con, $_POST['status']);
+
+    // Query.    
+    $sql = "UPDATE feedback_table SET feedback_status = '$status' WHERE feedback_id = $id; ";
+
+    //echo $sql;
+
+    // Object created.
+    $feedback_status = new Database();
+    $result = $feedback_status->update($sql);
+
+    // Location
+    if($result == true){
+        header('Location: ../999.0_home_admin.php#title8');
+    }else{
+        header('Location: actions_dynamic.php');
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+// feedback_status_update_[draft].
+if(isset($_POST['draft_feed'])){
+
+    // Getting data from form and storing in variables.
+    $id = $_POST['feedback_id'];
+    $status = mysqli_real_escape_string($con, $_POST['status']);
+
+    // Query.    
+    $sql = "UPDATE feedback_table SET feedback_status = '$status' WHERE feedback_id = $id; ";
+
+    //echo $sql;
+
+    // Object created.
+    $feedback_status = new Database();
+    $result = $feedback_status->update($sql);
+
+    // Location
+    if($result == true){
+        header('Location: ../999.0_home_admin.php#title8');
+    }else{
+        header('Location: actions_dynamic.php');
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// feedback_delete.
+if(isset($_POST['delete_feed'])){
+    
+    // Getting data from form and storing in variables.
+    $id = $_POST['feedback_id'];
+
+    // Query.    
+    $sql = "DELETE FROM feedback_table WHERE feedback_id = $id; ";
+
+    //echo $sql;
+
+    // Object created.
+    $delete_feed = new Database();
+    $result = $delete_feed->delete($sql);
+
+    // Location
+    if($result == true){
+        header('Location: ../999.0_home_admin.php#title8');
+    }else{
+        header('Location: actions_dynamic.php');
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/************************************************/
+/************************************************/
+/************************************************/
+/************************************************/
+/************************************************/
+/************************************************/
+
+
+
+
+
+
+
+
 // blog_post_data_store.
     if(isset($_POST['insert_blog'])){
     
@@ -1831,14 +1999,6 @@ if(isset($_POST['upload_profile_picture'])){
 
 
 
-
-
-
-
-
-
-
-
 // Function to encrypt password.
 function encryptPassword($arg1) {
     $hash_format = "$2y$10$";
@@ -2046,7 +2206,7 @@ global $con;
 
 
 
-// sending otp.
+// checking otp.
 function forgot_password(){
 global $con;
         
@@ -2071,7 +2231,7 @@ global $con;
                     $data[] = $row;
                 }
         
-                // Location.
+                // check otp.
                 if($data[0]['otp'] == $otp){
 
                     // Query.    

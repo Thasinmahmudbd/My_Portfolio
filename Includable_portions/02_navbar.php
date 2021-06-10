@@ -27,9 +27,9 @@
 
                     <!-- Overlay content -->
                     <div class="overlay-content">
-                    <a href="#">Blogs</a>
-                    <a href="#">Projects</a>
-                    <a href="#">Store</a>
+                    <a href="0_blogs.php">Blogs</a>
+                    <a href="1_projects.php">Projects</a>
+                    <a href="2_store.php">Store</a>
                     </div>
 
                     </div>

@@ -76,7 +76,7 @@
                               
                     <?php
                         
-                            $query_to_read_blogs = "SELECT * FROM blogs_table ORDER BY blogs_id DESC;";
+                            $query_to_read_blogs = "SELECT * FROM blogs_table WHERE blog_status='published' ORDER BY blogs_id DESC;";
                             
                             $read_blogs = new Database();
                             $blogs = $read_blogs->read($query_to_read_blogs); 
@@ -331,7 +331,7 @@
                               
                     <?php
                         
-                            $query_to_read_projects = "SELECT * FROM projects_table WHERE priority = 0 ORDER BY projects_id DESC";
+                            $query_to_read_projects = "SELECT * FROM projects_table WHERE priority = 0 AND project_status='published' ORDER BY projects_id DESC";
                             
                             $read_projects = new Database();
                             $projects = $read_projects->read($query_to_read_projects); 

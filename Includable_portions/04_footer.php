@@ -8,7 +8,7 @@
           
            <div class="footer_top">
            
-               <form action="../Dynamic/actions_dynamic.php" method="post" class="feedback_form">
+               <form action="Dynamic/actions_dynamic.php" method="post" class="feedback_form">
                    
                    <p>I know this is to much too ask but please give me an honest feedback about my services. Your feedback will help me improve. Thank you.</p>
 

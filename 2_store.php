@@ -106,7 +106,7 @@
                               
                 <?php
                     
-                        $query_to_read_tags = "SELECT DISTINCT main_tag FROM store_table ORDER BY main_tag ASC;";
+                        $query_to_read_tags = "SELECT DISTINCT main_tag FROM store_table WHERE product_status='published' ORDER BY main_tag ASC;";
                         
                         $read_tags = new Database();
                         $tags = $read_tags->read($query_to_read_tags); 
@@ -151,7 +151,7 @@
                               
                     <?php
                         
-                            $query_to_read_products = "SELECT * FROM store_table ORDER BY products_id DESC;";
+                            $query_to_read_products = "SELECT * FROM store_table WHERE product_status='published' ORDER BY priority ASC, products_id DESC;";
                             
                             $read_products = new Database();
                             $products = $read_products->read($query_to_read_products);
