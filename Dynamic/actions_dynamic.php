@@ -2019,6 +2019,66 @@ function encryptPassword($arg1) {
 
 
 
+
+
+
+
+// sending pin.
+function pin($arg){
+    global $con;
+        
+                
+                // generating otp.
+                $otp = rand(100000, 999999);
+    
+                // mail.
+                $to = $arg;
+                $subject = "Login pin.";
+                $txt = "Hey, $otp is your login pin.";
+                $headers = "From: doostupi@gmail.com";
+    
+                // sending mail.
+                mail($to,$subject,$txt,$headers);
+    
+                // encryption.
+                $otp = encryptPassword($otp);
+        
+                // Query.    
+                $sql = "UPDATE security_table SET pin = '$otp'; ";
+        
+                //echo $sql;
+        
+                // Object created.
+                $update_otp = new Database();
+                $result = $update_otp->update($sql);
+        
+                // msg.
+                $msg = "PIN Sent, This might take some time check You Email.";
+        
+                // Location.
+                if($result){
+                    return $msg;
+                }else{
+                    echo die();
+                }
+                
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // admin log in.
 function login(){
 global $con;
@@ -2047,7 +2107,23 @@ global $con;
 
         // Location.
         if($data[0]['p_word'] == $password){
-            header('Location: ../999.0_home_admin.php');
+
+            // Query.    
+            $sql_2 = "SELECT email FROM basic_info_table; ";
+
+            //echo $sql;
+
+            // Object created.
+            $read_email = new Database();
+            $result_2 = $read_email->read($sql_2);
+
+            while($row_2 = mysqli_fetch_assoc($result_2)){
+                $data_2[] = $row_2;
+            }
+
+            $msg_1 = pin($data_2[0]['email']);
+            
+            header('Location: ../777.1.2_admin_pin_check.php?message='.$msg_1);
         }else{
             return $msg;
         }
@@ -2257,6 +2333,60 @@ global $con;
                 
             }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+// admin pin check.
+function verifyPin(){
+    global $con;
+    
+        if(isset($_POST['pin_confirm'])){
+            
+            // Getting data from form and storing in variables.
+            $pin = mysqli_real_escape_string($con, $_POST['pin']);
+            $pin = encryptPassword($pin);
+    
+            // Query.    
+            $sql = "SELECT pin FROM security_table; ";
+    
+            //echo $sql;
+    
+            // Object created.
+            $read_pin = new Database();
+            $result = $read_pin->read($sql);
+    
+            // msg.
+            $msg = "Wrong Pin, Try Again.";
+    
+            while($row = mysqli_fetch_assoc($result)){
+                $data[] = $row;
+            }
+    
+            // Location.
+            if($data[0]['pin'] == $pin){
+                
+                header('Location: ../999.0_home_admin.php');
+                
+            }else{
+                return $msg;
+            }
+            
+        }
+    }
+
+
+
+
 
 
 

@@ -938,15 +938,15 @@
 <!-- policy template -->
     
 
-                <div class="policy_section issues_template">
+                <div class="policy_section">
                 
                     <table class="feed_table" >
 
                         <tr>
-                            <th>Date</th>
-                            <th>Sender</th>
-                            <th>Feedback</th>
-                            <th>Status</th>
+                            <th class="table_header">Date</th>
+                            <th class="table_header">Sender</th>
+                            <th class="table_header">Feedback</th>
+                            <th class="table_header">Status</th>
                         </tr>
 
 
@@ -957,12 +957,12 @@
             ?>
 
 
-                        <tr>
-                            <td><?php echo $row['feedback_date']; ?></td>
-                            <td><?php echo $row['sender']; ?></td>
-                            <td><?php echo $row['feedback']; ?></td>
-                            <td><?php echo $row['feedback_status']; ?></td>
-                            <td>
+                        <tr class="table_row">
+                            <td class="table_disc"><?php echo $row['feedback_date']; ?></td>
+                            <td class="table_disc"><?php echo $row['sender']; ?></td>
+                            <td class="table_disc"><?php echo $row['feedback']; ?></td>
+                            <td class="table_disc"><?php echo $row['feedback_status']; ?></td>
+                            <td class="table_disc table_link">
                             
                             <form method="post" action="Dynamic/actions_dynamic.php" class="policy_template_form"> 
 
@@ -975,7 +975,7 @@
                             </form>
                             
                             </td>
-                            <td>
+                            <td class="table_disc table_link">
                             
                             <form method="post" action="Dynamic/actions_dynamic.php" class="policy_template_form"> 
 
@@ -989,7 +989,7 @@
                             
                             </td>
 
-                            <td>
+                            <td class="table_disc table_link">
                             
                             <form method="post" action="Dynamic/actions_dynamic.php" class="policy_template_form"> 
 

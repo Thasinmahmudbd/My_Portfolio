@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 10, 2021 at 01:53 PM
+-- Generation Time: Jun 12, 2021 at 06:45 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -266,7 +266,7 @@ INSERT INTO `refund_policy_table` (`refund_policy_id`, `refund_policy`) VALUES
 CREATE TABLE `security_table` (
   `security_id` int(11) NOT NULL,
   `p_word` varchar(100) NOT NULL,
-  `pin` varchar(50) NOT NULL,
+  `pin` varchar(100) NOT NULL,
   `otp` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -275,7 +275,7 @@ CREATE TABLE `security_table` (
 --
 
 INSERT INTO `security_table` (`security_id`, `p_word`, `pin`, `otp`) VALUES
-(1, '$2y$10$22charactersarepreseneCohjJUSBgmXGaJZcwOoDmXSsQk2hwxq', 'Admin', '$2y$10$22charactersarepreseneZo.r1nLuGp8hYAuoUDa0ZJHPW38bd56');
+(1, '$2y$10$22charactersarepreseneCohjJUSBgmXGaJZcwOoDmXSsQk2hwxq', '$2y$10$22charactersarepreseneCe8C2vb6/HIYDHA8aK5ewH8K9VRtE/i', '$2y$10$22charactersarepresene9Tekmxn5beaie3gzS6qoBrrZ40QFtji');
 
 -- --------------------------------------------------------
 

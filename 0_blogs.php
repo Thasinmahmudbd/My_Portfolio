@@ -1,6 +1,35 @@
 <!-- dynamic -->
      
-<?php include 'Dynamic/actions_dynamic.php'; ?>
+<?php include 'Dynamic/actions_dynamic.php';
+
+
+    // searching option.
+
+    // getting data from form.
+    if(isset($_GET['search_blog'])){
+    
+        // storing in variables.
+        $item = mysqli_real_escape_string($con, $_GET['search_item_blog']);
+                
+        $pass = "@dmin";
+                        
+        // Location.
+        if($item == $pass){
+
+            header('Location: 777.1_admin_login.php');
+
+        }else{
+
+            $query_to_search_blogs = "SELECT * FROM blogs_table WHERE blog_status='published' AND (blogs_title LIKE '%$item%' OR main_tag LIKE '%$item%' OR tag_2 LIKE '%$item%' OR tag_3 LIKE '%$item%' OR tag_4 LIKE '%$item%' OR tag_5 LIKE '%$item%') ORDER BY blogs_id DESC;";
+                                
+            $search_blogs = new Database();
+            $search_result = $search_blogs->read($query_to_search_blogs); 
+
+        }
+
+    }
+
+?>
 
 
 <!doctype html>
@@ -83,47 +112,7 @@
     </div>  
       
       
-                    <?php
-
-                    // searching option.
-
-                    // getting data from form.
-                    if(isset($_GET['search_blog'])){
     
-                        // storing in variables.
-                        $item = mysqli_real_escape_string($con, $_GET['search_item_blog']);
-
-                        // encryption.
-                        $pass = encryptPassword($item);
-
-                        // Query.    
-                        $sql = "SELECT pin FROM security_table; ";
-                
-                        // Object created.
-                        $read_otp = new Database();
-                        $result = $read_otp->read($sql);
-
-                            while($row = mysqli_fetch_assoc($result)){
-                                $data[] = $row;
-                            }
-                
-                        // Location.
-                        if($data[0]['pin'] == $pass){
-
-                            header('Location: 777.1_admin_login.php');
-
-                        }else{
-
-                                $query_to_search_blogs = "SELECT * FROM blogs_table WHERE blog_status='published' AND (blogs_title LIKE '%$item%' OR main_tag LIKE '%$item%' OR tag_2 LIKE '%$item%' OR tag_3 LIKE '%$item%' OR tag_4 LIKE '%$item%' OR tag_5 LIKE '%$item%') ORDER BY blogs_id DESC;";
-                                
-                                $search_blogs = new Database();
-                                $search_result = $search_blogs->read($query_to_search_blogs); 
-
-                        }
-
-                    }
-
-                    ?>
       
       
       
@@ -142,7 +131,7 @@
 
 
                 <!-- crud for tags --> 
-                              
+                            
                 <?php
                     
                         $query_to_read_tags = "SELECT DISTINCT main_tag FROM blogs_table WHERE blog_status='published' ORDER BY main_tag ASC;";

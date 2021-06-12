@@ -56,6 +56,15 @@ if($msg_4){
 
 }
 
+////////////////////////////////////////////////
+
+$msg_5 = verifyPin(); 
+if($msg_5){
+        
+    header('Location: ../777.1.2_admin_pin_check.php?message='.$msg_5);
+
+}
+
 ////////////// error_msg [finish] /////////////
 
 
