@@ -1,0 +1,49 @@
+/* full article page */
+
+.full_article_page{
+    background-color: #fff;
+}
+
+.full_article_container{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap:5px;
+    width: 75vw;
+    margin:auto;
+    line-height: 1.8;
+    color:#3B3838;
+    margin-top:30px;
+}
+
+.full_article_title{
+    background-color: #3B3838;
+    padding:1rem;
+    font-size: 1.2rem;
+    color:#fff;
+    text-align: center;
+}
+
+.full_article_date{
+    color:#fff;
+    font-size: .9rem;
+}
+
+.full_article{
+    padding:1rem;
+    background-color: #eeefff;
+}
+
+.suggestions{
+    padding:1rem;
+    border-top:2px solid #3B3838;
+}
+
+.suggestions a{
+    list-style: disc;
+    font-weight: 100;
+    color: #385ffc;
+}
+
+a{
+    color: #f5be28;
+}

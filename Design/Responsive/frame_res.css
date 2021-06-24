@@ -101,6 +101,13 @@
   .fixed_anchor_btns {
     display: none;
   }
+
+  /* full article page */
+  .full_article_container{
+    width: 90vw;
+    margin-top:20px;
+}
+
 }
 
 /* for mobile width = 500px */

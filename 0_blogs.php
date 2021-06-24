@@ -193,7 +193,7 @@
                                         
                                 <h1 class="dynamic_post_template_title"><?php echo $row['blogs_title'] ?> <span class="article_date">(<?php echo $row['blog_date'] ?>)</span></h1>
                                         
-                                <p class="highlights"><?php echo $row['blogs_highlight'] ?><a class="article_read_more" href="#"> read more...</a></p>
+                                <p class="highlights"><?php echo $row['blogs_highlight'] ?><a class="article_read_more" href="0.1_blogs_full_article_page.php?id=<?php echo $row['blogs_id'] ?>"> read more...</a></p>
                                         
                             </div>
                                     
@@ -233,7 +233,7 @@
                         <h1 class="dynamic_post_template_title"><?php echo $row['blogs_title'] ?> <span class="article_date">(<?php echo $row['blog_date'] ?>)</span></h1>
                         
                         <p class="highlights">
-                            <?php echo $row['blogs_highlight'] ?><a class="article_read_more" href="#"> read more...</a>
+                            <?php echo $row['blogs_highlight'] ?><a class="article_read_more" href="0.1_blogs_full_article_page.php?id=<?php echo $row['blogs_id'] ?>"> read more...</a>
                         </p>
                         
                     </div>

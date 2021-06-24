@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 12, 2021 at 06:45 PM
+-- Generation Time: Jun 24, 2021 at 11:44 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -77,10 +77,10 @@ CREATE TABLE `blogs_table` (
 
 INSERT INTO `blogs_table` (`blogs_id`, `blogs_title`, `blogs_highlight`, `blogs_post`, `main_tag`, `tag_2`, `tag_3`, `tag_4`, `tag_5`, `blog_date`, `blog_status`, `blog_picture`) VALUES
 (1, 'test title', 'test highlight', '<p><strong>test </strong>post</p>\r\n', 'main tag', 'sub tag', 'sub tag', 'sub tag', '', 'June 1, 2021, 2:23 am', 'published', '60b5f2a7bbf264.19962067.jpg'),
-(3, 'test title 3', 'highlight 3', '<p><span class=\"marker\"><strong>test 3 </strong></span><strong>updated</strong></p>\r\n', 'main tag', 'sub tag 3', 'sub tag', '', '', 'June 1, 2021, 3:06 am', 'drafted', '60b6022c04b236.46348612.jpg'),
+(3, 'test title 3', 'highlight 3', '<p><span class=\"marker\"><strong>test 3 </strong></span><strong>updated</strong></p>\r\n', 'main tag', 'sub tag 3', 'sub tag', '', '', 'June 1, 2021, 3:06 am', 'published', '60b6022c04b236.46348612.jpg'),
 (4, 'test title is 4 update test', 'highlight 4 updated', '<p><s>test</s> updated</p>\r\n', 'a tag updated', '', '', '', '', 'June 1, 2021, 3:07 am', 'published', '60b5f2810972c9.72113909.jpg'),
 (5, 'test title 5', 'ggg', '<p>ggg</p>\r\n', 'vv', '', '', '', '', 'June 1, 2021, 3:50 am', 'published', '60b5f56344ba48.11230519.jpg'),
-(6, 'test no 6', 'test', '<p>test</p>\r\n', 'test', '', '', '', '', 'June 1, 2021, 4:02 pm', 'drafted', '60b6061de6c603.59321043.jpg');
+(6, 'test no 6', 'test', '<p>test</p>\r\n', 'test', '', '', '', '', 'June 1, 2021, 4:02 pm', 'published', '60b6061de6c603.59321043.jpg');
 
 -- --------------------------------------------------------
 
@@ -275,7 +275,7 @@ CREATE TABLE `security_table` (
 --
 
 INSERT INTO `security_table` (`security_id`, `p_word`, `pin`, `otp`) VALUES
-(1, '$2y$10$22charactersarepreseneCohjJUSBgmXGaJZcwOoDmXSsQk2hwxq', '$2y$10$22charactersarepreseneCe8C2vb6/HIYDHA8aK5ewH8K9VRtE/i', '$2y$10$22charactersarepresene9Tekmxn5beaie3gzS6qoBrrZ40QFtji');
+(1, '$2y$10$22charactersarepreseneCohjJUSBgmXGaJZcwOoDmXSsQk2hwxq', '$2y$10$22charactersarepresene2g.DpnSwz9pTKzC.jxXnst70ZDzJKYO', '$2y$10$22charactersarepresene9Tekmxn5beaie3gzS6qoBrrZ40QFtji');
 
 -- --------------------------------------------------------
 
