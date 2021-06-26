@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 24, 2021 at 11:44 AM
+-- Generation Time: Jun 26, 2021 at 12:22 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -77,10 +77,10 @@ CREATE TABLE `blogs_table` (
 
 INSERT INTO `blogs_table` (`blogs_id`, `blogs_title`, `blogs_highlight`, `blogs_post`, `main_tag`, `tag_2`, `tag_3`, `tag_4`, `tag_5`, `blog_date`, `blog_status`, `blog_picture`) VALUES
 (1, 'test title', 'test highlight', '<p><strong>test </strong>post</p>\r\n', 'main tag', 'sub tag', 'sub tag', 'sub tag', '', 'June 1, 2021, 2:23 am', 'published', '60b5f2a7bbf264.19962067.jpg'),
-(3, 'test title 3', 'highlight 3', '<p><span class=\"marker\"><strong>test 3 </strong></span><strong>updated</strong></p>\r\n', 'main tag', 'sub tag 3', 'sub tag', '', '', 'June 1, 2021, 3:06 am', 'published', '60b6022c04b236.46348612.jpg'),
+(3, 'test title 3', 'highlight 3', '<p><span class=\"marker\"><strong>test 3 </strong></span><strong>updated</strong></p>\r\n', 'main tag', 'sub tag 3', 'sub tag', '', '', 'June 1, 2021, 3:06 am', 'drafted', '60b6022c04b236.46348612.jpg'),
 (4, 'test title is 4 update test', 'highlight 4 updated', '<p><s>test</s> updated</p>\r\n', 'a tag updated', '', '', '', '', 'June 1, 2021, 3:07 am', 'published', '60b5f2810972c9.72113909.jpg'),
 (5, 'test title 5', 'ggg', '<p>ggg</p>\r\n', 'vv', '', '', '', '', 'June 1, 2021, 3:50 am', 'published', '60b5f56344ba48.11230519.jpg'),
-(6, 'test no 6', 'test', '<p>test</p>\r\n', 'test', '', '', '', '', 'June 1, 2021, 4:02 pm', 'published', '60b6061de6c603.59321043.jpg');
+(6, 'test no 6', 'test', '<p>test</p>\r\n', 'test', '', '', '', '', 'June 1, 2021, 4:02 pm', 'drafted', '60b6061de6c603.59321043.jpg');
 
 -- --------------------------------------------------------
 
@@ -207,7 +207,8 @@ CREATE TABLE `order_table` (
 --
 
 INSERT INTO `order_table` (`order_id`, `customer_full_name`, `customer_email`, `customer_mobile`, `orders`, `order_date`, `order_status`) VALUES
-(2, 'Thasin', 'doostupi@gmail.com', '01711375724', 'hello', 'May 29, 2021, 9:36 pm', 'Working on it');
+(2, 'Thasin', 'doostupi@gmail.com', '01711375724', 'hello', 'May 29, 2021, 9:36 pm', 'Working on it'),
+(3, 'ahasan', 'doostupi@gmail.com', '1234', 'I want to buy test 2, Unique ID = 6.', 'June 25, 2021, 10:28 pm', 'Pending');
 
 -- --------------------------------------------------------
 
@@ -219,8 +220,8 @@ CREATE TABLE `projects_table` (
   `projects_id` int(11) NOT NULL,
   `projects_title` varchar(100) NOT NULL,
   `projects_details` text NOT NULL,
-  `go_live_link` varchar(100) NOT NULL,
-  `git_hub_link` varchar(100) NOT NULL,
+  `go_live_link` varchar(100) NOT NULL DEFAULT '1.1_not_for_sale.php',
+  `git_hub_link` varchar(100) NOT NULL DEFAULT '1.1_not_for_sale.php',
   `priority` tinyint(4) NOT NULL,
   `main_tag` varchar(30) NOT NULL,
   `sub_tag_2` varchar(30) NOT NULL,
@@ -236,7 +237,8 @@ CREATE TABLE `projects_table` (
 INSERT INTO `projects_table` (`projects_id`, `projects_title`, `projects_details`, `go_live_link`, `git_hub_link`, `priority`, `main_tag`, `sub_tag_2`, `sub_tag_3`, `project_image`, `project_status`) VALUES
 (4, 'test 2', 'test test test', 'http://test.updated.com', 'http://test.updated.com', 0, 'test', '', '', '60b643cb866f57.47091191.jpg', 'drafted'),
 (5, 'test 3', 'test', 'http://test.updated.com', 'http://test.updated.com', 0, 'a test', 'test', 'test', '60b646510b1693.10534360.jpg', 'published'),
-(6, 'test 4', '<ol>\r\n	<li>this</li>\r\n	<li>is</li>\r\n	<li>a</li>\r\n	<li>test</li>\r\n</ol>\r\n\r\n<p><strong>hello </strong>how are <span class=\"marker\">you</span>? <a href=\"http://www.google.com\">google</a></p>\r\n', 'http://test.updated.com', 'http://test.updated.com', 1, 'test', '', '', '60b8ad28227825.66474442.jpg', 'published');
+(6, 'test 4', '<ol>\r\n	<li>this</li>\r\n	<li>is</li>\r\n	<li>a</li>\r\n	<li>test</li>\r\n</ol>\r\n\r\n<p><strong>hello </strong>how are <span class=\"marker\">you</span>? <a href=\"http://www.google.com\">google</a></p>\r\n', 'http://test.updated.com', 'http://test.updated.com', 1, 'test', '', '', '60b8ad28227825.66474442.jpg', 'published'),
+(7, 'test link', '<p>lorem ipsum</p>\r\n', '1.1_not_for_sale.php', '1.1_not_for_sale.php', 0, 'tag', '', '', '60d6fbbdc3ffd1.99922546.jpg', 'published');
 
 -- --------------------------------------------------------
 
@@ -303,8 +305,9 @@ CREATE TABLE `store_table` (
 
 INSERT INTO `store_table` (`products_id`, `products_title`, `products_details`, `go_live_link`, `price`, `priority`, `main_tag`, `sub_tag_2`, `sub_tag_3`, `product_image`, `product_status`) VALUES
 (5, 'test', 'test', 'http://test.com', 100, 1, 'test', '', '', '60c1f783455c25.55685890.jpg', 'drafted'),
-(6, 'test 2', 'test 2', 'http://test.updated.com', 11, 0, 'a test', '', '', '60b8994b3f0115.06232591.jpg', 'published'),
-(7, 'test 3', 'ffgfds', 'http://test.updated.com', 12, 1, 'fr', '', '', '60c1f8066b82c0.48796530.jpg', 'published');
+(6, 'test 2', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Netus et malesuada fames ac turpis egestas integer eget. Et netus et malesuada fames ac. Pharetra pharetra massa massa ultricies mi. Ac tincidunt vitae semper quis lectus nulla at. Semper quis lectus nulla at volutpat diam. Risus quis varius quam quisque id. Et netus et malesuada fames ac turpis egestas sed. Dui nunc mattis enim ut tellus elementum sagittis vitae. Consequat semper viverra nam libero justo laoreet sit. Mi quis hendrerit dolor magna. Facilisis mauris sit amet massa. Nulla facilisi morbi tempus iaculis urna id volutpat lacus laoreet. Dignissim cras tincidunt lobortis feugiat vivamus. Quisque sagittis purus sit amet volutpat consequat. Sed enim ut sem viverra aliquet eget sit. Pretium vulputate sapien nec sagittis aliquam malesuada bibendum arcu vitae. Tortor dignissim convallis aenean et tortor at risus viverra adipiscing.\r\n\r\nUt lectus arcu bibendum at varius vel pharetra. Ullamcorper a lacus vestibulum sed arcu. Feugiat in ante metus dictum at tempor. Fermentum leo vel orci porta non pulvinar. Eleifend quam adipiscing vitae proin sagittis nisl rhoncus. In mollis nunc sed id semper risus. Morbi non arcu risus quis. Risus commodo viverra maecenas accumsan lacus vel facilisis volutpat. Non curabitur gravida arcu ac. Gravida cum sociis natoque penatibus et magnis. Non consectetur a erat nam at lectus urna duis convallis. Cursus in hac habitasse platea dictumst quisque sagittis purus sit. Penatibus et magnis dis parturient montes. Et netus et malesuada fames ac turpis egestas. Auctor neque vitae tempus quam pellentesque. Orci porta non pulvinar neque laoreet suspendisse interdum. Enim nec dui nunc mattis enim. Dis parturient montes nascetur ridiculus mus mauris vitae. Porttitor rhoncus dolor purus non. Consequat nisl vel pretium lectus quam id leo.\r\n\r\nNatoque penatibus et magnis dis parturient. Tellus in metus vulputate eu scelerisque felis imperdiet proin fermentum. Tristique risus nec feugiat in fermentum posuere urna nec. Nam aliquam sem et tortor consequat id porta nibh. Elementum nibh tellus molestie nunc non blandit massa. Sagittis aliquam malesuada bibendum arcu vitae elementum curabitur vitae nunc. Velit scelerisque in dictum non consectetur a erat nam at. Nulla malesuada pellentesque elit eget gravida cum. Elementum facilisis leo vel fringilla est ullamcorper. Eget est lorem ipsum dolor sit amet consectetur adipiscing. Nisi vitae suscipit tellus mauris. Aliquet enim tortor at auctor urna nunc id cursus metus. Sed velit dignissim sodales ut eu sem integer vitae justo. Dignissim diam quis enim lobortis scelerisque fermentum dui faucibus in. Nibh mauris cursus mattis molestie a iaculis. Mauris commodo quis imperdiet massa tincidunt nunc.\r\n\r\nHendrerit dolor magna eget est lorem ipsum dolor sit amet. Proin nibh nisl condimentum id venenatis a. Morbi tincidunt augue interdum velit euismod in. Pharetra convallis posuere morbi leo. Lorem mollis aliquam ut porttitor leo a diam. Suspendisse in est ante in nibh mauris cursus mattis. Ac felis donec et odio pellentesque diam. At elementum eu facilisis sed odio morbi. Id cursus metus aliquam eleifend mi. Dignissim sodales ut eu sem. Bibendum neque egestas congue quisque egestas. Eu augue ut lectus arcu bibendum at. Risus at ultrices mi tempus. Augue neque gravida in fermentum et sollicitudin ac. At urna condimentum mattis pellentesque id nibh. Orci nulla pellentesque dignissim enim sit. Neque gravida in fermentum et sollicitudin ac orci. Volutpat consequat mauris nunc congue. Suscipit tellus mauris a diam maecenas sed enim ut.\r\n\r\nTortor dignissim convallis aenean et tortor at risus viverra adipiscing. Blandit libero volutpat sed cras ornare arcu dui. Adipiscing enim eu turpis egestas pretium aenean pharetra. Enim diam vulputate ut pharetra sit amet. Elementum curabitur vitae nunc sed velit dignissim. Netus et malesuada fames ac. In mollis nunc sed id semper risus in hendrerit. Luctus accumsan tortor posuere ac ut consequat. Nulla porttitor massa id neque aliquam. Senectus et netus et malesuada fames ac turpis egestas. Vivamus at augue eget arcu dictum varius duis at. In fermentum et sollicitudin ac orci phasellus egestas tellus rutrum. Vel orci porta non pulvinar neque laoreet suspendisse interdum consectetur. Amet volutpat consequat mauris nunc congue nisi. Amet risus nullam eget felis eget nunc. Nunc aliquet bibendum enim facilisis gravida. Lobortis scelerisque fermentum dui faucibus in ornare quam viverra.\r\n\r\nAmet tellus cras adipiscing enim eu turpis. Mauris nunc congue nisi vitae suscipit tellus mauris a. Pharetra pharetra massa massa ultricies mi quis hendrerit. Euismod elementum nisi quis eleifend quam adipiscing vitae proin sagittis. Quisque non tellus orci ac auctor augue mauris augue. Facilisi etiam dignissim diam quis enim lobortis scelerisque fermentum dui. Amet mauris commodo quis imperdiet. Facilisis sed odio morbi quis commodo odio. Tellus rutrum tellus pellentesque eu tincidunt tortor aliquam nulla. Nulla facilisi nullam vehicula ipsum a. Suscipit adipiscing bibendum est ultricies integer quis. Aenean euismod elementum nisi quis eleifend. Pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus. Nunc mi ipsum faucibus vitae aliquet nec ullamcorper. Lectus proin nibh nisl condimentum id venenatis a condimentum vitae. Quis ipsum suspendisse ultrices gravida dictum fusce ut. Ornare arcu odio ut sem nulla pharetra.\r\n\r\nSuscipit adipiscing bibendum est ultricies integer quis auctor. Malesuada fames ac turpis egestas maecenas pharetra convallis. Sed turpis tincidunt id aliquet. Et netus et malesuada fames ac turpis egestas maecenas pharetra. Commodo quis imperdiet massa tincidunt nunc pulvinar. In hac habitasse platea dictumst quisque sagittis purus. Eget arcu dictum varius duis at consectetur lorem. Lectus magna fringilla urna porttitor rhoncus dolor purus non. Tortor pretium viverra suspendisse potenti nullam ac tortor. Volutpat commodo sed egestas egestas fringilla phasellus. Nulla at volutpat diam ut venenatis tellus in metus. Accumsan in nisl nisi scelerisque eu ultrices. Eget aliquet nibh praesent tristique. Vestibulum sed arcu non odio euismod lacinia.\r\n\r\nPlatea dictumst quisque sagittis purus sit amet. Id porta nibh venenatis cras sed felis eget. Quis risus sed vulputate odio. Pulvinar etiam non quam lacus suspendisse faucibus interdum posuere lorem. Proin libero nunc consequat interdum varius sit. Elementum tempus egestas sed sed risus pretium quam vulputate dignissim. Sit amet venenatis urna cursus eget. Dapibus ultrices in iaculis nunc. Sit amet porttitor eget dolor. Dignissim enim sit amet venenatis. Sit amet consectetur adipiscing elit. Pulvinar mattis nunc sed blandit. Nunc sed blandit libero volutpat sed cras ornare arcu dui. Est velit egestas dui id ornare. Quis hendrerit dolor magna eget est lorem ipsum. Aenean et tortor at risus viverra adipiscing at in tellus.\r\n\r\nUltrices gravida dictum fusce ut placerat orci nulla pellentesque. Placerat orci nulla pellentesque dignissim. Ac placerat vestibulum lectus mauris. Vestibulum rhoncus est pellentesque elit. Leo in vitae turpis massa sed elementum tempus egestas sed. Varius quam quisque id diam vel quam elementum pulvinar etiam. Et ligula ullamcorper malesuada proin libero. Lacus vestibulum sed arcu non odio euismod. Sit amet volutpat consequat mauris nunc congue nisi vitae. Aliquet porttitor lacus luctus accumsan tortor. In metus vulputate eu scelerisque felis imperdiet proin fermentum. Amet cursus sit amet dictum sit amet justo donec. Accumsan tortor posuere ac ut consequat semper. Nec tincidunt praesent semper feugiat. Quis viverra nibh cras pulvinar mattis nunc sed blandit libero. Lectus quam id leo in. Pellentesque habitant morbi tristique senectus et netus et. Pellentesque elit ullamcorper dignissim cras tincidunt lobortis feugiat.\r\n\r\nAdipiscing vitae proin sagittis nisl rhoncus mattis rhoncus. Id diam vel quam elementum. Vitae justo eget magna fermentum. Ut aliquam purus sit amet luctus venenatis. Pretium quam vulputate dignissim suspendisse in est ante in. Cras pulvinar mattis nunc sed blandit libero volutpat sed. Id porta nibh venenatis cras sed felis eget velit aliquet. Vitae aliquet nec ullamcorper sit. Sit amet consectetur adipiscing elit ut. Mi sit amet mauris commodo quis. Id diam vel quam elementum pulvinar etiam non quam lacus. Vel pharetra vel turpis nunc eget lorem dolor sed. Viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Ut venenatis tellus in metus vulputate. Imperdiet dui accumsan sit amet nulla facilisi morbi tempus. Mattis molestie a iaculis at erat pellentesque adipiscing commodo elit. Praesent semper feugiat nibh sed. Magna fringilla urna porttitor rhoncus dolor purus non enim praesent.', '', 11, 0, 'a test', '', '', '60d6f8e2618198.05743553.jpg', 'published'),
+(7, 'test 3', 'ffgfds', 'http://test.updated.com', 12, 1, 'fr', '', '', '60c1f8066b82c0.48796530.jpg', 'published'),
+(9, 'test link', 'lorem ipsum', '1.1_not_for_sale.php', 200, 0, 'sss', '', '', '60d6fc25c2aa23.78958914.jpg', 'published');
 
 --
 -- Indexes for dumped tables
@@ -432,13 +435,13 @@ ALTER TABLE `learn_more_table`
 -- AUTO_INCREMENT for table `order_table`
 --
 ALTER TABLE `order_table`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `projects_table`
 --
 ALTER TABLE `projects_table`
-  MODIFY `projects_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `projects_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `refund_policy_table`
@@ -456,7 +459,7 @@ ALTER TABLE `security_table`
 -- AUTO_INCREMENT for table `store_table`
 --
 ALTER TABLE `store_table`
-  MODIFY `products_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `products_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

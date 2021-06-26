@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="Design/Global/05_side_bar_style.css">
     <link rel="stylesheet" href="Design/Global/06_anchor_bar_style.css">
     <link rel="stylesheet" href="Design/frame_style.css">
+    <link rel="stylesheet" href="Design/buy_now_style.css">
     
     <!-- Required css links for responsive -->
     <link rel="stylesheet" href="Design/Responsive/01_header_res.css">
@@ -73,7 +74,7 @@
             
             <form class="sub_page_search_bar" id="anchor2" action="">
                 
-                <input id="anchor3" class="input search_input" placeholder="Enter catagory or product id." type="text">
+                <input id="anchor3" class="input search_input" placeholder="Enter category or product id." type="text">
                 <button class="search_btn" type="submit"><i class="fas fa-search"></i></button>
                 
             </form>
@@ -175,7 +176,7 @@
                     
                     <div class="dynamic_post_template_highlights">
                         
-                        <h1 class="dynamic_post_template_title"><?php echo $row['products_title'] ?><!--<span> (product id)</span>--></h1>
+                        <h1 class="dynamic_post_template_title"><?php echo $row['products_title'] ?> <span class="price_tag"> <?php echo $row['price'] ?> Tk only.</span></h1>
                         
                         <p class="highlights">
                             <?php echo $row['products_details'] ?>
@@ -186,7 +187,7 @@
                     <div class="post_related_links">
                         
                         <a href="<?php echo $row['go_live_link'] ?>" class="go_live"><i class="fab fa-chrome post_related_link"></i></a>
-                        <a href="<?php echo $row['products_id'] ?>"><i class="fas fa-shopping-cart post_related_link"></i></a>
+                        <a href="2.1_buy_now_page.php?id=<?php echo $row['products_id'] ?>&item=store_item"><i class="fas fa-shopping-cart post_related_link"></i></a>
                         
                     </div>
                     

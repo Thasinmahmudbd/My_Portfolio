@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="Design/Administration/999.0_home_admin_style.css">
     <link rel="stylesheet" href="Design/frame_style.css">
     <link rel="stylesheet" href="Design/Administration/999.2_projects_admin_style.css">
+    <link rel="stylesheet" href="Design/buy_now_style.css">
     
     <!-- Required css links for responsive -->
     <link rel="stylesheet" href="Design/Responsive/01_header_res.css">
@@ -135,7 +136,7 @@
                         <div class="links">
                         
                             <label class="label" for="go_live_link">Go Live</label>
-                            <input class="input" type="url" name="go_live_link" value="<?php echo $data[0]['go_live_link']; ?>" required>
+                            <input class="input" type="text" name="go_live_link" value="<?php echo $data[0]['go_live_link']; ?>">
                         
                             <label class="label" for="price">Github</label>
                             <input class="input" type="number" name="price" value="<?php echo $data[0]['price']; ?>" required>
@@ -196,7 +197,7 @@
                         <div class="links">
                         
                             <label class="label" for="go_live_link">Go Live</label>
-                            <input class="input" type="url" name="go_live_link" required>
+                            <input class="input" type="text" name="go_live_link" value="1.1_not_for_sale.php" required>
                         
                             <label class="label" for="price">Price</label>
                             <input class="input" type="number" name="price" required>
@@ -343,7 +344,7 @@
                             
                             <div class="dynamic_post_template_highlights">
                                 
-                                <h1 class="dynamic_post_template_title"><?php echo $row['products_title'] ?></h1>
+                            <h1 class="dynamic_post_template_title"><?php echo $row['products_title'] ?> <span class="price_tag"> <?php echo $row['price'] ?> Tk only.</span></h1>
                                 
                                 <p class="highlights">
                                     <?php echo $row['products_details'] ?>

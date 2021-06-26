@@ -12,3 +12,8 @@
 .gap{
     margin:.5rem;
 }
+
+.article_read_more{
+    color: #358ffc;
+    font-weight: bold;
+  }

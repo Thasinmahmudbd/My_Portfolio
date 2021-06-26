@@ -2,7 +2,6 @@
      
 <?php include 'Dynamic/actions_dynamic.php';
 
-    // searching option.
 
     // getting data from form.
     if(isset($_GET['id'])){

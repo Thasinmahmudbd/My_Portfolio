@@ -135,10 +135,10 @@
                         <div class="links">
                         
                             <label class="label" for="go_live_link">Go Live</label>
-                            <input class="input" type="url" name="go_live_link" value="<?php echo $data[0]['go_live_link']; ?>" required>
+                            <input class="input" type="text" name="go_live_link" value="<?php echo $data[0]['go_live_link']; ?>">
                         
                             <label class="label" for="git_hub_link">Github</label>
-                            <input class="input" type="url" name="git_hub_link" value="<?php echo $data[0]['git_hub_link']; ?>" required>
+                            <input class="input" type="text" name="git_hub_link" value="<?php echo $data[0]['git_hub_link']; ?>">
                             
                             <label class="label" for="priority">Priority</label>
                             <input class="input" type="number" name="priority" max="1" min="0" placeholder="0 for high, 1 for low." value="<?php echo $data[0]['priority']; ?>" required>
@@ -196,10 +196,10 @@
                         <div class="links">
                         
                             <label class="label" for="go_live_link">Go Live</label>
-                            <input class="input" type="url" name="go_live_link" required>
+                            <input class="input" type="text" name="go_live_link" value="1.1_not_for_sale.php" required>
                         
                             <label class="label" for="git_hub_link">Github</label>
-                            <input class="input" type="url" name="git_hub_link" required>
+                            <input class="input" type="text" name="git_hub_link" value="1.1_not_for_sale.php" required>
                             
                             <label class="label" for="priority">Priority</label>
                             <input class="input" type="number" name="priority" max="1" min="0" placeholder="0 for high, 1 for low." required>

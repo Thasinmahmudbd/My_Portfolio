@@ -182,7 +182,7 @@
                         
                         <a href="<?php echo $row['go_live_link'] ?>" class="go_live"><i class="fab fa-chrome post_related_link"></i></a>
                         <a href="<?php echo $row['git_hub_link'] ?>"><i class="fas fa-code-branch post_related_link"></i> </a>
-                        <a href="<?php echo $row['projects_id'] ?>"><i class="fas fa-shopping-cart post_related_link"></i></a>
+                        <a href="1.1_not_for_sale.php"><i class="fas fa-shopping-cart post_related_link"></i></a>
                         
                     </div>
                     
