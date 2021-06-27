@@ -1,30 +1,35 @@
 <!-- dynamic -->
      
-<?php 
-
-include 'Dynamic/actions_dynamic.php'; 
+<?php include 'Dynamic/actions_dynamic.php';
 
 
-
-// searching option.
+    // searching option.
 
     // getting data from form.
-    if(isset($_GET['search_product'])){
+    if(isset($_GET['search_blog'])){
     
         // storing in variables.
-        $item = mysqli_real_escape_string($con, $_GET['search_item_product']);
+        $item = mysqli_real_escape_string($con, $_GET['search_item_blog']);
+                
+        $pass = "@dmin";
+                        
+        // Location.
+        if($item == $pass){
 
+            header('Location: 777.1_admin_login.php');
 
-            $query_to_search_products = "SELECT * FROM store_table WHERE product_status='published' AND (products_title LIKE '%$item%' OR main_tag LIKE '%$item%' OR sub_tag_2 LIKE '%$item%' OR sub_tag_3 LIKE '%$item%') ORDER BY products_id DESC;";
+        }else{
+
+            $query_to_search_blogs = "SELECT * FROM blogs_table WHERE blog_status='published' AND (blogs_title LIKE '%$item%' OR main_tag LIKE '%$item%' OR tag_2 LIKE '%$item%' OR tag_3 LIKE '%$item%' OR tag_4 LIKE '%$item%' OR tag_5 LIKE '%$item%') ORDER BY blogs_id DESC;";
                                 
-            $search_products = new Database();
-            $search_result = $search_products->read($query_to_search_products); 
+            $search_blogs = new Database();
+            $search_result = $search_blogs->read($query_to_search_blogs); 
+
+        }
 
     }
 
-
 ?>
-
 
 
 <!doctype html>
@@ -32,6 +37,7 @@ include 'Dynamic/actions_dynamic.php';
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Required css links for plugins -->
@@ -47,7 +53,6 @@ include 'Dynamic/actions_dynamic.php';
     <link rel="stylesheet" href="Design/Global/05_side_bar_style.css">
     <link rel="stylesheet" href="Design/Global/06_anchor_bar_style.css">
     <link rel="stylesheet" href="Design/frame_style.css">
-    <link rel="stylesheet" href="Design/buy_now_style.css">
     
     <!-- Required css links for responsive -->
     <link rel="stylesheet" href="Design/Responsive/01_header_res.css">
@@ -59,7 +64,7 @@ include 'Dynamic/actions_dynamic.php';
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap" rel="stylesheet">
     
-    <!-- icons (font awsome) -->
+    <!-- icons (font awesome) -->
     <script src="https://kit.fontawesome.com/aafecdc4bf.js" crossorigin="anonymous"></script>
     
     <!-- Required js and css for aos -->    
@@ -93,12 +98,12 @@ include 'Dynamic/actions_dynamic.php';
         
         <div class="secondary_navbar">
             
-            <p class="sub_page_name" id="U">Store</p>
+            <p class="sub_page_name" id="U">Blogs</p>
             
-            <form class="sub_page_search_bar" id="anchor2" method="get" action="2_store.php">
+            <form class="sub_page_search_bar" id="anchor2" method="get" action="0_blogs.php">
                 
-                <input id="anchor3" class="input search_input" placeholder="Enter category or project name." type="text" name="search_item_product">
-                <button class="search_btn" type="submit" name="search_product"><i class="fas fa-search"></i></button>
+                <input id="anchor3" class="input search_input" placeholder="Enter article title or tags." type="text" name="search_item_blog">
+                <button class="search_btn" type="submit" name="search_blog"><i class="fas fa-search"></i></button>
                 
             </form>
             
@@ -107,8 +112,7 @@ include 'Dynamic/actions_dynamic.php';
     </div>  
       
       
-      
-      
+    
       
       
       
@@ -120,17 +124,20 @@ include 'Dynamic/actions_dynamic.php';
             
             <div class="frame_left_section">
                
-               <p class="left_section_header">Catagories</p>
+               <p class="left_section_header">Tags</p>
                
                <div class="frame_left_forms">
 
 
-                   
+
                 <!-- crud for tags --> 
-                              
+                            
                 <?php
                     
-                        $query_to_read_tags = "SELECT DISTINCT main_tag FROM store_table WHERE product_status='published' ORDER BY main_tag ASC;";
+                        // storing in variables.
+                        $main_tag = mysqli_real_escape_string($con, $_GET['Tag_name']);
+
+                        $query_to_read_tags = "SELECT DISTINCT main_tag FROM blogs_table WHERE blog_status='published' ORDER BY main_tag ASC;";
                         
                         $read_tags = new Database();
                         $tags = $read_tags->read($query_to_read_tags); 
@@ -146,20 +153,19 @@ include 'Dynamic/actions_dynamic.php';
 
 
                    
-                <form class="form" method="get" action="2.2_alternate_store.php">
+                   <form class="form <?php if($main_tag == $row['main_tag']){ echo 'indicate'; } ?>" method="get" action="0.2_alternate_blog.php">
                     
-                    <input type="hidden" value="<?php echo $row['main_tag'] ?>">
+                        <input type="hidden" value="<?php echo $row['main_tag'] ?>">
 
-                    <input class="frame_left_form_link" type="submit" name="Tag_name" value="<?php echo $row['main_tag'] ?>">
-                
-                </form>
+                        <input class="frame_left_form_link" type="submit" name="Tag_name" value="<?php echo $row['main_tag'] ?>">
+                    
+                    </form>
                     
                     
 
                 <?php } ?>
 
 
-                   
                    
                </div>
                 
@@ -169,102 +175,86 @@ include 'Dynamic/actions_dynamic.php';
 
 
 
-
-
-                <!-- crud for store --> 
-
-
-                    <?php
-
-                        if(!empty($search_result)){
-
-                            foreach($search_result as $row){
-
-                    ?>
-
-
-
-                <div class="right_side_dynamic_post_template" data-aos="fade-right">
-                    
-                    <img src="Media/Images/Store_pictures/UI_Ux_template/<?php echo $row['product_image'] ?>" alt="no image" class="article_img" width="100%">
-                    
-                    <div class="dynamic_post_template_highlights">
-                        
-                        <h1 class="dynamic_post_template_title"><?php echo $row['products_title'] ?> <span class="price_tag"> <?php echo $row['price'] ?> Tk only.</span></h1>
-                        
-                        <p class="highlights">
-                            <?php echo $row['products_details'] ?>
-                        </p>
-                        
-                    </div>
-                    
-                    <div class="post_related_links">
-                        
-                        <a href="<?php echo $row['go_live_link'] ?>" class="go_live"><i class="fab fa-chrome post_related_link"></i></a>
-                        <a href="2.1_buy_now_page.php?id=<?php echo $row['products_id'] ?>&item=store_item"><i class="fas fa-shopping-cart post_related_link"></i></a>
-                        
-                    </div>
-                    
-                </div>
-
-
+                <!-- crud for blog post --> 
                               
-                    <?php
+                <?php
 
-                            }
+                    if(!empty($search_result)){
 
-                        }else{
-                        
-                            $query_to_read_products = "SELECT * FROM store_table WHERE product_status='published' ORDER BY priority ASC, products_id DESC;";
-                            
-                            $read_products = new Database();
-                            $products = $read_products->read($query_to_read_products);
-
-
-                            //print_r($basic_info);
-
-                            // loop to read store_table data.
-
-                            foreach($products as $row){
+                        foreach($search_result as $row){
                     
-                    ?>
+                ?>
+                
+                
+                
+                                
+                        <div class="right_side_dynamic_post_template" data-aos="fade-right">
+                                    
+                            <img src="Media/Images/Blog_picture/<?php echo $row['blog_picture'] ?>" alt="no image" class="article_img" height="200px">
+                                    
+                            <div class="dynamic_post_template_highlights">
+                                        
+                                <h1 class="dynamic_post_template_title"><?php echo $row['blogs_title'] ?> <span class="article_date">(<?php echo $row['blog_date'] ?>)</span></h1>
+                                        
+                                <p class="highlights"><?php echo $row['blogs_highlight'] ?><a class="article_read_more" href="0.1_blogs_full_article_page.php?id=<?php echo $row['blogs_id'] ?>"> read more...</a></p>
+                                        
+                            </div>
+                                    
+                        </div>
 
+                
+    
+                <?php
+
+                        }
+
+                    }else{
+
+                        $query_to_read_blogs = "SELECT * FROM blogs_table WHERE blog_status='published' AND main_tag='$main_tag' ORDER BY blogs_id DESC;";
+                            
+                        $read_blogs = new Database();
+                        $blogs = $read_blogs->read($query_to_read_blogs); 
+        
+                    
+                        //print_r($basic_info);
+
+                        // loop to read blog_table data.
+
+                        foreach($blogs as $row){
+                    
+                ?>
 
 
 
                 
                 <div class="right_side_dynamic_post_template" data-aos="fade-right">
                     
-                    <img src="Media/Images/Store_pictures/UI_Ux_template/<?php echo $row['product_image'] ?>" alt="no image" class="article_img" width="100%">
+                    <img src="Media/Images/Blog_picture/<?php echo $row['blog_picture'] ?>" alt="no image" class="article_img" height="200px">
                     
                     <div class="dynamic_post_template_highlights">
                         
-                        <h1 class="dynamic_post_template_title"><?php echo $row['products_title'] ?> <span class="price_tag"> <?php echo $row['price'] ?> Tk only.</span></h1>
+                        <h1 class="dynamic_post_template_title"><?php echo $row['blogs_title'] ?> <span class="article_date">(<?php echo $row['blog_date'] ?>)</span></h1>
                         
                         <p class="highlights">
-                            <?php echo $row['products_details'] ?>
+                            <?php echo $row['blogs_highlight'] ?><a class="article_read_more" href="0.1_blogs_full_article_page.php?id=<?php echo $row['blogs_id'] ?>"> read more...</a>
                         </p>
-                        
-                    </div>
-                    
-                    <div class="post_related_links">
-                        
-                        <a href="<?php echo $row['go_live_link'] ?>" class="go_live"><i class="fab fa-chrome post_related_link"></i></a>
-                        <a href="2.1_buy_now_page.php?id=<?php echo $row['products_id'] ?>&item=store_item"><i class="fas fa-shopping-cart post_related_link"></i></a>
                         
                     </div>
                     
                 </div>
 
 
-                
+
                 <?php 
-                
-            
-                            }
-                        }
-                
+
+                        } 
+                    }
+                        
                 ?>
+
+                
+
+
 
 
                 
@@ -321,8 +311,7 @@ include 'Dynamic/actions_dynamic.php';
     
      
       
-        
-    
+
     
     
     

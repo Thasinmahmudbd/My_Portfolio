@@ -103,7 +103,7 @@ include 'Dynamic/actions_dynamic.php';
             
         </div>
         
-    </div>  
+    </div>   
       
       
       
@@ -127,6 +127,9 @@ include 'Dynamic/actions_dynamic.php';
                               
                 <?php
                     
+                        // storing in variables.
+                        $main_tag = mysqli_real_escape_string($con, $_GET['Tag_name']);
+
                         $query_to_read_tags = "SELECT DISTINCT main_tag FROM projects_table WHERE project_status='published' ORDER BY main_tag ASC;";
                         
                         $read_tags = new Database();
@@ -143,7 +146,7 @@ include 'Dynamic/actions_dynamic.php';
 
 
                    
-                   <form class="form" method="get" action="1.2_alternate_project.php">
+                    <form class="form <?php if($main_tag == $row['main_tag']){ echo 'indicate'; } ?>" method="get" action="1.2_alternate_project.php">
                     
                         <input type="hidden" value="<?php echo $row['main_tag'] ?>">
 
@@ -156,8 +159,8 @@ include 'Dynamic/actions_dynamic.php';
                 <?php } ?>
 
 
-                   
-               </div>
+                
+                </div>
                 
             </div>
             
@@ -166,98 +169,100 @@ include 'Dynamic/actions_dynamic.php';
 
 
 
-                <!-- crud for projects --> 
-
-                    <?php
-
-                        if(!empty($search_result)){
-
-                            foreach($search_result as $row){
-
-                    ?>
-
-
-                <div class="right_side_dynamic_post_template" data-aos="fade-right">
-                    
-                    <img src="Media/Images/Project_pictures/<?php echo $row['project_image'] ?>" alt="no image" class="article_img" width="100%">
-                    
-                    <div class="dynamic_post_template_highlights">
-                        
-                        <h1 class="dynamic_post_template_title"><?php echo $row['projects_title'] ?></h1>
-                        
-                        <p class="highlights">
-                            <?php echo $row['projects_details'] ?>
-                        </p>
-                        
-                    </div>
-                    
-                    <div class="post_related_links">
-                        
-                        <a href="<?php echo $row['go_live_link'] ?>" class="go_live"><i class="fab fa-chrome post_related_link"></i></a>
-                        <a href="<?php echo $row['git_hub_link'] ?>"><i class="fas fa-code-branch post_related_link"></i> </a>
-                        <a href="1.1_not_for_sale.php"><i class="fas fa-shopping-cart post_related_link"></i></a>
-                        
-                    </div>
-                    
-                </div>
-
-                            
-                    <?php
-
-                            }
-
-                        }else{
-                        
-                            $query_to_read_projects = "SELECT * FROM projects_table WHERE project_status='published' ORDER BY priority ASC, projects_id DESC;";
-                            
-                            $read_projects = new Database();
-                            $projects = $read_projects->read($query_to_read_projects); 
         
                     
-                            //print_r($basic_info);
+                <!-- crud for projects --> 
 
-                            // loop to read projects_table data.
-
-                            foreach($projects as $row){
-                    
-                    ?>
-
-
-
+                            <?php
+        
+                                if(!empty($search_result)){
+        
+                                    foreach($search_result as $row){
+        
+                            ?>
+        
+        
+                        <div class="right_side_dynamic_post_template" data-aos="fade-right">
+                            
+                            <img src="Media/Images/Project_pictures/<?php echo $row['project_image'] ?>" alt="no image" class="article_img" width="100%">
+                            
+                            <div class="dynamic_post_template_highlights">
+                                
+                                <h1 class="dynamic_post_template_title"><?php echo $row['projects_title'] ?></h1>
+                                
+                                <p class="highlights">
+                                    <?php echo $row['projects_details'] ?>
+                                </p>
+                                
+                            </div>
+                            
+                            <div class="post_related_links">
+                                
+                                <a href="<?php echo $row['go_live_link'] ?>" class="go_live"><i class="fab fa-chrome post_related_link"></i></a>
+                                <a href="<?php echo $row['git_hub_link'] ?>"><i class="fas fa-code-branch post_related_link"></i> </a>
+                                <a href="1.1_not_for_sale.php"><i class="fas fa-shopping-cart post_related_link"></i></a>
+                                
+                            </div>
+                            
+                        </div>
+        
+                                    
+                            <?php
+        
+                                    }
+        
+                                }else{
+                                
+                                    $query_to_read_projects = "SELECT * FROM projects_table WHERE project_status='published' AND main_tag='$main_tag' ORDER BY priority ASC, projects_id DESC;";
+                                    
+                                    $read_projects = new Database();
+                                    $projects = $read_projects->read($query_to_read_projects); 
                 
-                <div class="right_side_dynamic_post_template" data-aos="fade-right">
+                            
+                                    //print_r($basic_info);
+        
+                                    // loop to read projects_table data.
+        
+                                    foreach($projects as $row){
+                            
+                            ?>
+        
+        
+        
+                        
+                        <div class="right_side_dynamic_post_template" data-aos="fade-right">
+                            
+                            <img src="Media/Images/Project_pictures/<?php echo $row['project_image'] ?>" alt="no image" class="article_img" width="100%">
+                            
+                            <div class="dynamic_post_template_highlights">
+                                
+                                <h1 class="dynamic_post_template_title"><?php echo $row['projects_title'] ?></h1>
+                                
+                                <p class="highlights">
+                                    <?php echo $row['projects_details'] ?>
+                                </p>
+                                
+                            </div>
+                            
+                            <div class="post_related_links">
+                                
+                                <a href="<?php echo $row['go_live_link'] ?>" class="go_live"><i class="fab fa-chrome post_related_link"></i></a>
+                                <a href="<?php echo $row['git_hub_link'] ?>"><i class="fas fa-code-branch post_related_link"></i> </a>
+                                <a href="1.1_not_for_sale.php"><i class="fas fa-shopping-cart post_related_link"></i></a>
+                                
+                            </div>
+                            
+                        </div>
+        
+        
+                        
+                        <?php 
+                        
                     
-                    <img src="Media/Images/Project_pictures/<?php echo $row['project_image'] ?>" alt="no image" class="article_img" width="100%">
-                    
-                    <div class="dynamic_post_template_highlights">
+                                    }
+                                }
                         
-                        <h1 class="dynamic_post_template_title"><?php echo $row['projects_title'] ?></h1>
-                        
-                        <p class="highlights">
-                            <?php echo $row['projects_details'] ?>
-                        </p>
-                        
-                    </div>
-                    
-                    <div class="post_related_links">
-                        
-                        <a href="<?php echo $row['go_live_link'] ?>" class="go_live"><i class="fab fa-chrome post_related_link"></i></a>
-                        <a href="<?php echo $row['git_hub_link'] ?>"><i class="fas fa-code-branch post_related_link"></i> </a>
-                        <a href="1.1_not_for_sale.php"><i class="fas fa-shopping-cart post_related_link"></i></a>
-                        
-                    </div>
-                    
-                </div>
-
-
-                
-                <?php 
-                
-            
-                            }
-                        }
-                
-                ?>
+                        ?>
 
 
                 

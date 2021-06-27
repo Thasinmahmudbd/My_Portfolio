@@ -150,7 +150,7 @@
 
 
                    
-                   <form class="form" method="post" action="Dynamic/actions_dynamic.php">
+                   <form class="form" method="get" action="0.2_alternate_blog.php">
                     
                         <input type="hidden" value="<?php echo $row['main_tag'] ?>">
 

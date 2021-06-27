@@ -129,6 +129,9 @@ include 'Dynamic/actions_dynamic.php';
                 <!-- crud for tags --> 
                               
                 <?php
+
+                        // storing in variables.
+                        $main_tag = mysqli_real_escape_string($con, $_GET['Tag_name']);
                     
                         $query_to_read_tags = "SELECT DISTINCT main_tag FROM store_table WHERE product_status='published' ORDER BY main_tag ASC;";
                         
@@ -146,7 +149,7 @@ include 'Dynamic/actions_dynamic.php';
 
 
                    
-                <form class="form" method="get" action="2.2_alternate_store.php">
+                <form class="form <?php if($main_tag == $row['main_tag']){ echo 'indicate'; } ?>" method="get" action="2.2_alternate_store.php">
                     
                     <input type="hidden" value="<?php echo $row['main_tag'] ?>">
 
@@ -208,14 +211,14 @@ include 'Dynamic/actions_dynamic.php';
                 </div>
 
 
-                              
+                            
                     <?php
 
                             }
 
                         }else{
                         
-                            $query_to_read_products = "SELECT * FROM store_table WHERE product_status='published' ORDER BY priority ASC, products_id DESC;";
+                            $query_to_read_products = "SELECT * FROM store_table WHERE product_status='published' AND main_tag='$main_tag' ORDER BY priority ASC, products_id DESC;";
                             
                             $read_products = new Database();
                             $products = $read_products->read($query_to_read_products);

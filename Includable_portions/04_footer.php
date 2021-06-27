@@ -93,7 +93,7 @@
                     
                     <p>Hey, I'm Thasin. I'm a web developer. I have been doing this since 2019. I've done several projects and hope to do many more in the future. I think every business needs an online presence. If you agree, then you're in luck all you have to do is fill up a form and I'll make your business online. <br><br>
 
-                    To know more about what I do, you can browse <a class="footer_about_link_blue" href="Sub_pages/1_projects.php">my projects</a> and visit <a class="footer_about_link_blue"  href="Sub_pages/2_store.php">my store</a> or see my gigs on <a class="footer_about_link_green" target="_blank"  href="https://www.fiverr.com/thasin_bd?up_rollout=true">Fiverr</a>. What are you waiting for, "Time is Money".</p>
+                    To know more about what I do, you can browse <a class="footer_about_link_blue" href="1_projects.php">my projects</a> and visit <a class="footer_about_link_blue"  href="2_store.php">my store</a> or see my gigs on <a class="footer_about_link_green" target="_blank"  href="<?php echo $data[0]['fiverr']; ?>">Fiverr</a>. What are you waiting for, "Time is Money".</p>
                     
                 </div>
            

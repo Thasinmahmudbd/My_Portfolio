@@ -170,6 +170,12 @@
   transition: 300ms ease;
 }
 
+.indicate{
+  box-shadow: 0px 0px 10px 0px #eeefff;
+  padding-left: 0.5rem;
+  background-color: #358ffc;
+}
+
 .frame_right_section {
   display: grid;
   grid-template-columns: 1fr;
